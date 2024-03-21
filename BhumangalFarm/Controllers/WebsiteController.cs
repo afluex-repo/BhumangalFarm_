@@ -31,6 +31,10 @@ namespace BhumangalFarm.Controllers
         {
             return View();
         }
+        public ActionResult OurTeam()
+        {
+            return View();
+        }
         [HttpPost]
         [ActionName("ContactUs")]
         [OnAction(ButtonName = "btnsave")]
@@ -79,5 +83,7 @@ namespace BhumangalFarm.Controllers
         {
             return View();
         }
+    
+
     }
 }

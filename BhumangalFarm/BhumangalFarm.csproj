@@ -37,7 +37,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <IntermediateOutputPath>C:\Users\MULTIL~1\AppData\Local\Temp\vs2962.tmp\Debug\</IntermediateOutputPath>
+    <IntermediateOutputPath>C:\Users\MULTIL~1\AppData\Local\Temp\vs76A6.tmp\Debug\</IntermediateOutputPath>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>full</DebugType>
@@ -46,7 +46,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <IntermediateOutputPath>C:\Users\MULTIL~1\AppData\Local\Temp\vs2962.tmp\Release\</IntermediateOutputPath>
+    <IntermediateOutputPath>C:\Users\MULTIL~1\AppData\Local\Temp\vs76A6.tmp\Release\</IntermediateOutputPath>
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   <ItemGroup>
@@ -6749,6 +6749,159 @@
     <Content Include="LevelTree.aspx" />
     <Content Include="Models\WebService\AgentServices.asmx" />
     <Content Include="Views\Master\UpdatePlotStatus.cshtml" />
+    <Content Include="webAssets\css\fonts\Flaticon.svg" />
+    <Content Include="webAssets\css\fonts\houses.svg" />
+    <Content Include="webAssets\css\fonts\LineIcons5594.svg" />
+    <Content Include="webAssets\css\fonts\themify9f24.svg" />
+    <Content Include="webAssets\css\img\loading.gif" />
+    <Content Include="webAssets\css\plugins\ajax-loader.gif" />
+    <Content Include="webAssets\css\plugins\animation.css" />
+    <Content Include="webAssets\css\plugins\bootstrap.min.css" />
+    <Content Include="webAssets\css\plugins\date-picker.css" />
+    <Content Include="webAssets\css\plugins\dropzone.css" />
+    <Content Include="webAssets\css\plugins\flaticon.css" />
+    <Content Include="webAssets\css\plugins\font-awesome.css" />
+    <Content Include="webAssets\css\plugins\fonts\slick.html" />
+    <Content Include="webAssets\css\plugins\iconfont.css" />
+    <Content Include="webAssets\css\plugins\ion.rangeSlider.min.css" />
+    <Content Include="webAssets\css\plugins\light-box.css" />
+    <Content Include="webAssets\css\plugins\line-icons.css" />
+    <Content Include="webAssets\css\plugins\magnifypopup.css" />
+    <Content Include="webAssets\css\plugins\morris.css" />
+    <Content Include="webAssets\css\plugins\select2.css" />
+    <Content Include="webAssets\css\plugins\slick-theme.css" />
+    <Content Include="webAssets\css\plugins\slick.css" />
+    <Content Include="webAssets\css\plugins\themify.css" />
+    <Content Include="webAssets\css\styles.css" />
+    <Content Include="webAssets\img\404.png" />
+    <Content Include="webAssets\img\account-cl.svg" />
+    <Content Include="webAssets\img\app.png" />
+    <Content Include="webAssets\img\area.svg" />
+    <Content Include="webAssets\img\avatar-large-1.png" />
+    <Content Include="webAssets\img\aw-1.png" />
+    <Content Include="webAssets\img\aw-2.png" />
+    <Content Include="webAssets\img\aw-3.png" />
+    <Content Include="webAssets\img\aw-4.png" />
+    <Content Include="webAssets\img\b-1.jpg" />
+    <Content Include="webAssets\img\b-2.jpg" />
+    <Content Include="webAssets\img\b-3.jpg" />
+    <Content Include="webAssets\img\b-4.jpg" />
+    <Content Include="webAssets\img\b-5.jpg" />
+    <Content Include="webAssets\img\b-6.jpg" />
+    <Content Include="webAssets\img\banner-2.png" />
+    <Content Include="webAssets\img\banner-4.jpg" />
+    <Content Include="webAssets\img\banner-5.jpg" />
+    <Content Include="webAssets\img\banner-7.jpg" />
+    <Content Include="webAssets\img\banner-home.jpg" />
+    <Content Include="webAssets\img\banners.mp4" />
+    <Content Include="webAssets\img\bath.svg" />
+    <Content Include="webAssets\img\bathtub.svg" />
+    <Content Include="webAssets\img\bed.svg" />
+    <Content Include="webAssets\img\bg.jpg" />
+    <Content Include="webAssets\img\bg2.png" />
+    <Content Include="webAssets\img\booking-cl.svg" />
+    <Content Include="webAssets\img\brand-1.png" />
+    <Content Include="webAssets\img\brand-2.png" />
+    <Content Include="webAssets\img\brand-3.png" />
+    <Content Include="webAssets\img\brand-4.png" />
+    <Content Include="webAssets\img\brand-5.png" />
+    <Content Include="webAssets\img\brand-6.png" />
+    <Content Include="webAssets\img\c-1.png" />
+    <Content Include="webAssets\img\c-2.png" />
+    <Content Include="webAssets\img\c-3.png" />
+    <Content Include="webAssets\img\c-4.png" />
+    <Content Include="webAssets\img\c-5.png" />
+    <Content Include="webAssets\img\c-6.png" />
+    <Content Include="webAssets\img\c-7.png" />
+    <Content Include="webAssets\img\cap.png" />
+    <Content Include="webAssets\img\city-1.png" />
+    <Content Include="webAssets\img\city-2.png" />
+    <Content Include="webAssets\img\city-3.png" />
+    <Content Include="webAssets\img\city-4.png" />
+    <Content Include="webAssets\img\city-5.png" />
+    <Content Include="webAssets\img\city-6.png" />
+    <Content Include="webAssets\img\city-7.png" />
+    <Content Include="webAssets\img\clutch.png" />
+    <Content Include="webAssets\img\curve.svg" />
+    <Content Include="webAssets\img\deals.png" />
+    <Content Include="webAssets\img\floor.jpg" />
+    <Content Include="webAssets\img\immio.jpg" />
+    <Content Include="webAssets\img\loader.svg" />
+    <Content Include="webAssets\img\log.jpg" />
+    <Content Include="webAssets\img\log.png" />
+    <Content Include="webAssets\img\logo-2.png" />
+    <Content Include="webAssets\img\logo-footer.jpeg" />
+    <Content Include="webAssets\img\logo-light-2.png" />
+    <Content Include="webAssets\img\logo-light.png" />
+    <Content Include="webAssets\img\logo.jpg" />
+    <Content Include="webAssets\img\logo.png" />
+    <Content Include="webAssets\img\move.svg" />
+    <Content Include="webAssets\img\new-banner.jpg" />
+    <Content Include="webAssets\img\p-1.png" />
+    <Content Include="webAssets\img\p-10.png" />
+    <Content Include="webAssets\img\p-11.png" />
+    <Content Include="webAssets\img\p-12.png" />
+    <Content Include="webAssets\img\p-13.png" />
+    <Content Include="webAssets\img\p-14.png" />
+    <Content Include="webAssets\img\p-15.png" />
+    <Content Include="webAssets\img\p-16.png" />
+    <Content Include="webAssets\img\p-17.png" />
+    <Content Include="webAssets\img\p-18.png" />
+    <Content Include="webAssets\img\p-19.png" />
+    <Content Include="webAssets\img\p-2.png" />
+    <Content Include="webAssets\img\p-20.png" />
+    <Content Include="webAssets\img\p-21.png" />
+    <Content Include="webAssets\img\p-3.png" />
+    <Content Include="webAssets\img\p-4.png" />
+    <Content Include="webAssets\img\p-5.png" />
+    <Content Include="webAssets\img\p-6.png" />
+    <Content Include="webAssets\img\p-7.png" />
+    <Content Include="webAssets\img\p-8.png" />
+    <Content Include="webAssets\img\p-9.png" />
+    <Content Include="webAssets\img\pat.png" />
+    <Content Include="webAssets\img\pattern.png" />
+    <Content Include="webAssets\img\pin.svg" />
+    <Content Include="webAssets\img\search.svg" />
+    <Content Include="webAssets\img\slider-1.jpg" />
+    <Content Include="webAssets\img\slider-2.jpg" />
+    <Content Include="webAssets\img\slider-3.jpg" />
+    <Content Include="webAssets\img\slider-4.jpg" />
+    <Content Include="webAssets\img\slider-5.jpg" />
+    <Content Include="webAssets\img\tag.png" />
+    <Content Include="webAssets\img\team-1.jpg" />
+    <Content Include="webAssets\img\team-2.jpg" />
+    <Content Include="webAssets\img\team-3.jpg" />
+    <Content Include="webAssets\img\team-4.jpg" />
+    <Content Include="webAssets\img\team-5.jpg" />
+    <Content Include="webAssets\img\team-6.jpg" />
+    <Content Include="webAssets\img\trust.png" />
+    <Content Include="webAssets\img\user-1.jpg" />
+    <Content Include="webAssets\img\user-2.jpg" />
+    <Content Include="webAssets\img\user-3.jpg" />
+    <Content Include="webAssets\img\user-4.jpg" />
+    <Content Include="webAssets\img\user-5.jpg" />
+    <Content Include="webAssets\img\user-6.jpg" />
+    <Content Include="webAssets\img\verified.svg" />
+    <Content Include="webAssets\js\bootstrap.min.js" />
+    <Content Include="webAssets\js\custom.js" />
+    <Content Include="webAssets\js\daterangepicker.js" />
+    <Content Include="webAssets\js\dropzone.js" />
+    <Content Include="webAssets\js\imagesloaded.js" />
+    <Content Include="webAssets\js\ion.rangeSlider.min.js" />
+    <Content Include="webAssets\js\jquery.magnific-popup.min.js" />
+    <Content Include="webAssets\js\jquery.min.js" />
+    <Content Include="webAssets\js\lightbox.js" />
+    <Content Include="webAssets\js\map.js" />
+    <Content Include="webAssets\js\map_infobox.js" />
+    <Content Include="webAssets\js\markerclusterer.js" />
+    <Content Include="webAssets\js\moment.min.js" />
+    <Content Include="webAssets\js\morris.js" />
+    <Content Include="webAssets\js\morris.min.js" />
+    <Content Include="webAssets\js\popper.min.js" />
+    <Content Include="webAssets\js\raphael.min.js" />
+    <Content Include="webAssets\js\select2.min.js" />
+    <Content Include="webAssets\js\slick.js" />
+    <Content Include="webAssets\js\slider-bg.js" />
     <Content Include="WebsiteCss\assets\css\animate.min.css" />
     <Content Include="WebsiteCss\assets\css\bootstrap.min.css" />
     <Content Include="WebsiteCss\assets\css\boxicons.min.css" />
@@ -6808,8 +6961,6 @@
     <Content Include="WebsiteCss\assets\js\odometer.min.js" />
     <Content Include="WebsiteCss\assets\js\owl.carousel.min.js" />
     <Content Include="WebsiteCss\assets\js\wow.min.js" />
-    <Content Include="Website\about.html" />
-    <Content Include="Website\contact.html" />
     <Content Include="Website\css\ace-responsive-menu.css" />
     <Content Include="Website\css\animate.css" />
     <Content Include="Website\css\bootstrap-select.min.css" />
@@ -6905,7 +7056,6 @@
     <Content Include="Website\images\testimonials\testimonial-1.png" />
     <Content Include="Website\images\testimonials\testimonial-2.png" />
     <Content Include="Website\images\testimonials\testimonial-3.png" />
-    <Content Include="Website\index.html" />
     <Content Include="Website\js\ace-responsive-menu.js" />
     <Content Include="Website\js\bootstrap-select.min.js" />
     <Content Include="Website\js\bootstrap.min.js" />
@@ -6933,9 +7083,6 @@
     <Content Include="Website\js\scrollbalance.js" />
     <Content Include="Website\js\swiper.js" />
     <Content Include="Website\js\wow.min.js" />
-    <Content Include="Website\login.html" />
-    <Content Include="Website\properties.html" />
-    <Content Include="Website\property-details.html" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery.min.js" />
@@ -7703,6 +7850,43 @@
     <Content Include="WebsiteCss\assets\fonts\flaticon.ttf" />
     <Content Include="WebsiteCss\assets\fonts\flaticon.woff" />
     <Content Include="WebsiteCss\assets\fonts\flaticon.woff2" />
+    <Content Include="webAssets\css\fonts\fa-brands-400.ttf" />
+    <Content Include="webAssets\css\fonts\fa-brands-400.woff2" />
+    <Content Include="webAssets\css\fonts\fa-regular-400.ttf" />
+    <Content Include="webAssets\css\fonts\fa-regular-400.woff2" />
+    <Content Include="webAssets\css\fonts\fa-solid-900.ttf" />
+    <Content Include="webAssets\css\fonts\fa-solid-900.woff2" />
+    <Content Include="webAssets\css\fonts\fa-v4compatibility.ttf" />
+    <Content Include="webAssets\css\fonts\fa-v4compatibility.woff2" />
+    <Content Include="webAssets\css\fonts\Flaticon.eot" />
+    <Content Include="webAssets\css\fonts\Flaticon.ttf" />
+    <Content Include="webAssets\css\fonts\Flaticon.woff" />
+    <Content Include="webAssets\css\fonts\Flaticond41d.eot" />
+    <Content Include="webAssets\css\fonts\houses.eot" />
+    <Content Include="webAssets\css\fonts\houses.ttf" />
+    <Content Include="webAssets\css\fonts\houses.woff" />
+    <Content Include="webAssets\css\fonts\housesd41d.eot" />
+    <Content Include="webAssets\css\fonts\icofont.woff" />
+    <Content Include="webAssets\css\fonts\icofont.woff2" />
+    <Content Include="webAssets\css\fonts\LineIcons5594.eot" />
+    <Content Include="webAssets\css\fonts\LineIcons5594.ttf" />
+    <Content Include="webAssets\css\fonts\LineIcons5594.woff" />
+    <Content Include="webAssets\css\fonts\slick.eot" />
+    <Content Include="webAssets\css\fonts\slick.ttf" />
+    <Content Include="webAssets\css\fonts\slick.woff" />
+    <Content Include="webAssets\css\fonts\slickd41d.eot" />
+    <Content Include="webAssets\css\fonts\themify9f24.eot" />
+    <Content Include="webAssets\css\fonts\themify9f24.ttf" />
+    <Content Include="webAssets\css\fonts\themify9f24.woff" />
+    <Content Include="webAssets\css\fonts\themifyd41d.eot" />
+    <Content Include="Website\About.cshtml" />
+    <Content Include="Website\ContactUs.cshtml" />
+    <Content Include="Website\EventGallery.cshtml" />
+    <Content Include="Website\Index.cshtml" />
+    <Content Include="Website\Property.cshtml" />
+    <Content Include="Website\Signin.cshtml" />
+    <Content Include="Website\Signup.cshtml" />
+    <Content Include="Views\Website\OurTeam.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
