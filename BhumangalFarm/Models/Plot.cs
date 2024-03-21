@@ -10,6 +10,7 @@ namespace BhumangalFarm.Models
 {
     public class Plot : Common
     {
+        public string VisitDate { get; set; }
         public List<SelectListItem> ddlPLC { get; set; }
         public List<SelectListItem> ddlRate { get; set; }
         public string BookingType { get; set; }

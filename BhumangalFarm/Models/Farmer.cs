@@ -12,6 +12,10 @@ namespace BhumangalFarm.Models
     {
         #region Properties
 
+        public string LandDhara { get; set; }
+        public string KharijDakhil { get; set; }
+        public string LandType { get; set; }
+        public string Category { get; set; }
         public string Title { get; set; }
         public string Registry { get; set; }
         public string Agreement { get; set; }
@@ -116,10 +120,13 @@ namespace BhumangalFarm.Models
                                       new SqlParameter("@AssociatName", DelearName),
                                       new SqlParameter("@GataGhasaraN",GataKhasaraN),
                                       new SqlParameter("@Village",Village),
-                                        new SqlParameter("@Registry",Registry),
-                                          new SqlParameter("@Agreement",Agreement),
-                                           new SqlParameter("@Notary",Notary)
-
+                                      new SqlParameter("@Registry",Registry),
+                                      new SqlParameter("@Agreement",Agreement),
+                                      new SqlParameter("@Notary",Notary),
+                                      new SqlParameter("@Category",Category),
+                                      new SqlParameter("@LandType",LandType),
+                                      new SqlParameter("@KharijDakhil",KharijDakhil),
+                                      new SqlParameter("@LandDhara",LandDhara)
                                   };
             DataSet ds = Connection.ExecuteQuery("SaveFarmerDetails", para);
             return ds;
@@ -163,7 +170,11 @@ namespace BhumangalFarm.Models
                                       new SqlParameter("@Village",Village),
                                       new SqlParameter("@Registry",Registry),
                                       new SqlParameter("@Agreement",Agreement),
-                                      new SqlParameter("@Notary",Notary)
+                                      new SqlParameter("@Notary",Notary),
+                                      new SqlParameter("@Category",Category),
+                                      new SqlParameter("@LandType",LandType),
+                                      new SqlParameter("@KharijDakhil",KharijDakhil),
+                                      new SqlParameter("@LandDhara",LandDhara)
                                   };
             DataSet ds = Connection.ExecuteQuery("UpdateFarmerListById", para);
             return ds;
