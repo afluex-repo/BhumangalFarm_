@@ -548,6 +548,162 @@ namespace BhumangalFarm.Controllers
 
             return RedirectToAction(FormName, Controller);
         }
+
+
+
+
+
+
+
+
+
+        public ActionResult LoginPage(Home obj,string LoginId,string Password)
+        {
+            string FormName = "";
+            string Controller = "";
+            ProjectStatusResponse datalist = null;
+
+            try
+            {
+                Home Modal = new Home();
+                
+                obj.LoginId = LoginId;
+                obj.Password = Password;
+                DataSet ds = obj.Login();
+                if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+                {
+                    if (ds.Tables[0].Rows[0][0].ToString() == "0")
+                    {
+                        TempData["Login"] = ds.Tables[0].Rows[0]["ErrorMessage"].ToString();
+                        FormName = "Login";
+                        Controller = "Home";
+                    }
+                    else if ((ds.Tables[0].Rows[0]["UserType"].ToString() == "Trad Associate"))
+                    {
+                        if (obj.Password == Crypto.Decrypt(ds.Tables[0].Rows[0]["Password"].ToString()))
+                        {
+                            Session["LoginId"] = ds.Tables[0].Rows[0]["LoginId"].ToString();
+                            Session["Pk_userId"] = ds.Tables[0].Rows[0]["Pk_userId"].ToString();
+                            Session["UserType"] = ds.Tables[0].Rows[0]["UserType"].ToString();
+                            Session["FullName"] = ds.Tables[0].Rows[0]["FullName"].ToString();
+                            Session["ProfilePic"] = ds.Tables[0].Rows[0]["ProfilePic"].ToString();
+                            Session["Status"] = ds.Tables[0].Rows[0]["Status"].ToString();
+                            Session["CssClass"] = ds.Tables[0].Rows[0]["StatusColor"].ToString();
+                            Session["DesignationName"] = ds.Tables[0].Rows[0]["DesignationName"].ToString();
+                            Session["Percentage"] = ds.Tables[0].Rows[0]["Percentage"].ToString();
+                            FormName = "AssociateDashBoard";
+                            Controller = "AssociateDashboard";
+                        }
+                        else
+                        {
+                            TempData["Login"] = "Incorrect Password";
+                            FormName = "Login";
+                            Controller = "Home";
+                        }
+                    }
+                    else if ((ds.Tables[0].Rows[0]["UserType"].ToString() == "MLM Associate"))
+                    {
+                        if (obj.Password == Crypto.Decrypt(ds.Tables[0].Rows[0]["Password"].ToString()))
+                        {
+                            Session["LoginId"] = ds.Tables[0].Rows[0]["LoginId"].ToString();
+                            Session["Pk_userId"] = ds.Tables[0].Rows[0]["Pk_userId"].ToString();
+                            Session["UserType"] = ds.Tables[0].Rows[0]["UserType"].ToString();
+                            Session["FullName"] = ds.Tables[0].Rows[0]["FullName"].ToString();
+                            Session["ProfilePic"] = ds.Tables[0].Rows[0]["ProfilePic"].ToString();
+                            Session["Status"] = ds.Tables[0].Rows[0]["Status"].ToString();
+                            Session["CssClass"] = ds.Tables[0].Rows[0]["StatusColor"].ToString();
+                            FormName = "AssociateDashBoard";
+                            Controller = "AssociateDashboard";
+                        }
+                        else
+                        {
+                            TempData["Login"] = "Incorrect Password";
+                            FormName = "Login";
+                            Controller = "Home";
+                        }
+                    }
+                    else if ((ds.Tables[0].Rows[0]["UserType"].ToString() == "Customer"))
+                    {
+                        if (obj.Password == Crypto.Decrypt(ds.Tables[0].Rows[0]["Password"].ToString()))
+                        {
+                            Session["LoginId"] = ds.Tables[0].Rows[0]["LoginId"].ToString();
+                            Session["Pk_userId"] = ds.Tables[0].Rows[0]["Pk_userId"].ToString();
+                            Session["UserType"] = ds.Tables[0].Rows[0]["UserType"].ToString();
+                            Session["FullName"] = ds.Tables[0].Rows[0]["FullName"].ToString();
+                            Session["ProfilePic"] = ds.Tables[0].Rows[0]["ProfilePic"].ToString();
+                            Session["Status"] = ds.Tables[0].Rows[0]["Status"].ToString();
+                            Session["CssClass"] = ds.Tables[0].Rows[0]["StatusColor"].ToString();
+                            FormName = "CustomerDashBoard";
+                            Controller = "CustomerDashboard";
+                        }
+                        else
+                        {
+                            TempData["Login"] = "Incorrect Password";
+                            FormName = "Login";
+                            Controller = "Home";
+                        }
+                    }
+                    else if (ds.Tables[0].Rows[0]["UserType"].ToString() == "Admin")
+                    {
+                        obj.Result = "yes";
+
+                        if (ds.Tables[0].Rows[0]["UserTypeName"].ToString() == "Admin")
+                        {
+                            Session["LoginId"] = ds.Tables[0].Rows[0]["LoginId"].ToString();
+                            Session["Pk_AdminId"] = ds.Tables[0].Rows[0]["Pk_adminId"].ToString();
+                            Session["UserType"] = ds.Tables[0].Rows[0]["UserType"].ToString();
+                            Session["UserTypeName"] = ds.Tables[0].Rows[0]["UserTypeName"].ToString();
+                            Session["Name"] = ds.Tables[0].Rows[0]["Name"].ToString();
+                            Session["ProfilePic"] = ds.Tables[0].Rows[0]["ProfilePic"].ToString();
+
+
+                            FormName = "AdminDashboard";
+                            Controller = "Admin";
+                        }
+                        else
+                        {
+                            Session["LoginId"] = ds.Tables[0].Rows[0]["LoginId"].ToString();
+                            Session["Pk_AdminId"] = ds.Tables[0].Rows[0]["Pk_adminId"].ToString();
+                            Session["UserType"] = ds.Tables[0].Rows[0]["UserType"].ToString();
+                            Session["UserTypeName"] = ds.Tables[0].Rows[0]["UserTypeName"].ToString();
+                            Session["Name"] = ds.Tables[0].Rows[0]["Name"].ToString();
+                            Session["ProfilePic"] = ds.Tables[0].Rows[0]["ProfilePic"].ToString();
+
+
+                            FormName = "EmployeeDashboard";
+                            Controller = "Admin";
+                        }
+
+                    }
+                }
+
+                else
+                {
+                    TempData["Login"] = "Incorrect Login ID Or Password";
+                    FormName = "Login";
+                    Controller = "Home";
+
+                }
+            }
+            catch (Exception ex)
+            {
+                TempData["Login"] = ex.Message;
+                FormName = "Login";
+                Controller = "Home";
+            }
+            return Json(obj, JsonRequestBehavior.AllowGet);
+            //return RedirectToAction(FormName, Controller);
+        }
+
+
+
+
+
+
+
+
+
+
         public ActionResult ForgetPassword()
         {
             return View();
