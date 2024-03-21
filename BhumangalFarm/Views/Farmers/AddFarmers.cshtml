@@ -16,7 +16,7 @@
         display: block !important;
     }
 </style>
-@using (Html.BeginForm("AddFarmers", "Farmers", FormMethod.Post, new { @id = "form1", enctype = "multipart/form-data" }))
+@using (Html.BeginForm("AddFarmers", "Farmers", FormMethod.Post, new { @id = "form1", @enctype = "multipart/form-data",@autocomplete="off" }))
 {
     <section class="section">
         <ul class="breadcrumb breadcrumb-style ">
@@ -164,24 +164,26 @@
                             @Html.DropDownListFor(m => m.Notary, new SelectList(ViewBag.ddlNotary, "Value", "Text"), new { @class = "form-control" })
                         </div>
                     </div>
-
-
-
                     <div class="row ">
                         <div class="col-md-4 col-lg-4">
                             Category <span style="color:red">*</span>
-                            @Html.TextBoxFor(m => m.Name, new { @class = "form-control", @placeholder = "Farmer Name" })
+                            @Html.DropDownListFor(m => m.Category, new SelectList(ViewBag.ddlCategory, "Value", "Text"), new { @class = "form-control" })
                         </div>
                         <div class="col-md-4 col-lg-4">
                             LAND TYPE<span style="color:red">*</span>
-                            @Html.TextBoxFor(m => m.Amount, new { @class = "form-control", @Placeholder = "Amount", @onkeypress = "return isNumberKey(event);" })
+                            @Html.DropDownListFor(m => m.LandType, new SelectList(ViewBag.ddlLandType, "Value", "Text"), new { @class = "form-control" })
                         </div>
                         <div class="col-md-4 col-lg-4">
                             LAND KHARIJ DHAKIL<span style="color:red">*</span>
-                            @Html.TextBoxFor(m => m.Mobile, new { @class = "form-control", @Placeholder = "Mobile", @onkeypress = "return isNumberKey(event);", @maxlength = "10" })
+                            @Html.DropDownListFor(m => m.KharijDakhil, new SelectList(ViewBag.ddlKharijDakhil, "Value", "Text"), new { @class = "form-control" })
                         </div>
                     </div>
-
+                    <div class="row ">
+                        <div class="col-md-4 col-lg-4">
+                            LAND DHARA 80 <span style="color:red">*</span>
+                            @Html.DropDownListFor(m => m.LandDhara, new SelectList(ViewBag.ddlLandDhara, "Value", "Text"), new { @class = "form-control" })
+                        </div>
+                    </div>
 
 
 
@@ -480,11 +482,34 @@
             $('#Delear').focus();
             return false;
         }
-
         if ($('#GataKhasaraN').val() == '') {
             $('#GataKhasaraN').addClass('errortext');
             $("#divload").css({ 'display': 'none' });
             $('#GataKhasaraN').focus();
+            return false;
+        }
+        if ($('#Category').val() == '0') {
+            $("#Category").addClass('errortext');
+            $("#Category").css({ 'display': 'none' });
+            $('#Category').focus();
+            return false;
+        }
+        if ($('#LandType').val() == '0') {
+            $("#LandType").addClass('errortext');
+            $("#LandType").css({ 'display': 'none' });
+            $('#LandType').focus();
+            return false;
+        }
+        if ($('#KharijDakhil').val() == '0') {
+            $("#KharijDakhil").addClass('errortext');
+            $("#KharijDakhil").css({ 'display': 'none' });
+            $('#KharijDakhil').focus();
+            return false;
+        }
+        if ($('#LandDhara').val() == '0') {
+            $("#LandDhara").addClass('errortext');
+            $("#LandDhara").css({ 'display': 'none' });
+            $('#LandDhara').focus();
             return false;
         }
         //if ($('#AssociateID').val() == '') {
