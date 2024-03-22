@@ -58,6 +58,10 @@ namespace BhumangalFarm.Controllers
                         model.Agreement = ds.Tables[0].Rows[0]["IsAgreement"].ToString();
                         model.Notary = ds.Tables[0].Rows[0]["IsNotary"].ToString();
                         model.SqMtr = ds.Tables[0].Rows[0]["SqMtr"].ToString();
+                        model.Category = ds.Tables[0].Rows[0]["Category"].ToString();
+                        model.LandType = ds.Tables[0].Rows[0]["LandType"].ToString();
+                        model.KharijDakhil = ds.Tables[0].Rows[0]["KharijDakhil"].ToString();
+                        model.LandDhara = ds.Tables[0].Rows[0]["LandDhara"].ToString();
 
 
                         //ddltitle.Add(new SelectListItem { Text = ds.Tables[0].Rows[0]["Title"].ToString(), Value = ds.Tables[0].Rows[0]["Title"].ToString(), Selected = true });
@@ -77,7 +81,17 @@ namespace BhumangalFarm.Controllers
                 List<SelectListItem> ddlNotary = Notary();
                 ViewBag.ddlNotary = ddlNotary;
 
+                List<SelectListItem> ddlCategory = Category();
+                ViewBag.ddlCategory = ddlCategory;
 
+                List<SelectListItem> ddlLandType = LandType();
+                ViewBag.ddlLandType = ddlLandType;
+
+                List<SelectListItem> ddlKharijDakhil = KharijDakhil();
+                ViewBag.ddlKharijDakhil = ddlKharijDakhil;
+
+                List<SelectListItem> ddlLandDhara = LandDhara();
+                ViewBag.ddlLandDhara = ddlLandDhara;
             }
             catch (Exception ex)
             {
@@ -137,6 +151,18 @@ namespace BhumangalFarm.Controllers
 
                 List<SelectListItem> ddlNotary = Notary();
                 ViewBag.ddlNotary = ddlNotary;
+
+                List<SelectListItem> ddlCategory = Category();
+                ViewBag.ddlCategory = ddlCategory;
+
+                List<SelectListItem> ddlLandType = LandType();
+                ViewBag.ddlLandType = ddlLandType;
+
+                List<SelectListItem> ddlKharijDakhil = KharijDakhil();
+                ViewBag.ddlKharijDakhil = ddlKharijDakhil;
+
+                List<SelectListItem> ddlLandDhara = LandDhara();
+                ViewBag.ddlLandDhara = ddlLandDhara;
             }
             catch (Exception ex)
             {
@@ -208,6 +234,17 @@ namespace BhumangalFarm.Controllers
             List<SelectListItem> ddlNotary = Notary();
             ViewBag.ddlNotary = ddlNotary;
 
+            List<SelectListItem> ddlCategory = Category();
+            ViewBag.ddlCategory = ddlCategory;
+
+            List<SelectListItem> ddlLandType = LandType();
+            ViewBag.ddlLandType = ddlLandType;
+
+            List<SelectListItem> ddlKharijDakhil = KharijDakhil();
+            ViewBag.ddlKharijDakhil = ddlKharijDakhil;
+
+            List<SelectListItem> ddlLandDhara = LandDhara();
+            ViewBag.ddlLandDhara = ddlLandDhara;
             //ModelState.Clear();
             return RedirectToAction("AddFarmers", "Farmers");
         }
@@ -309,6 +346,46 @@ namespace BhumangalFarm.Controllers
             Agreement.Add(new SelectListItem { Text = "Pending", Value = "Pending" });
             Agreement.Add(new SelectListItem { Text = "Done", Value = "Done" });
             return Agreement;
+        }
+
+        public static List<SelectListItem> Category()
+        {
+            List<SelectListItem> Category = new List<SelectListItem>();
+            Category.Add(new SelectListItem { Text = "Select Category", Value = "0"});
+            Category.Add(new SelectListItem { Text = "General", Value = "General" });
+            Category.Add(new SelectListItem { Text = "OBC", Value = "OBC" });
+            Category.Add(new SelectListItem { Text = "SC", Value = "SC" });
+            Category.Add(new SelectListItem { Text = "ST", Value = "ST" });
+            return Category;
+        }
+
+        public static List<SelectListItem> LandType()
+        {
+            List<SelectListItem> LandType = new List<SelectListItem>();
+            LandType.Add(new SelectListItem { Text = "Select LandType", Value = "0" });
+            LandType.Add(new SelectListItem { Text = "SANKRAMANIY", Value = "SANKRAMANIY" });
+            LandType.Add(new SelectListItem { Text = "AASANKRAMANIY", Value = "AASANKRAMANIY" });
+            return LandType;
+        }
+
+        public static List<SelectListItem> KharijDakhil()
+        {
+            List<SelectListItem> KharijDakhil = new List<SelectListItem>();
+            KharijDakhil.Add(new SelectListItem { Text = "Select KharijDakhil", Value = "0" });
+            KharijDakhil.Add(new SelectListItem { Text = "COMPLETE", Value = "COMPLETE" });
+            KharijDakhil.Add(new SelectListItem { Text = "INCOMPLETE", Value = "INCOMPLETE" });
+            return KharijDakhil;
+        }
+
+        public static List<SelectListItem> LandDhara()
+        {
+            List<SelectListItem> LandDhara = new List<SelectListItem>();
+            LandDhara.Add(new SelectListItem { Text = "Select", Value = "0" });
+            LandDhara.Add(new SelectListItem { Text = "D80/1", Value = "D80/1" });
+            LandDhara.Add(new SelectListItem { Text = "D80/2", Value = "D80/2" });
+            LandDhara.Add(new SelectListItem { Text = "COMPLETE", Value = "COMPLETE" });
+            LandDhara.Add(new SelectListItem { Text = "INCOMPLETE", Value = "INCOMPLETE" });
+            return LandDhara;
         }
 
         public static List<SelectListItem> Notary()

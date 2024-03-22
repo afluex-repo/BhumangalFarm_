@@ -2471,10 +2471,7 @@ namespace BhumangalFarm.Controllers
             }
             return View(model);
         }
-
-
-
-
+        
         public ActionResult DeleteContactDetails(string id)
         {
             try
@@ -2509,9 +2506,31 @@ namespace BhumangalFarm.Controllers
             }
             return RedirectToAction("ContactList", "Admin");
         }
+        
+        public ActionResult VisitorForm()
+        {
+            Plot model = new Plot();
+            #region ddlSite
+            int count1 = 0;
+            List<SelectListItem> ddlSite = new List<SelectListItem>();
+            DataSet dsSite = model.GetSiteList();
+            if (dsSite != null && dsSite.Tables.Count > 0 && dsSite.Tables[0].Rows.Count > 0)
+            {
+                foreach (DataRow r in dsSite.Tables[0].Rows)
+                {
+                    if (count1 == 0)
+                    {
+                        ddlSite.Add(new SelectListItem { Text = "Select Site", Value = "0" });
+                    }
+                    ddlSite.Add(new SelectListItem { Text = r["SiteName"].ToString(), Value = r["PK_SiteID"].ToString() });
+                    count1 = count1 + 1;
 
-
-
+                }
+            }
+            ViewBag.ddlSite = ddlSite;
+            #endregion
+            return View();
+        }
 
 
 

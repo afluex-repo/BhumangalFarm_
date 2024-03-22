@@ -37,7 +37,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <IntermediateOutputPath>C:\Users\AFLUEX\AppData\Local\Temp\vs3846.tmp\Debug\</IntermediateOutputPath>
+    <IntermediateOutputPath>C:\Users\AFLUEX\AppData\Local\Temp\vs9C39.tmp\Debug\</IntermediateOutputPath>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>full</DebugType>
@@ -46,7 +46,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <IntermediateOutputPath>C:\Users\AFLUEX\AppData\Local\Temp\vs3846.tmp\Release\</IntermediateOutputPath>
+    <IntermediateOutputPath>C:\Users\AFLUEX\AppData\Local\Temp\vs9C39.tmp\Release\</IntermediateOutputPath>
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   <ItemGroup>
@@ -8058,6 +8058,7 @@
     <Content Include="WebsiteCss\assets-old\fonts\slick.ttf" />
     <Content Include="WebsiteCss\assets-old\fonts\slick.woff" />
     <Content Include="WebsiteCss\assets-old\fonts\slickd41d.eot" />
+    <Content Include="Views\Admin\VisitorForm.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -8106,7 +8107,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>24415</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:24416/</IISUrl>
+          <IISUrl>http://localhost:24417/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
