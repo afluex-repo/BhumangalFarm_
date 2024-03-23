@@ -544,7 +544,7 @@ namespace BhumangalFarm.Controllers
      
                 else
                 {
-                   TempData["Login"] = "Incorrect Login ID Or Password";
+                   TempData["Login"] = "Incorrect Login Id Or Password";
                     
                     //FormName = "Login";
                     //Controller = "Home";
@@ -556,7 +556,7 @@ namespace BhumangalFarm.Controllers
             catch (Exception ex)
             {
                 TempData["Login"] = ex.Message;
-                
+
                 //FormName = "Login";
                 //Controller = "Home";
                 FormName = "index";
