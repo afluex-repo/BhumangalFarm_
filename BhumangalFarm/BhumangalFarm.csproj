@@ -8059,6 +8059,8 @@
     <Content Include="WebsiteCss\assets-old\fonts\slick.woff" />
     <Content Include="WebsiteCss\assets-old\fonts\slickd41d.eot" />
     <Content Include="Views\Admin\VisitorForm.cshtml" />
+    <Content Include="Views\Admin\VisitorList.cshtml" />
+    <Content Include="Views\Admin\PrintVisitor.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
