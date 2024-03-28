@@ -700,22 +700,7 @@
                             <i class="ti-close"></i>
                         </span>
                         <div class="edlio_152">
-
                             <h5 style="text-align:center;margin-bottom:20px;color:#e46f1e;">Please login to your account</h5>
-
-
-                            @*<ul class="nav nav-pills tabs_system center" id="pills-tab" role="tablist">
-                                    <li class="nav-item">
-                                        <a class="nav-link active" id="pills-login-tab" data-bs-toggle="pill"
-                                           href="#pills-login" role="tab" aria-controls="pills-login"
-                                           aria-selected="true"><i class="fas fa-sign-in-alt me-2"></i>Login</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" id="pills-signup-tab" data-bs-toggle="pill"
-                                           href="#pills-signup" role="tab" aria-controls="pills-signup"
-                                           aria-selected="false"><i class="fas fa-user-plus me-2"></i>Register</a>
-                                    </li>
-                                </ul>*@
                         </div>
                         <div class="tab-content" id="pills-tabContent">
                             <div class="tab-pane fade show active" id="pills-login" role="tabpanel"
@@ -738,21 +723,9 @@
                                             </div>
                                         </div>
                                         <label></label>
-                                        @*<div class="form-group">
-                                                <div class="eltio_ol9">
-                                                    <div class="eltio_k1 form-check">
-                                                        <input id="dd" class="form-check-input" name="dd"
-                                                               type="checkbox">
-                                                        <label for="dd" class="form-check-label">Remember Me</label>
-                                                    </div>
-                                                    <div class="eltio_k2">
-                                                        <a href="#">Lost Your Password?</a>
-                                                    </div>
-                                                </div>
-                                            </div>*@
                                         <div class="form-group">
                                             <button type="submit"
-                                                    class="btn btn-danger fw-medium full-width" id="b" onclick="return Loginn()">
+                                                    class="btn btn-danger fw-medium full-width" id="b" onclick="return Validation()">
                                                 Login
                                             </button>
                                         </div>
@@ -827,6 +800,22 @@
     </script>
 }
 
+<script>
+    function Validation()
+    {
+        debugger;
+        if ($('#LoginId').val() == '') {
+            $("#LoginId").addClass('errortext');
+            $('#LoginId').focus();
+            return false;
+        }
+        if ($('#Password').val() == '') {
+            $("#Password").addClass('errortext');
+            $('#Password').focus();
+            return false;
+        }
+    }
+</script>
 
 <style>
     .errortext {
