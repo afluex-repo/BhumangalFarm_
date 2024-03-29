@@ -416,15 +416,15 @@ namespace BhumangalFarm.Models
     }
     public class SoftwareDetails 
     {
-        public static  string CompanyName = "Neeraj Rai Infra opc Pvt. Ltd.";
+        public static  string CompanyName = "Bhumangal Farm Developers Pvt. Ltd.";
         public static string CompanyAddress = "T1-CU-04, Parsvnath Planet, Tower No. 1, Vibhuti Khand, Gomti Nagar, Lucknow, Uttar Pradesh 226010 ";
         public static string Pin1 = "226010";
         public static string State1="UP";
         public static string City1= "Lucknow";
-        public static string ContactNo= "9161582888,9115051888";
+        public static string ContactNo= "6389303003,6389303001";
         public static string LandLine = "XXXXXX1213";
         public static string Website= "http://BhumangalFarm.com/";
-        public static string EmailID= "admin@BhumangalFarm.com";
+        public static string EmailID= "bhumangalfarm@gmail.com";
     }
 }
 
