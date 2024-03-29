@@ -37,7 +37,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <IntermediateOutputPath>C:\Users\User\AppData\Local\Temp\vs8809.tmp\Debug\</IntermediateOutputPath>
+    <IntermediateOutputPath>C:\Users\User\AppData\Local\Temp\vsA140.tmp\Debug\</IntermediateOutputPath>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>full</DebugType>
@@ -46,7 +46,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <IntermediateOutputPath>C:\Users\User\AppData\Local\Temp\vs8809.tmp\Release\</IntermediateOutputPath>
+    <IntermediateOutputPath>C:\Users\User\AppData\Local\Temp\vsA140.tmp\Release\</IntermediateOutputPath>
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   <ItemGroup>
@@ -6902,6 +6902,159 @@
     <Content Include="webAssets\js\select2.min.js" />
     <Content Include="webAssets\js\slick.js" />
     <Content Include="webAssets\js\slider-bg.js" />
+    <Content Include="WebsiteCss\assets-old\css\bootstrap.min.css" />
+    <Content Include="WebsiteCss\assets-old\css\color-skin\default.css" />
+    <Content Include="WebsiteCss\assets-old\css\custom-style.css" />
+    <Content Include="WebsiteCss\assets-old\css\ekko-lightbox.css" />
+    <Content Include="WebsiteCss\assets-old\css\font-awesome-animation.min.css" />
+    <Content Include="WebsiteCss\assets-old\css\font-awesome.min.css" />
+    <Content Include="WebsiteCss\assets-old\css\font.css" />
+    <Content Include="WebsiteCss\assets-old\css\images\ui-icons_444444_256x240.html" />
+    <Content Include="WebsiteCss\assets-old\css\images\ui-icons_555555_256x240.html" />
+    <Content Include="WebsiteCss\assets-old\css\images\ui-icons_777620_256x240.html" />
+    <Content Include="WebsiteCss\assets-old\css\images\ui-icons_777777_256x240.html" />
+    <Content Include="WebsiteCss\assets-old\css\images\ui-icons_cc0000_256x240.html" />
+    <Content Include="WebsiteCss\assets-old\css\images\ui-icons_ffffff_256x240.html" />
+    <Content Include="WebsiteCss\assets-old\css\jquery-ui.min.css" />
+    <Content Include="WebsiteCss\assets-old\css\jquery.bxslider.css" />
+    <Content Include="WebsiteCss\assets-old\css\pe-icon-7-stroke.css" />
+    <Content Include="WebsiteCss\assets-old\css\responsive.css" />
+    <Content Include="WebsiteCss\assets-old\css\slick-theme.css" />
+    <Content Include="WebsiteCss\assets-old\css\slick.css" />
+    <Content Include="WebsiteCss\assets-old\css\style.css" />
+    <Content Include="WebsiteCss\assets-old\fonts\fontawesome-webfont3e6e.svg" />
+    <Content Include="WebsiteCss\assets-old\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="WebsiteCss\assets-old\fonts\HandOfSeanDemo-2.html" />
+    <Content Include="WebsiteCss\assets-old\fonts\HandOfSeanDemo-3.html" />
+    <Content Include="WebsiteCss\assets-old\fonts\HandOfSeanDemo-4.html" />
+    <Content Include="WebsiteCss\assets-old\fonts\HandOfSeanDemo.html" />
+    <Content Include="WebsiteCss\assets-old\fonts\HandOfSeanDemod41d.html" />
+    <Content Include="WebsiteCss\assets-old\fonts\Pe-icon-7-strokebb1d.svg" />
+    <Content Include="WebsiteCss\assets-old\fonts\slick.svg" />
+    <Content Include="WebsiteCss\assets-old\images\01-bg-form.png" />
+    <Content Include="WebsiteCss\assets-old\images\02-input-icon.png" />
+    <Content Include="WebsiteCss\assets-old\images\03-input-icon.png" />
+    <Content Include="WebsiteCss\assets-old\images\1.jpg" />
+    <Content Include="WebsiteCss\assets-old\images\agent-icon.png" />
+    <Content Include="WebsiteCss\assets-old\images\agent1.jpg" />
+    <Content Include="WebsiteCss\assets-old\images\agent2.jpg" />
+    <Content Include="WebsiteCss\assets-old\images\agent3.jpg" />
+    <Content Include="WebsiteCss\assets-old\images\agent4.jpg" />
+    <Content Include="WebsiteCss\assets-old\images\agent5.jpg" />
+    <Content Include="WebsiteCss\assets-old\images\agent6.jpg" />
+    <Content Include="WebsiteCss\assets-old\images\agent7.jpg" />
+    <Content Include="WebsiteCss\assets-old\images\agent8.jpg" />
+    <Content Include="WebsiteCss\assets-old\images\agent9.jpg" />
+    <Content Include="WebsiteCss\assets-old\images\ajax-loader.gif" />
+    <Content Include="WebsiteCss\assets-old\images\avatar-wrap.png" />
+    <Content Include="WebsiteCss\assets-old\images\avator1.png" />
+    <Content Include="WebsiteCss\assets-old\images\banner-1.jpg" />
+    <Content Include="WebsiteCss\assets-old\images\banner-2.jpg" />
+    <Content Include="WebsiteCss\assets-old\images\banner-4.jpg" />
+    <Content Include="WebsiteCss\assets-old\images\banner-slide1.jpg" />
+    <Content Include="WebsiteCss\assets-old\images\banner-slide2.jpg" />
+    <Content Include="WebsiteCss\assets-old\images\banner-slide3.jpg" />
+    <Content Include="WebsiteCss\assets-old\images\banner2-slide1.jpg" />
+    <Content Include="WebsiteCss\assets-old\images\banner2-slide3.jpg" />
+    <Content Include="WebsiteCss\assets-old\images\bg-parallax1.jpg" />
+    <Content Include="WebsiteCss\assets-old\images\black-arrow-left.html" />
+    <Content Include="WebsiteCss\assets-old\images\black-arrow-right.html" />
+    <Content Include="WebsiteCss\assets-old\images\box-agent.jpg" />
+    <Content Include="WebsiteCss\assets-old\images\bx_loader.gif" />
+    <Content Include="WebsiteCss\assets-old\images\comment-arrow.png" />
+    <Content Include="WebsiteCss\assets-old\images\controls.html" />
+    <Content Include="WebsiteCss\assets-old\images\couple.jpg" />
+    <Content Include="WebsiteCss\assets-old\images\customer-service.png" />
+    <Content Include="WebsiteCss\assets-old\images\favicon.jpg" />
+    <Content Include="WebsiteCss\assets-old\images\gallery\gallery-1.jpg" />
+    <Content Include="WebsiteCss\assets-old\images\gallery\gallery-10.jpg" />
+    <Content Include="WebsiteCss\assets-old\images\gallery\gallery-11.jpg" />
+    <Content Include="WebsiteCss\assets-old\images\gallery\gallery-12.jpg" />
+    <Content Include="WebsiteCss\assets-old\images\gallery\gallery-13.jpg" />
+    <Content Include="WebsiteCss\assets-old\images\gallery\gallery-14.jpg" />
+    <Content Include="WebsiteCss\assets-old\images\gallery\gallery-15.jpg" />
+    <Content Include="WebsiteCss\assets-old\images\gallery\gallery-16.jpg" />
+    <Content Include="WebsiteCss\assets-old\images\gallery\gallery-17.jpg" />
+    <Content Include="WebsiteCss\assets-old\images\gallery\gallery-18.jpg" />
+    <Content Include="WebsiteCss\assets-old\images\gallery\gallery-19.jpg" />
+    <Content Include="WebsiteCss\assets-old\images\gallery\gallery-2.jpg" />
+    <Content Include="WebsiteCss\assets-old\images\gallery\gallery-20.jpg" />
+    <Content Include="WebsiteCss\assets-old\images\gallery\gallery-21.jpg" />
+    <Content Include="WebsiteCss\assets-old\images\gallery\gallery-22.jpg" />
+    <Content Include="WebsiteCss\assets-old\images\gallery\gallery-23.jpg" />
+    <Content Include="WebsiteCss\assets-old\images\gallery\gallery-24.jpg" />
+    <Content Include="WebsiteCss\assets-old\images\gallery\gallery-3.jpg" />
+    <Content Include="WebsiteCss\assets-old\images\gallery\gallery-4.jpg" />
+    <Content Include="WebsiteCss\assets-old\images\gallery\gallery-5.jpg" />
+    <Content Include="WebsiteCss\assets-old\images\gallery\gallery-6.jpg" />
+    <Content Include="WebsiteCss\assets-old\images\gallery\gallery-7.jpg" />
+    <Content Include="WebsiteCss\assets-old\images\gallery\gallery-8.jpg" />
+    <Content Include="WebsiteCss\assets-old\images\gallery\gallery-9.jpg" />
+    <Content Include="WebsiteCss\assets-old\images\gallery\trip-1.jpg" />
+    <Content Include="WebsiteCss\assets-old\images\gallery\trip-2.jpg" />
+    <Content Include="WebsiteCss\assets-old\images\gallery\trip-3.jpg" />
+    <Content Include="WebsiteCss\assets-old\images\gallery\trip-4.jpg" />
+    <Content Include="WebsiteCss\assets-old\images\gallery\trip-5.jpg" />
+    <Content Include="WebsiteCss\assets-old\images\gallery\trip-6.jpg" />
+    <Content Include="WebsiteCss\assets-old\images\gallery\trip1.jpg" />
+    <Content Include="WebsiteCss\assets-old\images\gallery\trip2.jpg" />
+    <Content Include="WebsiteCss\assets-old\images\gallery\trip3.jpg" />
+    <Content Include="WebsiteCss\assets-old\images\gallery\trip4.jpg" />
+    <Content Include="WebsiteCss\assets-old\images\home-icon.png" />
+    <Content Include="WebsiteCss\assets-old\images\intro-bg.jpg" />
+    <Content Include="WebsiteCss\assets-old\images\list-icon.png" />
+    <Content Include="WebsiteCss\assets-old\images\loan.png" />
+    <Content Include="WebsiteCss\assets-old\images\logo.png" />
+    <Content Include="WebsiteCss\assets-old\images\mission.png" />
+    <Content Include="WebsiteCss\assets-old\images\Neerajrai_logo.jpg" />
+    <Content Include="WebsiteCss\assets-old\images\pattern.jpg" />
+    <Content Include="WebsiteCss\assets-old\images\pattern2.jpg" />
+    <Content Include="WebsiteCss\assets-old\images\project\aradhna-vihar.jpg" />
+    <Content Include="WebsiteCss\assets-old\images\project\areva_aradhan.jpg" />
+    <Content Include="WebsiteCss\assets-old\images\project\av-1.png" />
+    <Content Include="WebsiteCss\assets-old\images\project\av-2.png" />
+    <Content Include="WebsiteCss\assets-old\images\project\av.jpg" />
+    <Content Include="WebsiteCss\assets-old\images\project\barsana.jpg" />
+    <Content Include="WebsiteCss\assets-old\images\project\bp-1.jpg" />
+    <Content Include="WebsiteCss\assets-old\images\project\kd.jpg" />
+    <Content Include="WebsiteCss\assets-old\images\project\KOTWA.jpg" />
+    <Content Include="WebsiteCss\assets-old\images\project\madhuvan-vihar2.jpg" />
+    <Content Include="WebsiteCss\assets-old\images\project\mandar.jpg" />
+    <Content Include="WebsiteCss\assets-old\images\project\mandhuvan-vihar.jpg" />
+    <Content Include="WebsiteCss\assets-old\images\project\mv-1.jpg" />
+    <Content Include="WebsiteCss\assets-old\images\project\mv-2.jpg" />
+    <Content Include="WebsiteCss\assets-old\images\project\mv.jpg" />
+    <Content Include="WebsiteCss\assets-old\images\project\pd-2.jpg" />
+    <Content Include="WebsiteCss\assets-old\images\project\pd-3.jpg" />
+    <Content Include="WebsiteCss\assets-old\images\project\sangam-vihar.jpg" />
+    <Content Include="WebsiteCss\assets-old\images\project\sangam2.jpg" />
+    <Content Include="WebsiteCss\assets-old\images\project\sv-1.jpg" />
+    <Content Include="WebsiteCss\assets-old\images\project\sv-2.jpg" />
+    <Content Include="WebsiteCss\assets-old\images\project\sv1.jpeg" />
+    <Content Include="WebsiteCss\assets-old\images\project\sv3.jpg" />
+    <Content Include="WebsiteCss\assets-old\images\project\vh.jpeg" />
+    <Content Include="WebsiteCss\assets-old\images\quotation.png" />
+    <Content Include="WebsiteCss\assets-old\images\quote-bg.png" />
+    <Content Include="WebsiteCss\assets-old\images\rent-icon.png" />
+    <Content Include="WebsiteCss\assets-old\images\select-arrow.png" />
+    <Content Include="WebsiteCss\assets-old\images\select-bg.jpg" />
+    <Content Include="WebsiteCss\assets-old\images\vision-1.png" />
+    <Content Include="WebsiteCss\assets-old\images\white-arrow-left.html" />
+    <Content Include="WebsiteCss\assets-old\images\white-arrow-right.html" />
+    <Content Include="WebsiteCss\assets-old\images\why-choose.png" />
+    <Content Include="WebsiteCss\assets-old\js\bootstrap.min.js" />
+    <Content Include="WebsiteCss\assets-old\js\ekko-lightbox.min.js" />
+    <Content Include="WebsiteCss\assets-old\js\jquery-3.1.1.min.js" />
+    <Content Include="WebsiteCss\assets-old\js\jquery-ui-touch-punch.js" />
+    <Content Include="WebsiteCss\assets-old\js\jquery-ui.js" />
+    <Content Include="WebsiteCss\assets-old\js\jquery.bxslider.min.js" />
+    <Content Include="WebsiteCss\assets-old\js\main.js" />
+    <Content Include="WebsiteCss\assets-old\js\masonry.pkgd.min.js" />
+    <Content Include="WebsiteCss\assets-old\js\modernizr.js" />
+    <Content Include="WebsiteCss\assets-old\js\parallax.js" />
+    <Content Include="WebsiteCss\assets-old\js\script.js" />
+    <Content Include="WebsiteCss\assets-old\js\slick.min.js" />
+    <Content Include="WebsiteCss\assets-old\js\wow.min.js" />
     <Content Include="WebsiteCss\assets\css\animate.min.css" />
     <Content Include="WebsiteCss\assets\css\bootstrap.min.css" />
     <Content Include="WebsiteCss\assets\css\boxicons.min.css" />
@@ -7887,6 +8040,25 @@
     <Content Include="Website\Signin.cshtml" />
     <Content Include="Website\Signup.cshtml" />
     <Content Include="Views\Website\OurTeam.cshtml" />
+    <Content Include="WebsiteCss\assets-old\fonts\fontawesome-webfont3e6e.eot" />
+    <Content Include="WebsiteCss\assets-old\fonts\fontawesome-webfont3e6e.ttf" />
+    <Content Include="WebsiteCss\assets-old\fonts\fontawesome-webfont3e6e.woff" />
+    <Content Include="WebsiteCss\assets-old\fonts\fontawesome-webfont3e6e.woff2" />
+    <Content Include="WebsiteCss\assets-old\fonts\fontawesome-webfontd41d.eot" />
+    <Content Include="WebsiteCss\assets-old\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="WebsiteCss\assets-old\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="WebsiteCss\assets-old\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="WebsiteCss\assets-old\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="WebsiteCss\assets-old\fonts\glyphicons-halflings-regulard41d.eot" />
+    <Content Include="WebsiteCss\assets-old\fonts\Pe-icon-7-strokebb1d.eot" />
+    <Content Include="WebsiteCss\assets-old\fonts\Pe-icon-7-strokebb1d.ttf" />
+    <Content Include="WebsiteCss\assets-old\fonts\Pe-icon-7-strokebb1d.woff" />
+    <Content Include="WebsiteCss\assets-old\fonts\Pe-icon-7-stroked41d.eot" />
+    <Content Include="WebsiteCss\assets-old\fonts\slick.eot" />
+    <Content Include="WebsiteCss\assets-old\fonts\slick.ttf" />
+    <Content Include="WebsiteCss\assets-old\fonts\slick.woff" />
+    <Content Include="WebsiteCss\assets-old\fonts\slickd41d.eot" />
+    <Content Include="Views\Admin\VisitorForm.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -7935,7 +8107,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>24415</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:24416/</IISUrl>
+          <IISUrl>http://localhost:24417/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
