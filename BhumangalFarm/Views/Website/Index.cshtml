@@ -755,6 +755,7 @@
                                                     class="btn btn-danger fw-medium full-width" id="b" onclick="return Validation()">
                                                 Login
                                             </button>
+                                            <h6 style="color:red;text-align:center" class="pt-3">@TempData["Login"]</h6>
                                         </div>
                                     </form>
                                 </div>
@@ -820,13 +821,19 @@
 </div>
 <!-- End Modal -->
 
+<script src="~/webAssets/js/jquery.min.js"></script>
+
 @if (TempData["Login"] != null)
 {
     <script>
-        alert("@TempData["Login"]");
+        @*alert("@TempData["Login"]");*@     
+        //$('#login').modal('show');
+
+        $(document).ready(function () {
+            $('#login').modal('show');
+        });
     </script>
 }
-
 
 <script>
     function Validation() {
