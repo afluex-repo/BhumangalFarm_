@@ -6386,7 +6386,7 @@ body.sidebar-gone .main-sidebar {
 
 .sidebar-mini .main-sidebar .sidebar-menu li a .feather {
     margin-right: 0px;
-    fill:#0386b8;
+    fill:#a1a1a1;
 }
 
 .loader {
@@ -6847,7 +6847,7 @@ body.layout-3 .main-footer {
                     position: absolute;
                     transition: 0.5s;
                     left: 30px;
-                    color: #868e96;
+                    color: #fff;
                 }
 
             .main-sidebar .sidebar-menu li ul.dropdown-menu li.active > a {
@@ -8826,7 +8826,7 @@ body:not(.sidebar-mini) .sidebar-style-2 .sidebar-menu li.active ul.dropdown-men
 }
 
 .light-sidebar.sidebar-mini .main-sidebar .sidebar-menu {
-    background-color: #fff;
+    background: linear-gradient(153deg, #f2a91e 0%, #036936 100%);
 }
 
     .light-sidebar.sidebar-mini .main-sidebar .sidebar-menu li.active a {
@@ -8856,7 +8856,7 @@ body:not(.sidebar-mini) .sidebar-style-2 .sidebar-menu li.active ul.dropdown-men
     }
 
 .light-sidebar.sidebar-mini .main-sidebar .sidebar-user {
-    background-color: #fff;
+    background-color: #f2a91e;
 }
 
 .light-sidebar.sidebar-mini .main-sidebar .dropdown-title {

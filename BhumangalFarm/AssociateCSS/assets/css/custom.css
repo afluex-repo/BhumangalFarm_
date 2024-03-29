@@ -11,7 +11,7 @@
     width: 65px;
 }
 .theme-white .navbar {
-    background: linear-gradient(153deg, #d12057  0%, #b08902 100%);
+    background: linear-gradient(153deg, #f2a91e 0%, #036936 100%);
     box-shadow: 15px 9px 25px 0 rgb(0 0 0 / 10%);
 }
 .main-sidebar {
@@ -20,7 +20,7 @@
     top: 0;
     height: 100%;
     width: 250px;
-    background: linear-gradient(153deg, #d12057  0%, #b08902 100%);
+    background: linear-gradient(153deg, #f2a91e 0%, #036936 100%);
     /*background-color:#036936;*/
     z-index: 880;
     left: 0;
