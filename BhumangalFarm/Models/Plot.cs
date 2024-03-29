@@ -10,6 +10,9 @@ namespace BhumangalFarm.Models
 {
     public class Plot : Common
     {
+        public string PK_VisitorId { get; set; }
+        public List<Plot> lstVistor { get; set; }
+        public DataTable dtVisitorDetails { get; set; }
         public string VisitDate { get; set; }
         public List<SelectListItem> ddlPLC { get; set; }
         public List<SelectListItem> ddlRate { get; set; }
@@ -987,7 +990,45 @@ namespace BhumangalFarm.Models
         public string Rate { get; set; }
         public string Months { get; internal set; }
         #endregion
-        
+
+        public DataSet SaveVisitorDetails()
+        {
+            SqlParameter[] para = {
+                                      new SqlParameter("@FK_SiteID", SiteID),
+                                       new SqlParameter("@AssociateID", AssociateID),
+                                       new SqlParameter("@Amount", Amount),
+                                        new SqlParameter("@AddedBy", AddedBy),
+                                       new SqlParameter("@VisiteDate", VisitDate),
+                                      new SqlParameter("@DtVisitorDetail",dtVisitorDetails)
+                                  };
+            DataSet ds = Connection.ExecuteQuery("SaveVisitor", para);
+            return ds;
+        }
+
+        public DataSet VisitorList()
+        {
+            SqlParameter[] para =
+            {
+                new SqlParameter("AssociateId",AssociateLoginID),
+                new SqlParameter("@IsDownline",Downline),
+                new SqlParameter("@FromDate",FromDate),
+                new SqlParameter("@ToDate",ToDate)
+            };
+            DataSet ds = Connection.ExecuteQuery("VisitorList", para);
+            return ds;
+        }
+
+        public DataSet VisitorListById()
+        {
+            SqlParameter[] para =
+            {
+                new SqlParameter("@PK_VisitorId",PK_VisitorId),
+            };
+            DataSet ds = Connection.ExecuteQuery("VisitorListById", para);
+            return ds;
+        }
+
+
     }
 }
 

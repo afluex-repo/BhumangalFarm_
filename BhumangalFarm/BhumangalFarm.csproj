@@ -37,7 +37,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <IntermediateOutputPath>C:\Users\User\AppData\Local\Temp\vsA140.tmp\Debug\</IntermediateOutputPath>
+    <IntermediateOutputPath>C:\Users\User\AppData\Local\Temp\vsDE6F.tmp\Debug\</IntermediateOutputPath>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>full</DebugType>
@@ -46,7 +46,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <IntermediateOutputPath>C:\Users\User\AppData\Local\Temp\vsA140.tmp\Release\</IntermediateOutputPath>
+    <IntermediateOutputPath>C:\Users\User\AppData\Local\Temp\vsDE6F.tmp\Release\</IntermediateOutputPath>
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   <ItemGroup>
@@ -8059,6 +8059,10 @@
     <Content Include="WebsiteCss\assets-old\fonts\slick.woff" />
     <Content Include="WebsiteCss\assets-old\fonts\slickd41d.eot" />
     <Content Include="Views\Admin\VisitorForm.cshtml" />
+    <Content Include="Views\Admin\VisitorList.cshtml" />
+    <Content Include="Views\Admin\PrintVisitor.cshtml" />
+    <Content Include="Views\AssociateDashboard\VisitorListForAssociate.cshtml" />
+    <Content Include="Views\AssociateDashboard\PrintVisitor.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

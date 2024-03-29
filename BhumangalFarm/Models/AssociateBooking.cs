@@ -11,7 +11,14 @@ namespace BhumangalFarm.Models
     public class AssociateBooking : Common
     {
         #region Properties
-        
+
+        public string VisitDate { get; set; }
+        public List<AssociateBooking> lstVistor { get; set; }
+        public string VisitorId { get; set; }
+        public string Mobile { get; set; }
+        public string PK_VisitorId { get; set; }
+        public string Downline { get; set; }
+        public bool IsDownline { get; set; }
         public string Abbreviation { get; set; }
         public string Fk_SponsorId { get; set; }
         public string ActiveStatus { get; set; }
@@ -813,6 +820,30 @@ namespace BhumangalFarm.Models
         }
 
         #endregion
+
+        public DataSet VisitorList()
+        {
+            SqlParameter[] para =
+            {   new SqlParameter("@PK_UserId",UserID),
+                new SqlParameter("@PK_VisitorId",VisitorId),
+                //new SqlParameter("AssociateId",AssociateLoginID),
+                  new SqlParameter("@Associateid",AssociateLoginID),
+                new SqlParameter("@FromDate",FromDate),
+                new SqlParameter("@ToDate",ToDate),
+                 new SqlParameter("@IsDownline",Downline),
+            };
+            DataSet ds = Connection.ExecuteQuery("VisitorListForAssociate", para);
+            return ds;
+        }
+        public DataSet VisitorListById()
+        {
+            SqlParameter[] para =
+            {
+                new SqlParameter("@PK_VisitorId",PK_VisitorId),
+            };
+            DataSet ds = Connection.ExecuteQuery("VisitorListById", para);
+            return ds;
+        }
     }
 
 }
