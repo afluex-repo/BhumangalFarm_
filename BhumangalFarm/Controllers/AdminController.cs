@@ -2643,5 +2643,36 @@ namespace BhumangalFarm.Controllers
             return View(newdata);
         }
 
+        public ActionResult DeleteVisitor(string Id)
+        {
+            string FormName = "";
+            string Controller = "";
+            try
+            {
+                Plot model = new Plot();
+                model.PK_VisitorId = Crypto.Decrypt(Id);
+                model.AddedBy = Session["Pk_AdminId"].ToString();
+                DataSet ds = model.DeleteVisitor();
+                if (ds != null && ds.Tables.Count > 0)
+                {
+                    if (ds.Tables[0].Rows[0][0].ToString() == "1")
+                    {
+                        TempData["VisitMsg"] = "Visitor deleted successfully !";
+                    }
+                    else
+                    {
+                        TempData["VisitMsg"] = ds.Tables[0].Rows[0]["ErrorMessage"].ToString();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                TempData["VisitMsg"] = ex.Message;
+            }
+            FormName = "VisitorList";
+            Controller = "Admin";
+            return RedirectToAction(FormName, Controller);
+        }
+
     }
 }
