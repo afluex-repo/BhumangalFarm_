@@ -431,8 +431,12 @@ namespace BhumangalFarm.Controllers
                     if (ds.Tables[0].Rows[0][0].ToString() == "0")
                     {
                         TempData["Login"] = ds.Tables[0].Rows[0]["ErrorMessage"].ToString();
-                        FormName = "Login";
-                        Controller = "Home";
+                        //FormName = "Login";
+                        //Controller = "Home";
+                        
+                        FormName = "index";
+                        Controller = "website";
+                        
                     }
                     else if ((ds.Tables[0].Rows[0]["UserType"].ToString() == "Trad Associate"))
                     {
@@ -453,8 +457,10 @@ namespace BhumangalFarm.Controllers
                         else
                         {
                             TempData["Login"] = "Incorrect Password";
-                            FormName = "Login";
-                            Controller = "Home";
+                            //FormName = "Login";
+                            //Controller = "Home";
+                            FormName = "index";
+                            Controller = "website";
                         }
                     }
                     else if ((ds.Tables[0].Rows[0]["UserType"].ToString() == "MLM Associate"))
@@ -474,8 +480,11 @@ namespace BhumangalFarm.Controllers
                         else
                         {
                             TempData["Login"] = "Incorrect Password";
-                            FormName = "Login";
-                            Controller = "Home";
+                            
+                            //FormName = "Login";
+                            //Controller = "Home";
+                            FormName = "index";
+                            Controller = "website";
                         }
                     }
                     else if ((ds.Tables[0].Rows[0]["UserType"].ToString() == "Customer"))
@@ -495,8 +504,10 @@ namespace BhumangalFarm.Controllers
                         else
                         {
                             TempData["Login"] = "Incorrect Password";
-                            FormName = "Login";
-                            Controller = "Home";
+                            //FormName = "Login";
+                            //Controller = "Home";
+                            FormName = "index";
+                            Controller = "website";
                         }
                     }
                     else if (ds.Tables[0].Rows[0]["UserType"].ToString() == "Admin")
@@ -533,21 +544,28 @@ namespace BhumangalFarm.Controllers
      
                 else
                 {
-                    TempData["Login"] = "Incorrect Login ID Or Password";
-                    FormName = "Login";
-                    Controller = "Home";
+                   TempData["Login"] = "Incorrect Login Id Or Password";
+                    
+                    //FormName = "Login";
+                    //Controller = "Home";
+                    FormName = "index";
+                    Controller = "website";
 
                 }
             }
             catch (Exception ex)
             {
                 TempData["Login"] = ex.Message;
-                FormName = "Login";
-                Controller = "Home";
+
+                //FormName = "Login";
+                //Controller = "Home";
+                FormName = "index";
+                Controller = "website";
             }
 
             return RedirectToAction(FormName, Controller);
         }
+        
         public ActionResult ForgetPassword()
         {
             return View();
