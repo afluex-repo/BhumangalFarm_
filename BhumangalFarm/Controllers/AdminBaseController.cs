@@ -21,7 +21,7 @@ namespace BhumangalFarm.Controllers
             {
 
                 filterContext.Result = new RedirectToRouteResult(new RouteValueDictionary(
-                     new { action = "index", Controller = "website" }));
+                     new { action = "Index", Controller = "Website" }));
             }
             else
             {
