@@ -1028,7 +1028,16 @@ namespace BhumangalFarm.Models
             return ds;
         }
 
+        public DataSet DeleteVisitor()
+        {
+            SqlParameter[] para = {
+                new SqlParameter("@VisitorId", PK_VisitorId),
+                 new SqlParameter("@DeletedBy", AddedBy)
 
+            };
+            DataSet ds = Connection.ExecuteQuery("DeleteVisitor", para);
+            return ds;
+        }
     }
 }
 
