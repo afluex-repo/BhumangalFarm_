@@ -1567,12 +1567,21 @@
         changeYear: true,
         changeMonth: true
     });
+
+
     $('#TransactionDate').datepicker({
         dateFormat: 'dd/mm/yy',
+        maxDate: 0,
         changeYear: true,
-        changeMonth: true,
-        minDate: new Date(new Date().setMonth(new Date().getMonth() - 2))
+        changeMonth: true
     });
+
+    //$('#TransactionDate').datepicker({
+    //    dateFormat: 'dd/mm/yy',
+    //    changeYear: true,
+    //    changeMonth: true,
+    //    minDate: new Date(new Date().setMonth(new Date().getMonth() - 2))
+    //});
     $('#BookingDate').datepicker({
         dateFormat: 'dd/mm/yy',
         maxDate: 0,
