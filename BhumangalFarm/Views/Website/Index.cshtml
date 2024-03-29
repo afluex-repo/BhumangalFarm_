@@ -752,9 +752,10 @@
                                             </div>*@
                                         <div class="form-group">
                                             <button type="submit"
-                                                    class="btn btn-danger fw-medium full-width" id="b" onclick="return Loginn()">
+                                                    class="btn btn-danger fw-medium full-width" id="b" onclick="return Validation()">
                                                 Login
                                             </button>
+                                            <h6 style="color:red;text-align:center" class="pt-3">@TempData["Login"]</h6>
                                         </div>
                                     </form>
                                 </div>
@@ -820,13 +821,35 @@
 </div>
 <!-- End Modal -->
 
+<script src="~/webAssets/js/jquery.min.js"></script>
+
 @if (TempData["Login"] != null)
 {
     <script>
-        alert("@TempData["Login"]");
+        @*alert("@TempData["Login"]");*@     
+        //$('#login').modal('show');
+
+        $(document).ready(function () {
+            $('#login').modal('show');
+        });
     </script>
 }
 
+<script>
+    function Validation() {
+        debugger;
+        if ($('#LoginId').val() == '') {
+            $("#LoginId").addClass('errortext');
+            $('#LoginId').focus();
+            return false;
+        }
+        if ($('#Password').val() == '') {
+            $("#Password").addClass('errortext');
+            $('#Password').focus();
+            return false;
+        }
+    }
+</script>
 
 <style>
     .errortext {
