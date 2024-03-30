@@ -417,7 +417,7 @@ namespace BhumangalFarm.Models
     public class SoftwareDetails 
     {
         public static  string CompanyName = "Bhumangal Farm Developers Pvt. Ltd.";
-        public static string CompanyAddress = "T1-CU-04, Parsvnath Planet, Tower No. 1, Vibhuti Khand, Gomti Nagar, Lucknow, Uttar Pradesh 226010 ";
+        public static string CompanyAddress = "Vineet Khand, Gomti Nagar, Lucknow, Uttar Pradesh 226010 ";
         public static string Pin1 = "226010";
         public static string State1="UP";
         public static string City1= "Lucknow";
