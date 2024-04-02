@@ -423,7 +423,7 @@ namespace BhumangalFarm.Models
         public static string City1= "Lucknow";
         public static string ContactNo= "6389303003,6389303001";
         public static string LandLine = "6389303001";
-        public static string Website= "http://BhumangalFarm.com/";
+        public static string Website= "www.bhumangalfarm.com";
         public static string EmailID= "bhumangalfarm@gmail.com";
     }
 }
