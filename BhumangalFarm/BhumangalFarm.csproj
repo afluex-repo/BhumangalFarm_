@@ -8063,6 +8063,9 @@
     <Content Include="Views\Admin\PrintVisitor.cshtml" />
     <Content Include="Views\AssociateDashboard\VisitorListForAssociate.cshtml" />
     <Content Include="Views\AssociateDashboard\PrintVisitor.cshtml" />
+    <Content Include="Views\AdminReports\AllotmentLetter.cshtml" />
+    <Content Include="Views\Plot\AllotmentLetter.cshtml" />
+    <Content Include="Views\AdminReports\PrintAllotmentLetter.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

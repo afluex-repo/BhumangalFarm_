@@ -294,5 +294,12 @@ namespace BhumangalFarm.Models
             DataSet ds = Connection.ExecuteQuery("UpdateAssociateRank", para);
             return ds;
         }
+
+
+
+
+
+        
+
     }
 }

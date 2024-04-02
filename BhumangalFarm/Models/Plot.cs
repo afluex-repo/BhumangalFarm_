@@ -338,6 +338,37 @@ namespace BhumangalFarm.Models
             DataSet ds = Connection.ExecuteQuery("GetPlotBooking", para);
             return ds;
         }
+
+
+        public DataSet GetAllotmentLetterList()
+        {
+            SqlParameter[] para = { new SqlParameter("@PK_BookingId", PK_BookingId),
+                                      new SqlParameter("@CustomerID", CustomerID),
+                                      new SqlParameter("@AssociateID", AssociateID),
+                                      new SqlParameter("@BookingNo", BookingNumber),
+                                      new SqlParameter("@FromDate", FromDate),
+                                      new SqlParameter("@ToDate", ToDate),
+                                      new SqlParameter("@FK_SiteID", SiteID),
+                                      new SqlParameter("@FK_SectorID", SectorID),
+                                      new SqlParameter("@FK_BlockID", BlockID),
+                                      new SqlParameter("@PlotNumber", PlotNumber),
+                                       new SqlParameter("@Fk_PlanId", PaymentPlanID),
+                                  };
+
+            DataSet ds = Connection.ExecuteQuery("GetAllotmentLetterList", para);
+            return ds;
+        }
+
+
+
+
+        
+
+
+
+
+
+
         public DataSet GetBookingDetailsList1()
         {
             SqlParameter[] para = { new SqlParameter("@PK_BookingId", PK_BookingId),
