@@ -11,7 +11,9 @@
         z-index: 9999;
         background: url("../files/assets/images/login-gif-11.gif") no-repeat center center rgba(0,0,0,0.25);
     }
-
+    .imgLogo{
+        width:150px;
+    }
     .errortext {
         border: 1px solid red !important;
     }
@@ -23,7 +25,7 @@
         letter-spacing: 0.5px;
     }
     /*.print-area {border:1px solid red;padding:1em;margin:0 0 1em}*/
-
+   
 </style>
 <div class="loader" id="divload"></div>
 @using (Html.BeginForm("BookingCustomerLedger", "Plot", FormMethod.Post, new { @id = "form1", enctype = "multipart/form-data" }))
@@ -115,20 +117,21 @@
             </div>
         </div>
     </div>
-    <div id="print-area-2" class="print-area">
+    <div id="print-area-2" class="print-area" >
         <div style="text-align:right;">
         </div>
         <div class="section-body" id="Details1" style="display: none;">
             <div class="card">
                 <div class="card-header">
                     <h4>Plot Details</h4>
-                    <a class="btn btn-sm btn-primary pull-right no-print" href="javascript:printDiv('print-area-2');">Print</a>
+                    <a class="btn btn-sm btn-primary pull-right" onclick="printIt('Details1')" id="btn_print">Print</a>
                     @*<a class="btn btn-sm btn-primary pull-right" onclick="return printLedger();">Print</a>*@
-
+                    
                 </div>
+                
                 <div class="card-body">
                     <div class="row">
-                        <div class="col-md-10 col-print-10">
+                        <div class="col-md-10 col-print-10" >
                             <div class="row">
                                 <div class="col-md-3">
                                     <div class="form-group">
@@ -148,12 +151,14 @@
                                         <label id="NPlotNumber"></label>(<label id="SiteName"></label>/<label id="SectorName"></label>)
                                     </div>
                                 </div>
+                                
                                 <div class="col-md-3">
                                     <div class="form-group">
                                         <label>Booking Date :</label>
                                         <label id="Bookigdt"></label>
                                     </div>
                                 </div>
+                              
                                 <div class="col-md-3">
                                     <div class="form-group">
                                         <label>Registry Status:</label>
@@ -185,13 +190,18 @@
                                     </div>
                                 </div>
                             </div>
+                            
                         </div>
                         <div class="col-md-2">
-                          <img src="http://demo1.afluex.com/webAssets/img/logo.png" style="width:150px;" />
+                            <div class="form-group">
+                                <div id="addEventFormimage">
+                                    <img src="/webAssets/img/logo.png" class="imgLogo" />
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="card-body">
+                <div class="card-body" if="tblFormlist">
                 <div class="card-header">
                     <h4>Payment Ledger</h4>
                 </div>
@@ -240,8 +250,8 @@
             </div>
         </div>
     </div>
-    <textarea id="printing-css" style="display:none;">html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{margin:0;padding:0;border:0;font-size:100%;font:inherit;vertical-align:baseline}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}table{border-collapse:collapse;border-spacing:0}body{font:normal normal .8125em/1.4 Arial,Sans-Serif;background-color:white;color:#333}strong,b{font-weight:bold}cite,em,i{font-style:italic}a{text-decoration:none}a:hover{text-decoration:underline}a img{border:none}abbr,acronym{border-bottom:1px dotted;cursor:help}sup,sub{vertical-align:baseline;position:relative;top:-.4em;font-size:86%}sub{top:.4em}small{font-size:86%}kbd{font-size:80%;border:1px solid #999;padding:2px 5px;border-bottom-width:2px;border-radius:3px}mark{background-color:#ffce00;color:black}p,blockquote,pre,table,figure,hr,form,ol,ul,dl{margin:1.5em 0}hr{height:1px;border:none;background-color:#666}h1,h2,h3,h4,h5,h6{font-weight:bold;line-height:normal;margin:1.5em 0 0}h1{font-size:200%}h2{font-size:180%}h3{font-size:160%}h4{font-size:140%}h5{font-size:120%}h6{font-size:100%}ol,ul,dl{margin-left:3em}ol{list-style:decimal outside}ul{list-style:disc outside}li{margin:.5em 0}dt{font-weight:bold}dd{margin:0 0 .5em 2em}input,button,select,textarea{font:inherit;font-size:100%;line-height:normal;vertical-align:baseline}textarea{display:block;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box}pre,code{font-family:"Courier New",Courier,Monospace;color:inherit}pre{white-space:pre;word-wrap:normal;overflow:auto}blockquote{margin-left:2em;margin-right:2em;border-left:4px solid #ccc;padding-left:1em;font-style:italic}table[border="1"] th,table[border="1"] td,table[border="1"] caption{border:1px solid;padding:.5em 1em;text-align:left;vertical-align:top}th{font-weight:bold}table[border="1"] caption{border:none;font-style:italic}.no-print{display:none}</textarea>
-    <iframe id="printing-frame" name="print_frame" src="about:blank" style="display:none;"></iframe>
+    @*<textarea id="printing-css" style="display:none;">html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{margin:0;padding:0;border:0;font-size:100%;font:inherit;vertical-align:baseline}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}table{border-collapse:collapse;border-spacing:0}body{font:normal normal .8125em/1.4 Arial,Sans-Serif;background-color:white;color:#333}strong,b{font-weight:bold}cite,em,i{font-style:italic}a{text-decoration:none}a:hover{text-decoration:underline}a img{border:none}abbr,acronym{border-bottom:1px dotted;cursor:help}sup,sub{vertical-align:baseline;position:relative;top:-.4em;font-size:86%}sub{top:.4em}small{font-size:86%}kbd{font-size:80%;border:1px solid #999;padding:2px 5px;border-bottom-width:2px;border-radius:3px}mark{background-color:#ffce00;color:black}p,blockquote,pre,table,figure,hr,form,ol,ul,dl{margin:1.5em 0}hr{height:1px;border:none;background-color:#666}h1,h2,h3,h4,h5,h6{font-weight:bold;line-height:normal;margin:1.5em 0 0}h1{font-size:200%}h2{font-size:180%}h3{font-size:160%}h4{font-size:140%}h5{font-size:120%}h6{font-size:100%}ol,ul,dl{margin-left:3em}ol{list-style:decimal outside}ul{list-style:disc outside}li{margin:.5em 0}dt{font-weight:bold}dd{margin:0 0 .5em 2em}input,button,select,textarea{font:inherit;font-size:100%;line-height:normal;vertical-align:baseline}textarea{display:block;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box}pre,code{font-family:"Courier New",Courier,Monospace;color:inherit}pre{white-space:pre;word-wrap:normal;overflow:auto}blockquote{margin-left:2em;margin-right:2em;border-left:4px solid #ccc;padding-left:1em;font-style:italic}table[border="1"] th,table[border="1"] td,table[border="1"] caption{border:1px solid;padding:.5em 1em;text-align:left;vertical-align:top}th{font-weight:bold}table[border="1"] caption{border:none;font-style:italic}.no-print{display:none}</textarea>
+    <iframe id="printing-frame" name="print_frame" src="about:blank" style="display:none;"></iframe>*@
 }
 <script src="~/files/bower_components/jquery/js/jquery.min.js"></script>
 <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
@@ -609,6 +619,48 @@
 
        });
    }
+</script>
+<script type="text/javascript">
+function printIt(divID) {
+    var divContent = document.getElementById(divID);
+    var htmlToPrint = '' +
+       '<style type="text/css">' +
+       '#addEventFormimage {' +
+      'margin-left: 560px;' 
+      +
+      'margin-top: -150px;'
+      +
+      'margin-bottom: 100px;'
+      +
+      '}' +
+      '#btn_print {' +
+      'display: none;'
+      +
+      '}'
+      +
+      '.imgLogo {' +
+      'width: 300px;'
+      +
+      '}' +
+      'table {' +
+      'border-spacing: 0;' +
+      'border-collapse: collapse;' +
+      '}' +
+       'table th, table td {' +
+       'border:1px solid #dee2e6;' +
+       'padding:0.5em;' +
+       '}'+
+       '</style>';
+    htmlToPrint += divContent.outerHTML;
+    var WinPrint = window.open('', '', 'width=1200,height=600');
+    //WinPrint.document.write(htmlToPrint2);
+    //WinPrint.document.write(divContent.innerHTML);
+    WinPrint.document.write(htmlToPrint);
+    WinPrint.document.close();
+    WinPrint.focus();
+    WinPrint.print();
+    WinPrint.close();
+}
 </script>
 <style>
     .errortext {
