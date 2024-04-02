@@ -3917,5 +3917,238 @@ namespace BhumangalFarm.Controllers
 
             return Json(model, JsonRequestBehavior.AllowGet);
         }
+
+
+
+
+
+        public ActionResult AllotmentLetter(Plot model)
+        {
+            List<Plot> lst = new List<Plot>();
+            #region ddlSite
+            int count1 = 0;
+            List<SelectListItem> ddlSite = new List<SelectListItem>();
+            DataSet dsSite = model.GetSiteList();
+            if (dsSite != null && dsSite.Tables.Count > 0 && dsSite.Tables[0].Rows.Count > 0)
+            {
+                foreach (DataRow r in dsSite.Tables[0].Rows)
+                {
+                    if (count1 == 0)
+                    {
+                        ddlSite.Add(new SelectListItem { Text = "Select Site", Value = "0" });
+                    }
+                    ddlSite.Add(new SelectListItem { Text = r["SiteName"].ToString(), Value = r["PK_SiteID"].ToString() });
+                    count1 = count1 + 1;
+
+                }
+            }
+            ViewBag.ddlSite = ddlSite;
+            #endregion
+
+            List<SelectListItem> ddlSector = new List<SelectListItem>();
+            ddlSector.Add(new SelectListItem { Text = "Select Phase", Value = "0" });
+            ViewBag.ddlSector = ddlSector;
+
+            List<SelectListItem> ddlBlock = new List<SelectListItem>();
+            ddlBlock.Add(new SelectListItem { Text = "Select Block", Value = "0" });
+            ViewBag.ddlBlock = ddlBlock;
+
+
+
+
+            int count2 = 0;
+            List<SelectListItem> ddlBookingType = new List<SelectListItem>();
+            DataSet dlBookingType = model.GetPlanList();
+            if (dlBookingType != null && dlBookingType.Tables.Count > 0 && dlBookingType.Tables[0].Rows.Count > 0)
+            {
+                foreach (DataRow r in dlBookingType.Tables[0].Rows)
+                {
+                    if (count2 == 0)
+                    {
+                        ddlBookingType.Add(new SelectListItem { Text = "Select Plan", Value = "0" });
+                    }
+                    ddlBookingType.Add(new SelectListItem { Text = r["PlanName"].ToString(), Value = r["PK_PlanID"].ToString() });
+                    count2 = count2 + 1;
+
+                }
+            }
+            ViewBag.ddlBookingType = ddlBookingType;
+            DataSet ds = model.GetAllotmentLetterList();
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                if (ds.Tables[0].Rows[0][0].ToString() == "0")
+                {
+                    TempData["Plot"] = ds.Tables[0].Rows[0]["ErrorMessage"].ToString();
+                }
+                else
+                {
+                    var i = 0;
+                    foreach (DataRow r in ds.Tables[0].Rows)
+                    {
+
+                        if (i < 25)
+                        {
+                            Plot obj = new Plot();
+                            obj.BookingStatus = r["BookingStatus"].ToString();
+                            obj.PK_BookingId = r["PK_BookingId"].ToString();
+                            obj.BranchID = r["BranchID"].ToString();
+                            obj.BranchName = r["BranchName"].ToString();
+                            obj.CustomerID = r["CustomerID"].ToString();
+                            obj.CustomerLoginID = r["CustomerLoginID"].ToString();
+                            obj.CustomerName = r["CustomerName"].ToString();
+                            obj.Contact = r["Mobile"].ToString();
+                            obj.AssociateID = r["AssociateID"].ToString();
+                            obj.AssociateLoginID = r["AssociateLoginID"].ToString();
+                            obj.Discount = r["Discount"].ToString();
+                            obj.AssociateName = r["AssociateName"].ToString();
+                            //obj.PlotNumber = r["PlotInfo"].ToString();
+                            obj.BookingDate = r["BookingDate"].ToString();
+                            obj.BookingAmount = r["BookingAmt"].ToString();
+                            obj.PaymentPlanID = r["PlanName"].ToString();
+                            obj.BookingNumber = r["BookingNo"].ToString();
+                            obj.PaidAmount = r["PaidAmount"].ToString();
+                            obj.PlotArea = r["PlotArea"].ToString();
+                            obj.PlotAmount = r["PlotAmount"].ToString();
+                            obj.NetPlotAmount = r["NetPlotAmount"].ToString();
+                            obj.PK_PLCCharge = r["PLCCharge"].ToString();
+                            obj.PlotRate = r["PlotRate"].ToString();
+                            obj.Type = r["Type"].ToString();
+                            obj.RemainingAmount = r["RemainingAmount"].ToString();
+                            obj.TotalPaidAmount = r["TotalPaid"].ToString();
+                            obj.EncryptKey = Crypto.Encrypt(r["PK_BookingId"].ToString());
+                            obj.SiteName = r["SiteName"].ToString();
+                            obj.SectorName = r["SectorName"].ToString();
+                            obj.BlockName = r["BlockName"].ToString();
+                            obj.PlotNumber = r["PlotNumber"].ToString();
+                            lst.Add(obj);
+                        }
+
+                        i = i + 1;
+                    }
+                    model.lstPlot = lst;
+                }
+            }
+            return View(model);
+        }
+
+        [HttpPost]
+        [ActionName("AllotmentLetter")]
+        [OnAction(ButtonName = "Search")]
+        public ActionResult GetAllotmentLetter(Plot model)
+        {
+            List<Plot> lst = new List<Plot>();
+            model.SiteID = model.SiteID == "0" ? null : model.SiteID;
+            model.SectorID = model.SectorID == "0" ? null : model.SectorID;
+            model.BlockID = model.BlockID == "0" ? null : model.BlockID;
+            model.PaymentPlanID = model.PaymentPlanID == "0" ? null : model.PaymentPlanID;
+            model.FromDate = string.IsNullOrEmpty(model.FromDate) ? null : Common.ConvertToSystemDate(model.FromDate, "dd/MM/yyyy");
+            model.ToDate = string.IsNullOrEmpty(model.ToDate) ? null : Common.ConvertToSystemDate(model.ToDate, "dd/MM/yyyy");
+
+            DataSet ds = model.GetAllotmentLetterList();
+
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                if (ds.Tables[0].Rows[0][0].ToString() == "0")
+                {
+                    TempData["Plot"] = ds.Tables[0].Rows[0]["ErrorMessage"].ToString();
+                }
+                else
+                {
+                    foreach (DataRow r in ds.Tables[0].Rows)
+                    {
+                        Plot obj = new Plot();
+                        obj.BookingStatus = r["BookingStatus"].ToString();
+                        obj.PK_BookingId = r["PK_BookingId"].ToString();
+                        obj.BranchID = r["BranchID"].ToString();
+                        obj.BranchName = r["BranchName"].ToString();
+                        obj.CustomerID = r["CustomerID"].ToString();
+                        obj.CustomerLoginID = r["CustomerLoginID"].ToString();
+                        obj.CustomerName = r["CustomerName"].ToString();
+                        obj.Contact = r["Mobile"].ToString();
+                        obj.AssociateID = r["AssociateID"].ToString();
+                        obj.AssociateLoginID = r["AssociateLoginID"].ToString();
+                        obj.Discount = r["Discount"].ToString();
+                        obj.AssociateName = r["AssociateName"].ToString();
+                        //obj.PlotNumber = r["PlotInfo"].ToString();
+                        obj.BookingDate = r["BookingDate"].ToString();
+                        obj.BookingAmount = r["BookingAmt"].ToString();
+                        obj.PaymentPlanID = r["PlanName"].ToString();
+                        obj.BookingNumber = r["BookingNo"].ToString();
+                        obj.PaidAmount = r["PaidAmount"].ToString();
+                        obj.PlotArea = r["PlotArea"].ToString();
+                        obj.PlotAmount = r["PlotAmount"].ToString();
+                        obj.NetPlotAmount = r["NetPlotAmount"].ToString();
+                        obj.PK_PLCCharge = r["PLCCharge"].ToString();
+                        obj.PlotRate = r["PlotRate"].ToString();
+                        obj.Type = r["Type"].ToString();
+                        obj.RemainingAmount = r["RemainingAmount"].ToString();
+                        obj.TotalPaidAmount = r["TotalPaid"].ToString();
+                        obj.EncryptKey = Crypto.Encrypt(r["PK_BookingId"].ToString());
+                        obj.SiteName = r["SiteName"].ToString();
+                        obj.SectorName = r["SectorName"].ToString();
+                        obj.BlockName = r["BlockName"].ToString();
+                        obj.PlotNumber = r["PlotNumber"].ToString();
+                        lst.Add(obj);
+                    }
+                    model.lstPlot = lst;
+                }
+            }
+            #region ddlSite
+            int count1 = 0;
+            List<SelectListItem> ddlSite = new List<SelectListItem>();
+            DataSet dsSite = model.GetSiteList();
+            if (dsSite != null && dsSite.Tables.Count > 0 && dsSite.Tables[0].Rows.Count > 0)
+            {
+                foreach (DataRow r in dsSite.Tables[0].Rows)
+                {
+                    if (count1 == 0)
+                    {
+                        ddlSite.Add(new SelectListItem { Text = "Select Site", Value = "0" });
+                    }
+                    ddlSite.Add(new SelectListItem { Text = r["SiteName"].ToString(), Value = r["PK_SiteID"].ToString() });
+                    count1 = count1 + 1;
+
+                }
+            }
+            ViewBag.ddlSite = ddlSite;
+            #endregion
+
+            int count2 = 0;
+            List<SelectListItem> ddlBookingType = new List<SelectListItem>();
+            DataSet dlBookingType = model.GetPlanList();
+            if (dlBookingType != null && dlBookingType.Tables.Count > 0 && dlBookingType.Tables[0].Rows.Count > 0)
+            {
+                foreach (DataRow r in dlBookingType.Tables[0].Rows)
+                {
+                    if (count2 == 0)
+                    {
+                        ddlBookingType.Add(new SelectListItem { Text = "Select Plan", Value = "0" });
+                    }
+                    ddlBookingType.Add(new SelectListItem { Text = r["PlanName"].ToString(), Value = r["PK_PlanID"].ToString() });
+                    count2 = count2 + 1;
+
+                }
+            }
+            ViewBag.ddlBookingType = ddlBookingType;
+
+
+            List<SelectListItem> ddlSector = new List<SelectListItem>();
+            ddlSector.Add(new SelectListItem { Text = "Select Phase", Value = "0" });
+            ViewBag.ddlSector = ddlSector;
+
+            List<SelectListItem> ddlBlock = new List<SelectListItem>();
+            ddlBlock.Add(new SelectListItem { Text = "Select Block", Value = "0" });
+            ViewBag.ddlBlock = ddlBlock;
+            return View(model);
+        }
+
+
+
+
+
+
+
+
+
     }
 }

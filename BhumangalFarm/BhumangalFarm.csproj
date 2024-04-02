@@ -37,7 +37,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <IntermediateOutputPath>C:\Users\MUTILE~1\AppData\Local\Temp\vs2015.tmp\Debug\</IntermediateOutputPath>
+    <IntermediateOutputPath>C:\Users\AFLUEX\AppData\Local\Temp\vs3B2C.tmp\Debug\</IntermediateOutputPath>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>full</DebugType>
@@ -46,7 +46,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <IntermediateOutputPath>C:\Users\MUTILE~1\AppData\Local\Temp\vs2015.tmp\Release\</IntermediateOutputPath>
+    <IntermediateOutputPath>C:\Users\AFLUEX\AppData\Local\Temp\vs3B2C.tmp\Release\</IntermediateOutputPath>
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   <ItemGroup>
@@ -8063,6 +8063,9 @@
     <Content Include="Views\Admin\PrintVisitor.cshtml" />
     <Content Include="Views\AssociateDashboard\VisitorListForAssociate.cshtml" />
     <Content Include="Views\AssociateDashboard\PrintVisitor.cshtml" />
+    <Content Include="Views\AdminReports\AllotmentLetter.cshtml" />
+    <Content Include="Views\Plot\AllotmentLetter.cshtml" />
+    <Content Include="Views\AdminReports\PrintAllotmentLetter.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
