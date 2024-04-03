@@ -1280,6 +1280,9 @@ namespace BhumangalFarm.Controllers
                     //ViewBag.NetPlotAmount = ds.Tables[0].Rows[0]["NetPlotAmount"].ToString();
                     ViewBag.NetPlotAmountInWords = ds.Tables[0].Rows[0]["NetPlotAmountInWords"].ToString();
 
+                    ViewBag.ActualPlotAmountInWords = ds.Tables[0].Rows[0]["ActualPlotAmountInWords"].ToString();
+                    
+
                     ViewBag.TransactionNo = ds.Tables[0].Rows[0]["TransactionNo"].ToString();
                     ViewBag.TransactionDate = ds.Tables[0].Rows[0]["TransactionDate"].ToString();
                     ViewBag.BankName = ds.Tables[0].Rows[0]["BankName"].ToString();
@@ -1289,7 +1292,9 @@ namespace BhumangalFarm.Controllers
                     ViewBag.SiteName = ds.Tables[0].Rows[0]["SiteName"].ToString();
                     ViewBag.InstallmentNo = ds.Tables[0].Rows[0]["InstallmentNo"].ToString();
                     //ViewBag.AdjustmentloginId = ds.Tables[0].Rows[0]["AdjustmentloginId"].ToString();
-
+                    ViewBag.ActualPlotAmount = ds.Tables[0].Rows[0]["ActualPlotAmount"].ToString();
+                    
+                    
                     ViewBag.CompanyName = SoftwareDetails.CompanyName;
                     ViewBag.CompanyAddress = SoftwareDetails.CompanyAddress;
                     ViewBag.Pin1 = SoftwareDetails.Pin1;
@@ -3351,6 +3356,9 @@ namespace BhumangalFarm.Controllers
                 ViewBag.SectorName = ds.Tables[0].Rows[0]["SectorName"].ToString();
                 ViewBag.BlockName = ds.Tables[0].Rows[0]["BlockName"].ToString();
                 ViewBag.PlotNumber = ds.Tables[0].Rows[0]["PlotNumber"].ToString();
+                ViewBag.Address = ds.Tables[0].Rows[0]["Address"].ToString();
+
+                
             }
             return View(model);
 

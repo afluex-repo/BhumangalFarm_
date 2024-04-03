@@ -36,142 +36,41 @@
             <div class="col-md-6 col-lg-6 col-sm-12">
 
                 <div class="dashboard1" style="padding-top:14px;">
-                    <img src="/Website/images/Bhumangal.png" class="img-fluid" alt="logo1" style="width:100px;" />
+                    <img src="/Website/images/Bhumangal.png" class="img-fluid" alt="logo1" style="width:130px;" />
 
                     <div style="margin-left:85%">
                         <button style="color:#ffffff; text-align:center; background:#a20e0e; padding: 5px; padding-right: 15px;padding-left:15px;" id="printPageButton" onclick="window.print()">Print</button>
                     </div>
                 </div>
-                @*<div style="margin-left:85%">
-                        <button style="color:#a20e0e;" id="printPageButton" class="btn btn-success btn-sm" onclick="window.print()">Print</button>
-                    </div>*@
-
-            </div>
-            <div class="col-md-6 col-lg-6 col-sm-12">
-
-                @*<div class="dashboard2">
-                        <img src="../../AssociatePanelcss/assets/img/blossom.png" class="img-fluid" alt="logo2" />
-                    </div>*@
             </div>
         </div>
-        @*<table style="border: 0px none black;">
-                <tr style="border: 0px none black;">
-                    <td style="border: 0px none black;">
-                        <img src="~/AssociatePanelcss/assets/img/radhekunj.png" class="img-fluid" alt="logo1" style="max-width:28%;" />
-                    </td>
-                    <td style="border: 0px none black;"></td>
-                </tr>
-            </table>
-            <br />*@
-        <table style="border: 0px none black;">
-            <tr style="border: 0px none black;">
-                <td colspan="2" style="border: 0px none black;">
-                    Dear <b>@ViewBag.CustomerName,</b>
-
-                    <br />
-                    <p>
-                        Welcome to our valued family of @ViewBag.CompanyName ,Thank you
-                        for joining hand with us.It is the people like you who make
-                        being in business such a pleasure.Our Business is source
-                        of Pride to us and with partners like you,we find going to
-                        work each day rewarding experience.
-                    </p>
-                </td>
-                @*@if (@ViewBag.ProfilePic == "")
-
-                    {
-                    <td style="border: 0px none black;"><img src="~/images/Customerlogo.png" style="height:130px;width:130px;border: 1px solid black;" /></td>
-
-                    }
-                    else
-                    {
-                        <td style="border: 0px none black;"><img src="@ViewBag.ProfilePic" style="height:130px;width:130px;border: 1px solid black;" /></td>
-                    }*@
-
-            </tr>
-
-        </table>
-        <table style="width: 100%;">
-            <tr>
-                <td><b>Customer Id:    </b> </td>
-                <td>@ViewBag.CustomerLoginID </td>
-                <td><b>Customer Name:    </b>  </td>
-                <td>@ViewBag.CustomerName</td>
-                <td><b>Plot Number     </b></td>
-                <td>@ViewBag.PlotInfo </td>
-            </tr>
-
-            <tr>
-                <td><b>Amount:    </b></td>
-                <td>@ViewBag.Designation</td>
-                <td><b>Allotment Date:    </b></td>
-                <td>@ViewBag.City</td>
-              
-            </tr>
-        
-        </table>
-        <br />
         <div>
-            We value the comments the our partner's on receipt of
-            this letter we hope you will share your Vulnerable
-            thoughts with us.Please accept our best wishes for your
-            continuous prosperity and good health.
-            <br />
-            <br />
-            With Regards,
-            <br />
+            <h2 style="text-align:center;">ALLOTMENT LETTER</h2>
+            <hr />
+            <p>Allotment – Propossed Project — BHUMANGAL VATIKA </p>
+            <p>TO </p>
+            <p>Mr./ Mrs.  (<b>@ViewBag.CustomerName , @ViewBag.Address</b>)</p>
+            <p>This agreement is made at Lucknow  on …(date)……………………  by and between 1ST party Company, a company incorporated under the provision of the Indian company act, 1956 having its registered office B2/21 Gomti Nagar Ext. Sec. -6  Gomtinagar Lucknow-226010</p>
 
-            @ViewBag.CompanyName
-        </div>
-        <div class="row" style="padding:11px;">
-            <h3> Terms & Conditions</h3>
-            <p>
-                - Any payment received by Customer in Cash or cheque should be
-                directly Submitted to the company via cheque or cash in account
-                section.
-                <br />
-                -  Any payment from the customers, should not be taken directly by the
-                associate in his account or in cash if so company has no responsibility of
-                that payment.
-                <br />
-                -   Any Misbehaviour with any office staff/customer client or with other
-                personal will not be tolerated and will be given Strict Punishment as per
-                Govt. rules & regulations.
-                <br />
-                -  Every applicant should follow dress code decided by the Company, if
-                any one found in proper uniform will be subjected to be penalty.
-                <br />
-                -   All payment of the applicant will be directly transferred to the applicant
-                bank account after deducting 5% TDS as per govt. rules & regulations.
+        <p>Plot  Area- <b>@ViewBag.PlotArea</b></p>
+            <br />
+            <p>This allotments subject to (I) all the Terms & Conditions of Allotment forming part of a letter and (ii) applicable rules, regulations and law and shall prevail over all other terms and conditions given in our brochures, price lists, application/booking form and any other sale document. You are registered to quote the Allotment Plot no –  <b>@ViewBag.PlotInfo</b></p>
 
-                <br />
-                I ,<b>@ViewBag.AssociateName</b>, Here by Declare that I have read all terms & conditions of
-                the company and I accept all the rules & regulations of the company and I will follow all of them
-                and if not, Company is free to take strict action against me.
+            <p>WHEREAS</p>
 
-                <br />
-                * Attach all the required Documents.
-                <br />
-                <br />
-                <br />
-                <div style="width:100%">
-                    <div style="float:left;text-align:center; width:33%">
-                        Applicant Signature
-                    </div>
-                    <div style="float:left;text-align:center; width:33%">
-                        Customer Signature
-                    </div>
-                    <div style="float:left;text-align:center; width:33%">
-                        Director Signature
+            <div class="row">
+                <div class="col-md-6 col-lg-6 col-sm-12">
+
+                    <div class="dashboard1" style="padding-top:14px;">
+                   
+                        <div style="margin-left:80%">
+                            <p>Bhumangal Farm Devlopers Pvt. Ltd.</p>
+                            <p>B2/21 Gomti Nagar Ext. Sec. -6  Gomtinagar<br />	Lucknow-226010</p>
+                        </div>
                     </div>
                 </div>
-            </p>
-
-            <br />
-
-
+            </div>
         </div>
-
     </div>
 </body>
 </html>
