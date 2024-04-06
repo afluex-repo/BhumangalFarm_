@@ -5,72 +5,320 @@
     Layout = null;
     //"~/Views/Shared/_Layout.cshtml";
 }
-<!DOCTYPE html>
-<html>
+
+
+<!doctype html>
+<html lang="en">
 <head>
-    <title>PrintAllotment</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        table, th, td {
-            font-size: medium;
-            border: 1px solid black;
-            border-collapse: collapse;
+        .list_content ol{
+            list-style-type:upper-alpha;
+        }
+         .list_content ol li::marker{
+            font-weight:bold;
+        }
+          .list_content ol li{
+         margin-bottom:15px;
         }
 
-        th, td {
-            font-size: medium;
-            padding: 5px;
+
+           .list_content_num ol{
+            list-style-type:auto;
         }
-
-
-        @@media print {
-            #printPageButton {
-                display: none;
-            }
+         .list_content_num ol li::marker{
+            font-weight:bold;
+        }
+          .list_content_num ol li{
+         margin-bottom:15px;
         }
     </style>
-
 </head>
 <body>
-    <div style="border: 3px solid #a20e0e;padding: 15px; background: white; color: black;">
-        <div class="row">
-            <div class="col-md-6 col-lg-6 col-sm-12">
+    <div class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="row">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="col-lg-12 text-center">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <img src="/Website/images/Bhumangal.png" style="height:150px;" alt="img not found" />
+                                    <h2 style="border-bottom:1px solid #e78024; padding-bottom:15px;">Bhumangal Farm Devlopers Pvt. Ltd.</h2>
+                                </div>
+                            </div>
+                            <div class="col-lg-12 mt-3 text-center">
+                                <h1 class="h3">ALLOTMENT LETTER </h1> <hr />
+                            </div>
+                            <div class="col-lg-12 col-md-12">
+                                <div class="table_header">
+                                    <p class="text-danger"><b>Allotment – Propossed Project — BHUMANGAL VATIKA</b></p>
+                                    <h2 class="text-danger h4">To, <br />  Mr./ Mrs. (Custmer Name with address)</h2>
+                                    <p>
+                                        This agreement is made at Lucknow on <b class="text-danger">(Date)……………………</b> by and between 1ST party Company, a
+                                        company incorporated under the provision of the Indian company act, 1956 having its registered office
+                                        B2/21 Gomti Nagar Ext. Sec. -6 Gomtinagar Lucknow-226010
+                                    </p>
+                                    <p>Plot Area- <b class="text-danger">………………….. Sq.Ft.</b></p>
+                                    <p>
+                                        This allotments subject to (I) all the Terms & Conditions of Allotment forming part of a letter and (ii)
+                                        applicable rules, regulations and law and shall prevail over all other terms and conditions given in our
+                                        brochures, price lists, application/booking form and any other sale document. You are registered to quote
+                                        the Allotment  <b class="text-danger">Plot no – ……………………………. Sq.Ft.</b>
+                                    </p>
+                                    <div class="text-end">
+                                        <h6>Bhumangal Farm Devlopers Pvt. Ltd.</h6>
+                                        <p>
+                                            B2/21 Gomti Nagar Ext. Sec. -6 Gomtinagar <br />
+                                            Lucknow-226010
+                                        </p>
+                                    </div> <hr />
+                                </div>
+                                <div class="list_content">
+                                    <ol>
+                                        <li>
+                                            The First Party had acquired agricultural land parcels or in process of acquiring &
+                                            consolidating agricultural land parcels situated at <b class="text-danger">Nagram Road</b> (within the Revenue state of
+                                            UP) and the first party con templates to develop there upon a residential colony in the name
+                                            & style of <b class="text-danger">Bhumangal Farm Devlopers Pvt. Ltd.</b>  here in after referrers to as a SAID CLONY
+                                            which shall interalia comprises plots of different sizes and dimension as per the proposed
+                                            tentative layout plan finalized by the company /architect
+                                        </li>
+                                        <li>
+                                            It is also contemplated by the first party that the entire proposed layout of the said colony
+                                            developed by providing internal road ,laying of electrical, water outer lines and drainage
+                                            system whit in the periphery of the said colony as shown in proposed layout of the said
+                                            colony
+                                        </li>
+                                        <li>
+                                            In case of Death or madness of Applicant(s)/ Allotee(s) after the payment of all instalments
+                                            of the allotted plot, company will executed the sale deed with the nominee(s)who are
+                                            decided earlier by the Applicant(s)/Allotee(s).colony developed by providing internal road
+                                            ,laying of electrical water outer lines , and drainage, system with the periphery of the said
+                                            colony as shown in proposed layout of the said colony and the first party contemplates to
+                                            develop there upon a residential colony in the name & style of <b class="text-danger">
+                                                Bhumangal Farm Devlopers
+                                                Pvt. Ltd.
+                                            </b> . herein after referred to as a “SAID colony” which shall interalia comprises plots of
+                                            different sizes and dimension as per the proposed tentative layout plan finalized by the
+                                            company /architect.
+                                        </li>
+                                        <li>
+                                            The second party has approached the first party and expressed its desire purchase the plot
+                                            bearing no <b class="text-danger">…………………..</b>  Block <b class="text-danger">…………………..</b>  Phase <b class="text-danger">…………………..</b>  marked in the proposed
+                                            tentative layout of the said colony admeasuring <b class="text-danger">……………………</b>  square feet more fully
+                                            described in schedule appended to this agreement(Herein after referred to as the said plot
+                                            at a basic sale consideration of <b class="text-danger">RS…………………………………….</b>  ) and Corner/Park facing charge
+                                            will be applicable 10% Corner & Park facing 10%.
+                                        </li>
+                                        <li>
+                                            The Applicant(s)/Allotee(s)shall pay as &when demanded by the company ,The stamp duty ,
+                                            Registration charges and all other incidental & legal expenses for execution and registration
+                                            of sale deed of the plot in favours of Applicant(s)/Allotee(s) or nominee(s)(.This shall be
+                                            executed and got registered upon the receipt of the full sale price ,Other dues and charges &
+                                            expenses as May be payable or demanded from the Applicant(s)/Allotee(s) in respect of plot
+                                            Allotted to him.)
+                                        </li>
+                                        <li>
+                                            The second party confirms that he has inspected the land parcels over which the plot is
+                                            located in proposed tentative lay -out of said colony, The entire scheme of the said colony ,
+                                            present location plan , Land uses and ownership records/Title chain of the said plot and
+                                            other document relating to the title/Competency and all the relevant details thereto ,And
+                                            the second party hereby confirms that he is fully satisfied in all the respects including the
+                                            first party right ,Title and interest on the said plot.
+                                        </li>
+                                        <li>
+                                            The First party has explained to the second party about the overall scheme of the second
+                                            colony , quality and nature of development specifications as be undertaken by the first party
+                                            at its own cost &expenses as to laying of Internal Roads ,Electrical lines, Water lines and
+                                            Drainage System within the proposed tentative lay-out /periphery of the said colony .
+                                            However, it has been also explained by the first party that the first party shall not be
+                                            responsible to provide any other development specification which has not been specifically
+                                            agreed between the parties and the second party shall arrange/ get arranged all such regard
+                                            to electricity, water connections/ drainage connections to said plot which shall be arranged
+                                            and done by the second party at its own cost and expense.
+                                        </li>
+                                        <li>
+                                            If the Applicants (s)Allotee(s) choose to cancel the registration/Booking/Allotment of plot or
+                                            surrender the plot allotted to him/her/they from the date of the execution of allotment
+                                            letter to 3 Years , the company have full rights to deduct 20% of the money deposited along
+                                            with non-Refundable amounts, which shall forfeited. Balance amount will be payable to
+                                            Applicant(s)/Allotee(s).
+                                        </li>
+                                        <li>
+                                            The second party confirms that the second party signing this agreement with full knowledge
+                                            of all the Laws, Rules ,Regulation ,Notifications applicable overall schemes for development
+                                            of proposed tentative lay –out plan of the said colony and the second party has clearly
+                                            understood its Rights ,Duties ,Responsibilities obligations under each and all of the clauses
+                                            of this agreement.
+                                        </li>
+                                        <li>
+                                            If any dispute arises or came to now at the time of execution and registration of sale deep if
+                                            allotted plot to Applicant(s)/Allotee(s)or nominee(s)the company will responsible for that.
+                                        </li>
+                                        <li>
+                                            All the original receipts, Allotment letter and company documents will have to be bring at
+                                            the time of execution and registration of sale deed in fevers of Applicants(s)/Allotee(s) or
+                                            nominee(s).
+                                        </li>
+                                        <li>
+                                            In the light of the above representations and warranties, the parties hereto have agreed to
+                                            enter into this agreement subject to terms & condition contained here after.
+                                        </li>
+                                    </ol>
+                                </div>
 
-                <div class="dashboard1" style="padding-top:14px;">
-                    <img src="/Website/images/Bhumangal.png" class="img-fluid" alt="logo1" style="width:130px;" />
+                                <div class="list_content_num">
+                                    <h5 class="text-center py-3">NOW THEREFORE, THIS AGREEMENT WITNESSES AS UNDER</h5>
+                                    <ol>
+                                        <li>
+                                            That in Accordance with and subjects to terms and conditions set out in this agreement, The
+                                            First party agrees to sell to the second party ,the said plot bearing <b class="text-danger">…………………….</b> Block
+                                            <b class="text-danger">…………………….</b> Phase <b class="text-danger">…………………….</b> Admeasuring <b class="text-danger">…………………….</b> area, Comprised in the proposed tentative lay-out of the said colony ,More fully also described in schedule appended to this agreement
+                                            and the second parties agrees to purchase the said plot at a basic sale consideration price of
+                                            <b class="text-danger"> Rs……………………………..</b> That the second party has to pay a token sum of <b class="text-danger">…………………….</b>
+                                            Being part payment towards the basic sale consideration of the said plot vide <b class="text-danger">
+                                                Bhumangal Farm
+                                                Devlopers Pvt. Ltd.
+                                            </b>. (Subject to realization) drawn on LUCKNOW, the receipt of which the first
+                                            party hereby acknowledged the second party shall make the payment of the balance basic sale
+                                            consideration for the said plot in instalments in the following manner.
 
-                    <div style="margin-left:85%">
-                        <button style="color:#ffffff; text-align:center; background:#a20e0e; padding: 5px; padding-right: 15px;padding-left:15px;" id="printPageButton" onclick="window.print()">Print</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div>
-            <h2 style="text-align:center;">ALLOTMENT LETTER</h2>
-            <hr />
-            <p>Allotment – Propossed Project — BHUMANGAL VATIKA </p>
-            <p>TO </p>
-            <p>Mr./ Mrs.  (<b>@ViewBag.CustomerName , @ViewBag.Address</b>)</p>
-            <p>This agreement is made at Lucknow  on date <b>@ViewBag.PaymentDate</b> by and between 1ST party Company, a company incorporated under the provision of the Indian company act, 1956 having its registered office B2/21 Gomti Nagar Ext. Sec. -6  Gomtinagar Lucknow-226010</p>
+                                            <b class="d-block">EMI PLAN –EASY EMI</b>
+                                            On booking .EMI plan whichever applicable the provision of the foreign exchange management
+                                            act 1999 and the rules & regulations made there under. The second party shall be Responsible
+                                            to company with all the Guidelines, Policy, acts, regulations of India, Reserve bank of India,Gov.
+                                            Dept. ,development authority, Nagar Panchayat etc. As applicable with regard to remittance of
+                                            payment, acquisition, sale, purchase, transfer of property. The second party agrees that time is
+                                            the essence whit respect to payment of the sale consideration price or any other sums payable
+                                            by the second party to the first party on or before the date mentioned under this agreement or
+                                            as and when demanded by the first party. Any default in payment of instalments by due date
+                                            shall attract Interest/ penalty  10%of the default instalment amount.
+                                        </li>
+                                        <li>
+                                            The soon after the receipt of token sum of <b class="text-danger"> Rs. ………………………….</b> by the first party in the manner
+                                            provided herein above, the first party shall make provisional allotment of the said plots marked
+                                            in the proposed tentative lay- out for the said colony prepared by the first party /Architects
+                                            and shown to the second party. The basic sale consideration price for the said plot shall be
+                                            confirmed by the first party only after demarcation in the scheme of the said colony is
+                                            complete. The parties agree to make payment or refund excess consideration or to make
+                                            adjustment in balance sale basic consideration for the said plot if any and as the case may ,
+                                            necessitated on account of increase/ decreased in the plot area as per final area in the scheme
+                                            of the said colony unit.
+                                        </li>
+                                        <li>
+                                            The second party shall make payment of the basic sale consideration of said plot or such other
+                                            sum as may be payable under this agreement to the first party only through Account Payee
+                                            Cheque(s)/pay order (s)/Demand Draft(S) drawn in favour of <b class="text-danger">
+                                                Bhumangal Farm Devlopers Pvt.
+                                                Ltd.
+                                            </b> payable at LUCKNOW Uttar Pradesh. No outstation cheques shall be accepted.
+                                        </li>
+                                        <li>
+                                            That the second party agrees and undertakes that out of the total amount to be paid by the
+                                            second party of the said plot , a sum of <b class="text-danger">Rs……………………………….</b> shall be treated money to
+                                            ensured fulfilment of the terns & conditions of this agreement including default in payment of
+                                            instalment by the second party . However, the first party in exceptional circumstances,condone
+                                            the delay in payment of instalments of basic sale consideration or nay other some payable
+                                            pursuant to this agreements, as Perdue date by charging penal interest/ fixed charges
+                                            <b class="text-danger">10%default</b> instalment amount. The second party shall be entitled to cancel allotment in
+                                            event of default in payment of three consecutive instalments, In case of developer fails to offer
+                                            possession of space booked within 3yrs from the date of execution of agreement developer
+                                            shall pay <b class="text-danger">penalty rs.25 per sqft.mt/month</b> on the amount of basic price received by the
+                                            developer <b class="text-danger">w.e.f .37th (thirty seventh)</b> month from the date of booking till date of possession. <br />
+                                            Registry will be done within 2 Month as par Your Requrment .
+                                        </li>
+                                        <li>
+                                            That the second party shall obtain all requisite sanctions approvals, N .O.C. permits for the
+                                            construction & development on the said plot at their own costs and expense. The second party
+                                            also agree to external development charges , infrastructure augmentation charges
+                                            ,development fees , levies of all or any kind by whatever named called whether levied or
+                                            liveable in future with regard to the said plot or which may be imposed to said colony at any
+                                            time in terms of the policy of the government of Uttar Pradesh.
+                                        </li>
+                                        <li>
+                                            That in case of any difference betweenen the first party and the second party with regard to
+                                            size and location of said plot comprised in the said colony then though efforts shall be made by
+                                            the first party to accommodate the options of the second party but final allotment of location
+                                            and size shall be finalized by the first party and its sole discretion. The decision of the first party
+                                            in this respect shall be final and binding. The second party understand and agrees that the
+                                            allotment shall be tentative and is based on proposed tentative lay- out of the said colony.
+                                        </li>
+                                        <li>
+                                            The second party shall not be entitled to assign plot in favour of its nominees to ex elution and
+                                            registration of sale deed/conveyance deed for the said plot unto the second party.
+                                        </li>
+                                        <li>
+                                            That the first party execute sale deed / conveyance deed to convey title of the said plot unto
+                                            the second party only after receiving the full consideration and other sums if any payable by
+                                            the second party to the first party under this agreement. The second party shall take physical
+                                            possession of the said plot as is where basis soon after sale. Deed /conveyance deed for the
+                                            said plot is executed and registered by the first party unto the second party. All expenses with
+                                            regard to stamp duty, registration charges and other incidental expense to cover the cost of
+                                            registration of the sale deed / conveyance deed will be borne by the second party.
+                                        </li>
+                                        <li>
+                                            Not with standing any things contained in this agreement, the second party shall indemnify the
+                                            first party its agents and representatives Estates, Effects, Indemnified and harmless against any
+                                            loss/liabilities or damages that the first party may suffer as a result on non-payment’ non
+                                            observance or non –performance of any of the covenants and conditions stipulated in this
+                                            agreement. The decision of the first party in this respect shall be final and binding. The second
+                                            party understands and agrees that the allotment shall be tentative and is based on proposed
+                                            tentative lay –out of the said colony.
 
-        <p>Plot  Area- <b>@ViewBag.PlotArea</b></p>
-            <br />
-            <p>This allotments subject to (I) all the Terms & Conditions of Allotment forming part of a letter and (ii) applicable rules, regulations and law and shall prevail over all other terms and conditions given in our brochures, price lists, application/booking form and any other sale document. You are registered to quote the Allotment Plot no –  <b>@ViewBag.PlotInfo</b></p>
+                                        </li>
+                                        <li>
+                                            That the rights and obligations of the parties under or arising out of this agreement shall be
+                                            construed and enforced in accordance with the law of India.
+                                        </li>
+                                        <li>
+                                            This agreement shall be executed in counterparts each of which shall be deemed to be an
+                                            original, but all of whom which shall constitute one and the same instrument and agreement.
+                                        </li>
+                                        <li>
+                                            This agreement shall be governed by, and construed in accordance with the laws of India. In
+                                            the event any differences or disputes arise between the parties hereto, such disputes shall be
+                                            amicably settled /resolved through negotiations in good faith by the parties hereto. In the
+                                            event the parties to resolve such dispute through amicable negotiations, the same shall be
+                                            referred to the Arbitrator appointed as per provisions of the Arbitrator and Conciliation
+                                            ACT1996.
+                                        </li>
+                                        <li>
+                                            Only courts at Lucknow shall have jurisdiction in case of any dispute. IN WITHNESS WHERE OF
+                                            the first party represented by its authorized signatory and the second party do hereby affixes
+                                            their respective hands at lucknow on the date first mentioned herein above in presence of the
+                                            following witnesses.
+                                        </li>
+                                        <ol>
+                                            <li class="d-flex justify-content-lg-between">
+                                                <b>
+                                                    WITNESSES <br />
+                                                    1. <br />
+                                                    2.
+                                                </b>
+                                                <P class="text-end">
+                                                    <b>For and on behalf of Bhumangal Farm Devlopers Pvt. Ltd.. </b> <br /> <br />
 
-            <p>WHEREAS</p>
-
-            <div class="row">
-                <div class="col-md-6 col-lg-6 col-sm-12">
-
-                    <div class="dashboard1" style="padding-top:14px;">
-                   
-                        <div style="margin-left:80%">
-                            <p>Bhumangal Farm Devlopers Pvt. Ltd.</p>
-                            <p>B2/21 Gomti Nagar Ext. Sec. -6  Gomtinagar<br />	Lucknow-226010</p>
+                                                    Auth signatory <br /><br />
+                                                    Signed By
+                                                </P>
+                                            </li>
+                                        </ol>
+                                    </ol>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>
