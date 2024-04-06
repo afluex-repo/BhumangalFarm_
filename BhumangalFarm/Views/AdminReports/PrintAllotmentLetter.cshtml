@@ -1,0 +1,76 @@
+﻿@model BhumangalFarm.Models.Plot
+
+@{
+    ViewBag.Title = "PrintAllotmentLetter";
+    Layout = null;
+    //"~/Views/Shared/_Layout.cshtml";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>PrintAllotment</title>
+    <style>
+        table, th, td {
+            font-size: medium;
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            font-size: medium;
+            padding: 5px;
+        }
+
+
+        @@media print {
+            #printPageButton {
+                display: none;
+            }
+        }
+    </style>
+
+</head>
+<body>
+    <div style="border: 3px solid #a20e0e;padding: 15px; background: white; color: black;">
+        <div class="row">
+            <div class="col-md-6 col-lg-6 col-sm-12">
+
+                <div class="dashboard1" style="padding-top:14px;">
+                    <img src="/Website/images/Bhumangal.png" class="img-fluid" alt="logo1" style="width:130px;" />
+
+                    <div style="margin-left:85%">
+                        <button style="color:#ffffff; text-align:center; background:#a20e0e; padding: 5px; padding-right: 15px;padding-left:15px;" id="printPageButton" onclick="window.print()">Print</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div>
+            <h2 style="text-align:center;">ALLOTMENT LETTER</h2>
+            <hr />
+            <p>Allotment – Propossed Project — BHUMANGAL VATIKA </p>
+            <p>TO </p>
+            <p>Mr./ Mrs.  (<b>@ViewBag.CustomerName , @ViewBag.Address</b>)</p>
+            <p>This agreement is made at Lucknow  on date <b>@ViewBag.PaymentDate</b> by and between 1ST party Company, a company incorporated under the provision of the Indian company act, 1956 having its registered office B2/21 Gomti Nagar Ext. Sec. -6  Gomtinagar Lucknow-226010</p>
+
+        <p>Plot  Area- <b>@ViewBag.PlotArea</b></p>
+            <br />
+            <p>This allotments subject to (I) all the Terms & Conditions of Allotment forming part of a letter and (ii) applicable rules, regulations and law and shall prevail over all other terms and conditions given in our brochures, price lists, application/booking form and any other sale document. You are registered to quote the Allotment Plot no –  <b>@ViewBag.PlotInfo</b></p>
+
+            <p>WHEREAS</p>
+
+            <div class="row">
+                <div class="col-md-6 col-lg-6 col-sm-12">
+
+                    <div class="dashboard1" style="padding-top:14px;">
+                   
+                        <div style="margin-left:80%">
+                            <p>Bhumangal Farm Devlopers Pvt. Ltd.</p>
+                            <p>B2/21 Gomti Nagar Ext. Sec. -6  Gomtinagar<br />	Lucknow-226010</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
