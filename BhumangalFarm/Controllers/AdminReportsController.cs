@@ -1293,8 +1293,9 @@ namespace BhumangalFarm.Controllers
                     ViewBag.InstallmentNo = ds.Tables[0].Rows[0]["InstallmentNo"].ToString();
                     //ViewBag.AdjustmentloginId = ds.Tables[0].Rows[0]["AdjustmentloginId"].ToString();
                     ViewBag.ActualPlotAmount = ds.Tables[0].Rows[0]["ActualPlotAmount"].ToString();
-                    
-                    
+                    ViewBag.ReceiptDate = ds.Tables[0].Rows[0]["ReceiptDate"].ToString();
+
+
                     ViewBag.CompanyName = SoftwareDetails.CompanyName;
                     ViewBag.CompanyAddress = SoftwareDetails.CompanyAddress;
                     ViewBag.Pin1 = SoftwareDetails.Pin1;
@@ -3357,8 +3358,7 @@ namespace BhumangalFarm.Controllers
                 ViewBag.BlockName = ds.Tables[0].Rows[0]["BlockName"].ToString();
                 ViewBag.PlotNumber = ds.Tables[0].Rows[0]["PlotNumber"].ToString();
                 ViewBag.Address = ds.Tables[0].Rows[0]["Address"].ToString();
-
-                
+                ViewBag.PaymentDate = ds.Tables[0].Rows[0]["PaymentDate"].ToString();
             }
             return View(model);
 

@@ -578,6 +578,7 @@ namespace BhumangalFarm.Controllers
         {
             //Plot newdata = new Plot();
             newdata.PK_BookingId = Crypto.Decrypt(PrintId);
+
             ViewBag.Name = Session["Name"].ToString();
             DataSet ds = newdata.List();
 
@@ -602,7 +603,7 @@ namespace BhumangalFarm.Controllers
                     ViewBag.SectorName = ds.Tables[0].Rows[0]["SectorName"].ToString();
                     ViewBag.BlockName = ds.Tables[0].Rows[0]["BlockName"].ToString();
                     ViewBag.PlotNo = ds.Tables[0].Rows[0]["PlotNumber"].ToString();
-
+                    ViewBag.TotalDeposit = ds.Tables[0].Rows[0]["TotalDeposit"].ToString();
                     ViewBag.PlotNumber = ds.Tables[0].Rows[0]["PlotInfo"].ToString();
                     ViewBag.PaidAmount = ds.Tables[0].Rows[0]["PaidAmount"].ToString();
                     //ViewBag.PaidAmount = ds.Tables[0].Rows[0]["latestpayment"].ToString();
@@ -630,6 +631,8 @@ namespace BhumangalFarm.Controllers
                     ViewBag.SiteName = ds.Tables[0].Rows[0]["SiteName"].ToString();
                     ViewBag.InstallmentNo = ds.Tables[0].Rows[0]["InstallmentNo"].ToString();
                     //ViewBag.AdjustmentloginId = ds.Tables[0].Rows[0]["AdjustmentloginId"].ToString();
+                    ViewBag.ActualPlotAmount = ds.Tables[0].Rows[0]["ActualPlotAmount"].ToString();
+                    ViewBag.ReceiptDate = ds.Tables[0].Rows[0]["ReceiptDate"].ToString();
 
                     ViewBag.CompanyName = SoftwareDetails.CompanyName;
                     ViewBag.CompanyAddress = SoftwareDetails.CompanyAddress;
