@@ -3316,49 +3316,34 @@ namespace BhumangalFarm.Controllers
         //    return View(obj);
         //}
 
-
-
-
-
+            
         public ActionResult PrintAllotmentLetter(Plot model, string Id)
         {
             model.CustomerID = Id;
             DataSet ds = model.GetAllotmentLetterList();
             if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
             {
-                ViewBag.BookingStatus = ds.Tables[0].Rows[0]["BookingStatus"].ToString();
-                ViewBag.PK_BookingId = ds.Tables[0].Rows[0]["PK_BookingId"].ToString();
-                ViewBag.BranchID = ds.Tables[0].Rows[0]["BranchID"].ToString();
-                ViewBag.BranchName = ds.Tables[0].Rows[0]["BranchName"].ToString();
+                ViewBag.PK_BookingId = ds.Tables[0].Rows[0]["PK_BookingID"].ToString();
+                ViewBag.PK_BookingDetailsId = ds.Tables[0].Rows[0]["PK_BookingDetailsId"].ToString();
+                ViewBag.BookingNumber = ds.Tables[0].Rows[0]["BookingNo"].ToString();
+                ViewBag.BookingDate = ds.Tables[0].Rows[0]["BookingDate"].ToString();
+                ViewBag.ReceiptDate = ds.Tables[0].Rows[0]["ReceiptDate"].ToString();
                 ViewBag.CustomerID = ds.Tables[0].Rows[0]["CustomerID"].ToString();
                 ViewBag.CustomerLoginID = ds.Tables[0].Rows[0]["CustomerLoginID"].ToString();
                 ViewBag.CustomerName = ds.Tables[0].Rows[0]["CustomerName"].ToString();
-                ViewBag.Contact = ds.Tables[0].Rows[0]["Mobile"].ToString();
-                ViewBag.AssociateID = ds.Tables[0].Rows[0]["AssociateID"].ToString();
-                ViewBag.AssociateLoginID = ds.Tables[0].Rows[0]["AssociateLoginID"].ToString();
-                ViewBag.Discount = ds.Tables[0].Rows[0]["Discount"].ToString();
-                ViewBag.AssociateName = ds.Tables[0].Rows[0]["AssociateName"].ToString();
+                ViewBag.Address = ds.Tables[0].Rows[0]["Address"].ToString();
                 ViewBag.PlotInfo = ds.Tables[0].Rows[0]["PlotInfo"].ToString();
-                ViewBag.BookingDate = ds.Tables[0].Rows[0]["BookingDate"].ToString();
-                ViewBag.BookingAmount = ds.Tables[0].Rows[0]["BookingAmt"].ToString();
-                ViewBag.PaymentPlanID = ds.Tables[0].Rows[0]["PlanName"].ToString();
-                ViewBag.BookingNumber = ds.Tables[0].Rows[0]["BookingNo"].ToString();
-                ViewBag.PaidAmount = ds.Tables[0].Rows[0]["PaidAmount"].ToString();
-                ViewBag.PlotArea = ds.Tables[0].Rows[0]["PlotArea"].ToString();
-                ViewBag.PlotAmount = ds.Tables[0].Rows[0]["PlotAmount"].ToString();
-                ViewBag.NetPlotAmount = ds.Tables[0].Rows[0]["NetPlotAmount"].ToString();
-                ViewBag.PK_PLCCharge = ds.Tables[0].Rows[0]["PLCCharge"].ToString();
-                ViewBag.PlotRate = ds.Tables[0].Rows[0]["PlotRate"].ToString();
-                ViewBag.Type = ds.Tables[0].Rows[0]["Type"].ToString();
-                ViewBag.RemainingAmount = ds.Tables[0].Rows[0]["RemainingAmount"].ToString();
-                ViewBag.TotalPaidAmount = ds.Tables[0].Rows[0]["TotalPaid"].ToString();
-                ViewBag.EncryptKey = Crypto.Encrypt(ds.Tables[0].Rows[0]["PK_BookingId"].ToString());
                 ViewBag.SiteName = ds.Tables[0].Rows[0]["SiteName"].ToString();
                 ViewBag.SectorName = ds.Tables[0].Rows[0]["SectorName"].ToString();
                 ViewBag.BlockName = ds.Tables[0].Rows[0]["BlockName"].ToString();
                 ViewBag.PlotNumber = ds.Tables[0].Rows[0]["PlotNumber"].ToString();
-                ViewBag.Address = ds.Tables[0].Rows[0]["Address"].ToString();
+                ViewBag.ActualPlotAmount = ds.Tables[0].Rows[0]["ActualPlotAmount"].ToString();
+                ViewBag.TotalPaidAmount = ds.Tables[0].Rows[0]["TotalDeposit"].ToString();
+                ViewBag.LatestPayment = ds.Tables[0].Rows[0]["LatestPayment"].ToString();
+                ViewBag.RemainingAmount = ds.Tables[0].Rows[0]["RemainingBalance"].ToString();
+                ViewBag.PlotArea = ds.Tables[0].Rows[0]["PlotArea"].ToString();
                 ViewBag.PaymentDate = ds.Tables[0].Rows[0]["PaymentDate"].ToString();
+                ViewBag.EncryptKey = Crypto.Encrypt(ds.Tables[0].Rows[0]["PK_BookingId"].ToString());
             }
             return View(model);
 
