@@ -72,15 +72,15 @@
                                     </div>
                                 </div>*@
 
-                                @*<div class="col-md-3">
+                                <div class="col-md-3">
                                     <div class="form-group">
-                                        From Date
+                                        Payment From Date
                                         @Html.TextBoxFor(m => m.FromDate, new { @class = "form-control", @Placeholder = "From Date", @readonly = "readonly" })
                                     </div>
                                 </div>
                                 <div class="col-md-3">
                                     <div class="form-group">
-                                        To Date
+                                        Payment To Date
                                         @Html.TextBoxFor(m => m.ToDate, new { @class = "form-control", @Placeholder = "To Date", @readonly = "readonly" })
                                     </div>
                                 </div>
@@ -89,7 +89,7 @@
                                         Booking No
                                         @Html.TextBoxFor(m => m.BookingNumber, new { @class = "form-control", @Placeholder = "Booking No" })
                                     </div>
-                                </div>*@
+                                </div>
                                 <div class="col-md-3">
                                     <div class="form-group">
                                         Select Site
@@ -134,23 +134,16 @@
                                             <th>S No.</th>
                                             <th>Booking No</th>
                                             <th>Booking Date</th>
+                                            <th>Payment Date</th>
                                             <th>Customer Detail</th>
-                                            <th>Customer Mobile No</th>
                                             <th>Site</th>
                                             <th>Phase</th>
                                             <th>Block </th>
                                             <th>Plot Number</th>
-                                            <th>Associate Details</th>
                                             <th>Plot Area</th>
-                                            <th>Booking Status</th>
                                             <th>Total Amt</th>
                                             <th>Total Paid</th>
                                             <th>Remainning Amount</th>
-                                            @*<th>Plot Amt</th>
-                                                <th>Discount</th>*@
-                                            @*<th>Plot Rate</th>*@
-                                            @*<th>Booking Amt</th>*@
-
                                             <th>Print</th>
                                         </tr>
                                     </thead>
@@ -166,25 +159,18 @@
                                                         <td>@i</td>
                                                         <td>@Item.BookingNumber</td>
                                                         <td>@Item.BookingDate</td>
+                                                        <td>@Item.PaymentDate</td>
                                                         <td>@Item.CustomerName (@Item.CustomerLoginID)</td>
-                                                        <td>@Item.Contact</td>
                                                         <td>@Item.SiteName </td>
                                                         <td>@Item.SectorName </td>
                                                         <td>@Item.BlockName </td>
                                                         <td>@Item.PlotNumber</td>
-                                                        <td>@Item.AssociateName (@Item.AssociateLoginID)</td>
                                                         <td> @Item.PlotArea</td>
-                                                        <td class="label label-info">@Item.BookingStatus</td>
-                                                        <td>@Item.NetPlotAmount</td>
-                                                        @*<td>@Item.PlotAmount</td>
-                                                            <td>@Item.Discount</td>
-                                                            <td>@Item.PlotRate</td>*@
-                                                        @*<td>@Item.BookingAmount</td>*@
+                                                        <td>@Item.ActualPlotAmount</td>
                                                         <td>@Item.TotalPaidAmount</td>
                                                         <td>@Item.RemainingAmount</td>
-                                                        @*<td style="display:none">@Item.PK_BookingId</td>*@
                                                         <td>
-                                                            <div class="badge badge-success badge-shadow"><a target="_blank" class="badge badge-success badge-shadow" href="/AdminReports/PrintAllotmentLetter?Id=@Item.CustomerLoginID"><span>Print Allotment Letter</span></a></div>
+                                                            <div class="badge badge-success badge-shadow"><a target="_blank" class="badge badge-success badge-shadow" href="/AdminReports/PrintAllotmentLetter?Id=@Item.PK_BookingId"><span>Print Allotment Letter</span></a></div>
                                                         </td>
                                                 
                                                     </tr>

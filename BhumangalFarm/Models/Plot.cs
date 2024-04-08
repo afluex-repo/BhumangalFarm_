@@ -72,6 +72,12 @@ namespace BhumangalFarm.Models
         public string TransactionNumber { get; set; }
         public string TotalGeneratedAmount { get; set; }
         public string TotalPaidAmount { get; set; }
+        public string LatestPayment { get; set; }
+        
+
+
+        public string ActualPlotAmount { get; set; }
+        public string MyProLatestPaymentperty { get; set; }
         public string TotalRemainingAmount { get; set; }
         public string TransactionDate { get; set; }
         public string BankName { get; set; }
@@ -88,6 +94,8 @@ namespace BhumangalFarm.Models
         public List<SelectListItem> ddlPlotArea { get; set; }
 
         public string BookingDate { get; set; }
+        public string ReceiptDate { get; set; }
+        
         public string ActualPlotRate { get; set; }
         public string DevelopmentCharge { get; set; }
         public List<Plot> lstPlot { get; set; }
@@ -344,31 +352,19 @@ namespace BhumangalFarm.Models
         {
             SqlParameter[] para = { new SqlParameter("@PK_BookingId", PK_BookingId),
                                       new SqlParameter("@CustomerID", CustomerID),
-                                      new SqlParameter("@AssociateID", AssociateID),
-                                      new SqlParameter("@BookingNo", BookingNumber),
                                       new SqlParameter("@FromDate", FromDate),
                                       new SqlParameter("@ToDate", ToDate),
-                                      new SqlParameter("@FK_SiteID", SiteID),
-                                      new SqlParameter("@FK_SectorID", SectorID),
-                                      new SqlParameter("@FK_BlockID", BlockID),
+                                      new SqlParameter("@PK_SiteID", SiteID),
+                                      new SqlParameter("@PK_SectorID", SectorID),
+                                      new SqlParameter("@PK_BlockID", BlockID),
                                       new SqlParameter("@PlotNumber", PlotNumber),
-                                       new SqlParameter("@Fk_PlanId", PaymentPlanID),
+                                        new SqlParameter("@BookingNo", BookingNumber),
+                                      new SqlParameter("@PK_BookingDetailsId", PK_BookingDetailsId)
                                   };
-
             DataSet ds = Connection.ExecuteQuery("GetAllotmentLetterList", para);
             return ds;
         }
-
-
-
-
         
-
-
-
-
-
-
         public DataSet GetBookingDetailsList1()
         {
             SqlParameter[] para = { new SqlParameter("@PK_BookingId", PK_BookingId),
