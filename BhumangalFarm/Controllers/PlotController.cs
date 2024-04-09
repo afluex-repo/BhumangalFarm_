@@ -3989,11 +3989,9 @@ namespace BhumangalFarm.Controllers
                     {
                         Plot obj = new Plot();
                         obj.PK_BookingId = r["PK_BookingID"].ToString();
-                        obj.PK_BookingDetailsId = r["PK_BookingDetailsId"].ToString();
                         obj.BookingNumber = r["BookingNo"].ToString();
                         obj.BookingDate = r["BookingDate"].ToString();
                         obj.ReceiptDate = r["ReceiptDate"].ToString();
-                        obj.CustomerID = r["CustomerID"].ToString();
                         obj.CustomerLoginID = r["CustomerLoginID"].ToString();
                         obj.CustomerName = r["CustomerName"].ToString();
                         obj.Address = r["Address"].ToString();
@@ -4002,6 +4000,7 @@ namespace BhumangalFarm.Controllers
                         obj.SectorName = r["SectorName"].ToString();
                         obj.BlockName = r["BlockName"].ToString();
                         obj.PlotNumber = r["PlotNumber"].ToString();
+                        obj.ActualPlotAmountWithPLC = r["ActualPlotAmountWithPLC"].ToString();
                         obj.ActualPlotAmount = r["ActualPlotAmount"].ToString();
                         obj.TotalPaidAmount = r["TotalDeposit"].ToString();
                         obj.LatestPayment = r["LatestPayment"].ToString();
@@ -4029,11 +4028,8 @@ namespace BhumangalFarm.Controllers
             model.BlockID = model.BlockID == "0" ? null : model.BlockID;
             model.BookingNumber = model.BookingNumber == " " ? null : model.BookingNumber;
             model.PK_BookingId = model.PK_BookingId == "0" ? null : model.PK_BookingId;
-            model.PK_BookingDetailsId = model.PK_BookingDetailsId == "0" ? null : model.PK_BookingDetailsId;
-            //model.PaymentPlanID = model.PaymentPlanID == "0" ? null : model.PaymentPlanID;
             model.FromDate = string.IsNullOrEmpty(model.FromDate) ? null : Common.ConvertToSystemDate(model.FromDate, "dd/MM/yyyy");
             model.ToDate = string.IsNullOrEmpty(model.ToDate) ? null : Common.ConvertToSystemDate(model.ToDate, "dd/MM/yyyy");
-
             DataSet ds = model.GetAllotmentLetterList();
 
             if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
@@ -4048,11 +4044,9 @@ namespace BhumangalFarm.Controllers
                     {
                         Plot obj = new Plot();
                         obj.PK_BookingId = r["PK_BookingID"].ToString();
-                        obj.PK_BookingDetailsId = r["PK_BookingDetailsId"].ToString();
                         obj.BookingNumber = r["BookingNo"].ToString();
                         obj.BookingDate = r["BookingDate"].ToString();
                         obj.ReceiptDate = r["ReceiptDate"].ToString();
-                        obj.CustomerID = r["CustomerID"].ToString();
                         obj.CustomerLoginID = r["CustomerLoginID"].ToString();
                         obj.CustomerName = r["CustomerName"].ToString();
                         obj.Address = r["Address"].ToString();
@@ -4061,12 +4055,14 @@ namespace BhumangalFarm.Controllers
                         obj.SectorName = r["SectorName"].ToString();
                         obj.BlockName = r["BlockName"].ToString();
                         obj.PlotNumber = r["PlotNumber"].ToString();
+                        obj.ActualPlotAmountWithPLC = r["ActualPlotAmountWithPLC"].ToString();
                         obj.ActualPlotAmount = r["ActualPlotAmount"].ToString();
                         obj.TotalPaidAmount = r["TotalDeposit"].ToString();
                         obj.LatestPayment = r["LatestPayment"].ToString();
                         obj.RemainingAmount = r["RemainingBalance"].ToString();
                         obj.PlotArea = r["PlotArea"].ToString();
                         obj.PaymentDate = r["PaymentDate"].ToString();
+
                         obj.EncryptKey = Crypto.Encrypt(r["PK_BookingId"].ToString());
                         lst.Add(obj);
                     }
