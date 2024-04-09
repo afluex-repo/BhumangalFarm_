@@ -554,7 +554,7 @@ namespace BhumangalFarm.Controllers
                         string str = BLSMS.Booking(Bookno, Bookamt, AsstName, plot, plotamount);
                         try
                         {
-                            BLSMS.SendSMS(mob, str,tempid);
+                            BLSMS.SendSMS(mob, str, tempid);
                         }
                         catch { }
 
@@ -574,7 +574,7 @@ namespace BhumangalFarm.Controllers
 
             return RedirectToAction(FormName, Controller);
         }
-        public ActionResult PrintPlotBooking(Plot newdata,string PrintId)
+        public ActionResult PrintPlotBooking(Plot newdata, string PrintId)
         {
             //Plot newdata = new Plot();
             newdata.PK_BookingId = Crypto.Decrypt(PrintId);
@@ -712,7 +712,7 @@ namespace BhumangalFarm.Controllers
                 {
                     var i = 0;
                     foreach (DataRow r in ds.Tables[0].Rows)
-                        {
+                    {
 
                         if (i < 25)
                         {
@@ -750,10 +750,10 @@ namespace BhumangalFarm.Controllers
                             obj.PlotNumber = r["PlotNumber"].ToString();
                             lst.Add(obj);
                         }
-                       
-                         i = i + 1;
-                        }
-                        model.lstPlot = lst;
+
+                        i = i + 1;
+                    }
+                    model.lstPlot = lst;
                 }
             }
             return View(model);
@@ -1624,7 +1624,7 @@ namespace BhumangalFarm.Controllers
                         string str = BLSMS.PlotAllotment(name, Plot, amt);
                         try
                         {
-                            BLSMS.SendSMS(mob, str,tempid);
+                            BLSMS.SendSMS(mob, str, tempid);
                         }
                         catch { }
                     }
@@ -1644,7 +1644,7 @@ namespace BhumangalFarm.Controllers
             return RedirectToAction(FormName, Controller);
         }
         #endregion
-        
+
         #region EMIPayment
 
         public ActionResult EMIPayment(string PK_BookingId)
@@ -1662,7 +1662,7 @@ namespace BhumangalFarm.Controllers
 
                     model.PlotID = dsBookingDetails.Tables[0].Rows[0]["Fk_PlotId"].ToString();
                     model.SiteID = dsBookingDetails.Tables[0].Rows[0]["FK_SiteID"].ToString();
-                    
+
                     #region GetSectors
                     List<SelectListItem> ddlSector = new List<SelectListItem>();
                     DataSet dsSector = model.GetSectorList();
@@ -1904,7 +1904,7 @@ namespace BhumangalFarm.Controllers
                         string str = BLSMS.EMIPayment(name, Plot, bookno, instno, amt);
                         try
                         {
-                            BLSMS.SendSMS(mob, str,tempid);
+                            BLSMS.SendSMS(mob, str, tempid);
                         }
                         catch
                         {
@@ -3085,10 +3085,10 @@ namespace BhumangalFarm.Controllers
 
             if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
             {
-              
+
                 foreach (DataRow r in ds.Tables[0].Rows)
                 {
-                   
+
                     Plot obj = new Plot();
                     obj.AssociateID = r["AssociateLoginID"].ToString();
                     obj.AssociateName = r["AssociateName"].ToString();
@@ -3204,8 +3204,8 @@ namespace BhumangalFarm.Controllers
                 }
                 model.lstPlot = lst;
             }
-                #region ddlPaymentMode
-                int count3 = 0;
+            #region ddlPaymentMode
+            int count3 = 0;
             List<SelectListItem> ddlPaymentMode = new List<SelectListItem>();
             DataSet dsPayMode = model.GetPaymentModeList();
             if (dsPayMode != null && dsPayMode.Tables.Count > 0 && dsPayMode.Tables[0].Rows.Count > 0)
@@ -3842,7 +3842,7 @@ namespace BhumangalFarm.Controllers
             string Controller = "";
             try
             {
-                if(obj.IsKharijDakhil != null)
+                if (obj.IsKharijDakhil != null)
                 {
                     obj.IsKharijDakhila = "1";
                 }
@@ -3852,7 +3852,7 @@ namespace BhumangalFarm.Controllers
                 }
                 obj.AddedBy = Session["Pk_AdminId"].ToString();
                 obj.KharijDakhilDate = string.IsNullOrEmpty(obj.KharijDakhilDate) ? null : Common.ConvertToSystemDate(obj.KharijDakhilDate, "dd/MM/yyyy");
-              
+
                 DataSet ds = obj.SaveIsKharijDakhil();
                 if (ds != null && ds.Tables.Count > 0)
                 {
@@ -3985,48 +3985,32 @@ namespace BhumangalFarm.Controllers
                 }
                 else
                 {
-                    var i = 0;
                     foreach (DataRow r in ds.Tables[0].Rows)
                     {
-
-                        if (i < 25)
-                        {
-                            Plot obj = new Plot();
-                            obj.BookingStatus = r["BookingStatus"].ToString();
-                            obj.PK_BookingId = r["PK_BookingId"].ToString();
-                            obj.BranchID = r["BranchID"].ToString();
-                            obj.BranchName = r["BranchName"].ToString();
-                            obj.CustomerID = r["CustomerID"].ToString();
-                            obj.CustomerLoginID = r["CustomerLoginID"].ToString();
-                            obj.CustomerName = r["CustomerName"].ToString();
-                            obj.Contact = r["Mobile"].ToString();
-                            obj.AssociateID = r["AssociateID"].ToString();
-                            obj.AssociateLoginID = r["AssociateLoginID"].ToString();
-                            obj.Discount = r["Discount"].ToString();
-                            obj.AssociateName = r["AssociateName"].ToString();
-                            //obj.PlotNumber = r["PlotInfo"].ToString();
-                            obj.BookingDate = r["BookingDate"].ToString();
-                            obj.BookingAmount = r["BookingAmt"].ToString();
-                            obj.PaymentPlanID = r["PlanName"].ToString();
-                            obj.BookingNumber = r["BookingNo"].ToString();
-                            obj.PaidAmount = r["PaidAmount"].ToString();
-                            obj.PlotArea = r["PlotArea"].ToString();
-                            obj.PlotAmount = r["PlotAmount"].ToString();
-                            obj.NetPlotAmount = r["NetPlotAmount"].ToString();
-                            obj.PK_PLCCharge = r["PLCCharge"].ToString();
-                            obj.PlotRate = r["PlotRate"].ToString();
-                            obj.Type = r["Type"].ToString();
-                            obj.RemainingAmount = r["RemainingAmount"].ToString();
-                            obj.TotalPaidAmount = r["TotalPaid"].ToString();
-                            obj.EncryptKey = Crypto.Encrypt(r["PK_BookingId"].ToString());
-                            obj.SiteName = r["SiteName"].ToString();
-                            obj.SectorName = r["SectorName"].ToString();
-                            obj.BlockName = r["BlockName"].ToString();
-                            obj.PlotNumber = r["PlotNumber"].ToString();
-                            lst.Add(obj);
-                        }
-
-                        i = i + 1;
+                        Plot obj = new Plot();
+                        obj.PK_BookingId = r["PK_BookingID"].ToString();
+                        obj.PK_BookingDetailsId = r["PK_BookingDetailsId"].ToString();
+                        obj.BookingNumber = r["BookingNo"].ToString();
+                        obj.BookingDate = r["BookingDate"].ToString();
+                        obj.ReceiptDate = r["ReceiptDate"].ToString();
+                        obj.CustomerID = r["CustomerID"].ToString();
+                        obj.CustomerLoginID = r["CustomerLoginID"].ToString();
+                        obj.CustomerName = r["CustomerName"].ToString();
+                        obj.Address = r["Address"].ToString();
+                        obj.PlotInfo = r["PlotInfo"].ToString();
+                        obj.SiteName = r["SiteName"].ToString();
+                        obj.SectorName = r["SectorName"].ToString();
+                        obj.BlockName = r["BlockName"].ToString();
+                        obj.PlotNumber = r["PlotNumber"].ToString();
+                        obj.ActualPlotAmount = r["ActualPlotAmount"].ToString();
+                        obj.TotalPaidAmount = r["TotalDeposit"].ToString();
+                        obj.LatestPayment = r["LatestPayment"].ToString();
+                        obj.RemainingAmount = r["RemainingBalance"].ToString();
+                        obj.PlotArea = r["PlotArea"].ToString();
+                        obj.PaymentDate = r["PaymentDate"].ToString();
+                        
+                        obj.EncryptKey = Crypto.Encrypt(r["PK_BookingId"].ToString());
+                        lst.Add(obj);
                     }
                     model.lstPlot = lst;
                 }
@@ -4043,7 +4027,10 @@ namespace BhumangalFarm.Controllers
             model.SiteID = model.SiteID == "0" ? null : model.SiteID;
             model.SectorID = model.SectorID == "0" ? null : model.SectorID;
             model.BlockID = model.BlockID == "0" ? null : model.BlockID;
-            model.PaymentPlanID = model.PaymentPlanID == "0" ? null : model.PaymentPlanID;
+            model.BookingNumber = model.BookingNumber == " " ? null : model.BookingNumber;
+            model.PK_BookingId = model.PK_BookingId == "0" ? null : model.PK_BookingId;
+            model.PK_BookingDetailsId = model.PK_BookingDetailsId == "0" ? null : model.PK_BookingDetailsId;
+            //model.PaymentPlanID = model.PaymentPlanID == "0" ? null : model.PaymentPlanID;
             model.FromDate = string.IsNullOrEmpty(model.FromDate) ? null : Common.ConvertToSystemDate(model.FromDate, "dd/MM/yyyy");
             model.ToDate = string.IsNullOrEmpty(model.ToDate) ? null : Common.ConvertToSystemDate(model.ToDate, "dd/MM/yyyy");
 
@@ -4060,37 +4047,27 @@ namespace BhumangalFarm.Controllers
                     foreach (DataRow r in ds.Tables[0].Rows)
                     {
                         Plot obj = new Plot();
-                        obj.BookingStatus = r["BookingStatus"].ToString();
-                        obj.PK_BookingId = r["PK_BookingId"].ToString();
-                        obj.BranchID = r["BranchID"].ToString();
-                        obj.BranchName = r["BranchName"].ToString();
+                        obj.PK_BookingId = r["PK_BookingID"].ToString();
+                        obj.PK_BookingDetailsId = r["PK_BookingDetailsId"].ToString();
+                        obj.BookingNumber = r["BookingNo"].ToString();
+                        obj.BookingDate = r["BookingDate"].ToString();
+                        obj.ReceiptDate = r["ReceiptDate"].ToString();
                         obj.CustomerID = r["CustomerID"].ToString();
                         obj.CustomerLoginID = r["CustomerLoginID"].ToString();
                         obj.CustomerName = r["CustomerName"].ToString();
-                        obj.Contact = r["Mobile"].ToString();
-                        obj.AssociateID = r["AssociateID"].ToString();
-                        obj.AssociateLoginID = r["AssociateLoginID"].ToString();
-                        obj.Discount = r["Discount"].ToString();
-                        obj.AssociateName = r["AssociateName"].ToString();
-                        //obj.PlotNumber = r["PlotInfo"].ToString();
-                        obj.BookingDate = r["BookingDate"].ToString();
-                        obj.BookingAmount = r["BookingAmt"].ToString();
-                        obj.PaymentPlanID = r["PlanName"].ToString();
-                        obj.BookingNumber = r["BookingNo"].ToString();
-                        obj.PaidAmount = r["PaidAmount"].ToString();
-                        obj.PlotArea = r["PlotArea"].ToString();
-                        obj.PlotAmount = r["PlotAmount"].ToString();
-                        obj.NetPlotAmount = r["NetPlotAmount"].ToString();
-                        obj.PK_PLCCharge = r["PLCCharge"].ToString();
-                        obj.PlotRate = r["PlotRate"].ToString();
-                        obj.Type = r["Type"].ToString();
-                        obj.RemainingAmount = r["RemainingAmount"].ToString();
-                        obj.TotalPaidAmount = r["TotalPaid"].ToString();
-                        obj.EncryptKey = Crypto.Encrypt(r["PK_BookingId"].ToString());
+                        obj.Address = r["Address"].ToString();
+                        obj.PlotInfo = r["PlotInfo"].ToString();
                         obj.SiteName = r["SiteName"].ToString();
                         obj.SectorName = r["SectorName"].ToString();
                         obj.BlockName = r["BlockName"].ToString();
                         obj.PlotNumber = r["PlotNumber"].ToString();
+                        obj.ActualPlotAmount = r["ActualPlotAmount"].ToString();
+                        obj.TotalPaidAmount = r["TotalDeposit"].ToString();
+                        obj.LatestPayment = r["LatestPayment"].ToString();
+                        obj.RemainingAmount = r["RemainingBalance"].ToString();
+                        obj.PlotArea = r["PlotArea"].ToString();
+                        obj.PaymentDate = r["PaymentDate"].ToString();
+                        obj.EncryptKey = Crypto.Encrypt(r["PK_BookingId"].ToString());
                         lst.Add(obj);
                     }
                     model.lstPlot = lst;
