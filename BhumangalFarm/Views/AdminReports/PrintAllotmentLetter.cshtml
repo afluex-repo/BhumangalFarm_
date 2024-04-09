@@ -55,19 +55,19 @@
                             </div>
                             <div class="col-lg-12 col-md-12">
                                 <div class="table_header">
-                                    <p class="text-danger"><b>Allotment – Propossed Project — BHUMANGAL VATIKA</b></p>
-                                    <h2 class="text-danger h4">To, <br />  Mr./ Mrs. (Custmer Name with address)</h2>
+                                    <p class="text-danger"><b>Allotment – Propossed Project — @ViewBag.SiteName</b></p>
+                                    <h2 class="text-danger h4">To, <br />  Mr./ Mrs. (@ViewBag.CustomerName ,  @ViewBag.Address)</h2>
                                     <p>
-                                        This agreement is made at Lucknow on <b class="text-danger">(Date)……………………</b> by and between 1ST party Company, a
+                                        This agreement is made at Lucknow on date - <b class="text-danger">  @ViewBag.AllotmentLetterPrintDate </b> by and between 1ST party Company, a
                                         company incorporated under the provision of the Indian company act, 1956 having its registered office
                                         B2/21 Gomti Nagar Ext. Sec. -6 Gomtinagar Lucknow-226010
                                     </p>
-                                    <p>Plot Area- <b class="text-danger">………………….. Sq.Ft.</b></p>
+                                    <p>Plot Area- <b class="text-danger"> @ViewBag.PlotArea </b></p>
                                     <p>
                                         This allotments subject to (I) all the Terms & Conditions of Allotment forming part of a letter and (ii)
                                         applicable rules, regulations and law and shall prevail over all other terms and conditions given in our
                                         brochures, price lists, application/booking form and any other sale document. You are registered to quote
-                                        the Allotment  <b class="text-danger">Plot no – ……………………………. Sq.Ft.</b>
+                                        the Allotment<br />  Plot no – <b class="text-danger">  @ViewBag.PlotInfo </b>
                                     </p>
                                     <div class="text-end">
                                         <h6>Bhumangal Farm Devlopers Pvt. Ltd.</h6>
@@ -108,10 +108,10 @@
                                         </li>
                                         <li>
                                             The second party has approached the first party and expressed its desire purchase the plot
-                                            bearing no <b class="text-danger">…………………..</b>  Block <b class="text-danger">…………………..</b>  Phase <b class="text-danger">…………………..</b>  marked in the proposed
-                                            tentative layout of the said colony admeasuring <b class="text-danger">……………………</b>  square feet more fully
+                                            bearing no <b class="text-danger"> @ViewBag.PlotNumber </b>  Block <b class="text-danger"> @ViewBag.BlockName </b>  Phase <b class="text-danger"> @ViewBag.SectorName </b>  marked in the proposed
+                                            tentative layout of the said colony admeasuring <b class="text-danger"> @ViewBag.PlotArea </b>  more fully
                                             described in schedule appended to this agreement(Herein after referred to as the said plot
-                                            at a basic sale consideration of <b class="text-danger">RS…………………………………….</b>  ) and Corner/Park facing charge
+                                            at a basic sale consideration of <b class="text-danger">RS @ViewBag.ActualPlotAmountWithPLC</b>  ) and Corner/Park facing charge
                                             will be applicable 10% Corner & Park facing 10%.
                                         </li>
                                         <li>
@@ -176,10 +176,10 @@
                                     <ol>
                                         <li>
                                             That in Accordance with and subjects to terms and conditions set out in this agreement, The
-                                            First party agrees to sell to the second party ,the said plot bearing <b class="text-danger">…………………….</b> Block
-                                            <b class="text-danger">…………………….</b> Phase <b class="text-danger">…………………….</b> Admeasuring <b class="text-danger">…………………….</b> area, Comprised in the proposed tentative lay-out of the said colony ,More fully also described in schedule appended to this agreement
+                                            First party agrees to sell to the second party ,the said plot bearing <b class="text-danger"> @ViewBag.PlotNumber </b> Block
+                                            <b class="text-danger"> @ViewBag.BlockName  </b> Phase <b class="text-danger"> @ViewBag.SectorName </b> Admeasuring <b class="text-danger"> @ViewBag.PlotArea </b> area, Comprised in the proposed tentative lay-out of the said colony ,More fully also described in schedule appended to this agreement
                                             and the second parties agrees to purchase the said plot at a basic sale consideration price of
-                                            <b class="text-danger"> Rs……………………………..</b> That the second party has to pay a token sum of <b class="text-danger">…………………….</b>
+                                            <b class="text-danger"> Rs @ViewBag.ActualPlotAmountWithPLC</b> That the second party has to pay a token sum of <b class="text-danger"> @ViewBag.TotalPaidAmount </b>
                                             Being part payment towards the basic sale consideration of the said plot vide <b class="text-danger">
                                                 Bhumangal Farm
                                                 Devlopers Pvt. Ltd.
@@ -188,8 +188,10 @@
                                             consideration for the said plot in instalments in the following manner.
 
                                             <b class="d-block">EMI PLAN –EASY EMI</b>
-                                            On booking .EMI plan whichever applicable the provision of the foreign exchange management
-                                            act 1999 and the rules & regulations made there under. The second party shall be Responsible
+                                            On booking .EMI plan whichever applicable the 
+                                            @*provision of the foreign exchange management
+                                            act 1999 and the rules & regulations made there under. The*@
+                                             second party shall be Responsible
                                             to company with all the Guidelines, Policy, acts, regulations of India, Reserve bank of India,Gov.
                                             Dept. ,development authority, Nagar Panchayat etc. As applicable with regard to remittance of
                                             payment, acquisition, sale, purchase, transfer of property. The second party agrees that time is
@@ -199,7 +201,7 @@
                                             shall attract Interest/ penalty  10%of the default instalment amount.
                                         </li>
                                         <li>
-                                            The soon after the receipt of token sum of <b class="text-danger"> Rs. ………………………….</b> by the first party in the manner
+                                            The soon after the receipt of token sum of <b class="text-danger"> Rs. @ViewBag.TotalPaidAmount  </b> by the first party in the manner
                                             provided herein above, the first party shall make provisional allotment of the said plots marked
                                             in the proposed tentative lay- out for the said colony prepared by the first party /Architects
                                             and shown to the second party. The basic sale consideration price for the said plot shall be
@@ -219,7 +221,7 @@
                                         </li>
                                         <li>
                                             That the second party agrees and undertakes that out of the total amount to be paid by the
-                                            second party of the said plot , a sum of <b class="text-danger">Rs……………………………….</b> shall be treated money to
+                                            second party of the said plot , a sum of <b class="text-danger">Rs @ViewBag.TotalPaidAmount </b> shall be treated money to
                                             ensured fulfilment of the terns & conditions of this agreement including default in payment of
                                             instalment by the second party . However, the first party in exceptional circumstances,condone
                                             the delay in payment of instalments of basic sale consideration or nay other some payable
@@ -291,6 +293,12 @@
                                             the first party represented by its authorized signatory and the second party do hereby affixes
                                             their respective hands at lucknow on the date first mentioned herein above in presence of the
                                             following witnesses.
+                                        </li>
+                                        <li>
+                                            Your rate is Valid for 90 days from date of booking after then rate increse if full payment will not received to company
+                                        </li>
+                                        <li>
+                                            If you want you take emi plan then Rate is 599/- booking is 51000/- after then emi is 36 Month Regular emi
                                         </li>
                                         <ol>
                                             <li class="d-flex justify-content-lg-between">

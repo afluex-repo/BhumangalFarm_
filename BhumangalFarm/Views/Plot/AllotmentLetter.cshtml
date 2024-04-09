@@ -141,9 +141,11 @@
                                             <th>Block </th>
                                             <th>Plot Number</th>
                                             <th>Plot Area</th>
-                                            <th>Total Amt</th>
-                                            <th>Total Paid</th>
-                                            <th>Remainning Amount</th>
+                                            @*<th>Total Amt</th>*@
+                                            @*<th>Total Paid</th>
+                                            <th>Remainning Amount</th>*@
+
+                                            @*<th>Paid Amount</th>*@
                                             <th>Print</th>
                                         </tr>
                                     </thead>
@@ -166,9 +168,10 @@
                                                         <td>@Item.BlockName </td>
                                                         <td>@Item.PlotNumber</td>
                                                         <td> @Item.PlotArea</td>
-                                                        <td>@Item.ActualPlotAmount</td>
-                                                        <td>@Item.TotalPaidAmount</td>
-                                                        <td>@Item.RemainingAmount</td>
+                                                        @*<td>@Item.ActualPlotAmountWithPLC</td>*@
+                                                        @*<td>@Item.TotalPaidAmount</td>
+                                                        <td>@Item.RemainingAmount</td>*@
+                                                        @*<td>@Item.PaidAmount</td>*@
                                                         <td>
                                                             <div class="badge badge-success badge-shadow"><a target="_blank" class="badge badge-success badge-shadow" href="/AdminReports/PrintAllotmentLetter?Id=@Item.PK_BookingId"><span>Print Allotment Letter</span></a></div>
                                                         </td>

@@ -3319,16 +3319,14 @@ namespace BhumangalFarm.Controllers
             
         public ActionResult PrintAllotmentLetter(Plot model, string Id)
         {
-            model.CustomerID = Id;
+            model.PK_BookingId = Id;
             DataSet ds = model.GetAllotmentLetterList();
             if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
             {
                 ViewBag.PK_BookingId = ds.Tables[0].Rows[0]["PK_BookingID"].ToString();
-                ViewBag.PK_BookingDetailsId = ds.Tables[0].Rows[0]["PK_BookingDetailsId"].ToString();
                 ViewBag.BookingNumber = ds.Tables[0].Rows[0]["BookingNo"].ToString();
                 ViewBag.BookingDate = ds.Tables[0].Rows[0]["BookingDate"].ToString();
                 ViewBag.ReceiptDate = ds.Tables[0].Rows[0]["ReceiptDate"].ToString();
-                ViewBag.CustomerID = ds.Tables[0].Rows[0]["CustomerID"].ToString();
                 ViewBag.CustomerLoginID = ds.Tables[0].Rows[0]["CustomerLoginID"].ToString();
                 ViewBag.CustomerName = ds.Tables[0].Rows[0]["CustomerName"].ToString();
                 ViewBag.Address = ds.Tables[0].Rows[0]["Address"].ToString();
@@ -3337,12 +3335,15 @@ namespace BhumangalFarm.Controllers
                 ViewBag.SectorName = ds.Tables[0].Rows[0]["SectorName"].ToString();
                 ViewBag.BlockName = ds.Tables[0].Rows[0]["BlockName"].ToString();
                 ViewBag.PlotNumber = ds.Tables[0].Rows[0]["PlotNumber"].ToString();
+                ViewBag.ActualPlotAmountWithPLC = ds.Tables[0].Rows[0]["ActualPlotAmountWithPLC"].ToString();
                 ViewBag.ActualPlotAmount = ds.Tables[0].Rows[0]["ActualPlotAmount"].ToString();
                 ViewBag.TotalPaidAmount = ds.Tables[0].Rows[0]["TotalDeposit"].ToString();
                 ViewBag.LatestPayment = ds.Tables[0].Rows[0]["LatestPayment"].ToString();
                 ViewBag.RemainingAmount = ds.Tables[0].Rows[0]["RemainingBalance"].ToString();
                 ViewBag.PlotArea = ds.Tables[0].Rows[0]["PlotArea"].ToString();
                 ViewBag.PaymentDate = ds.Tables[0].Rows[0]["PaymentDate"].ToString();
+                ViewBag.Address = ds.Tables[0].Rows[0]["Address"].ToString();
+                ViewBag.AllotmentLetterPrintDate = ds.Tables[0].Rows[0]["AllotmentLetterPrintDate"].ToString();
                 ViewBag.EncryptKey = Crypto.Encrypt(ds.Tables[0].Rows[0]["PK_BookingId"].ToString());
             }
             return View(model);

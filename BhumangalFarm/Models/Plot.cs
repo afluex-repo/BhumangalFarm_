@@ -47,9 +47,8 @@ namespace BhumangalFarm.Models
         public string BranchName { get; set; }
         public string PlotID { get; set; }
         public string PlotNumber { get; set; }
-
+        public string ActualPlotAmountWithPLC { get; set; }
         public string PaymentModeRemarks { get; set; }
-        
         public string CustomerID { get; set; }
         public string ToCustomerID { get; set; }
         public string CustomerLoginID { get; set; }
@@ -73,9 +72,7 @@ namespace BhumangalFarm.Models
         public string TotalGeneratedAmount { get; set; }
         public string TotalPaidAmount { get; set; }
         public string LatestPayment { get; set; }
-        
-
-
+   
         public string ActualPlotAmount { get; set; }
         public string MyProLatestPaymentperty { get; set; }
         public string TotalRemainingAmount { get; set; }
@@ -358,13 +355,25 @@ namespace BhumangalFarm.Models
                                       new SqlParameter("@PK_SectorID", SectorID),
                                       new SqlParameter("@PK_BlockID", BlockID),
                                       new SqlParameter("@PlotNumber", PlotNumber),
-                                        new SqlParameter("@BookingNo", BookingNumber),
-                                      new SqlParameter("@PK_BookingDetailsId", PK_BookingDetailsId)
+                                        new SqlParameter("@BookingNo", BookingNumber)
                                   };
             DataSet ds = Connection.ExecuteQuery("GetAllotmentLetterList", para);
             return ds;
         }
-        
+
+
+        public DataSet PrintAllotmentLetterDetails()
+        {
+            SqlParameter[] para = { new SqlParameter("@PK_BookingId", PK_BookingId)
+                                  };
+            DataSet ds = Connection.ExecuteQuery("PrintAllotmentLetterDetails", para);
+            return ds;
+        }
+
+
+
+
+
         public DataSet GetBookingDetailsList1()
         {
             SqlParameter[] para = { new SqlParameter("@PK_BookingId", PK_BookingId),
