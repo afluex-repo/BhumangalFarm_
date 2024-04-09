@@ -3324,9 +3324,11 @@ namespace BhumangalFarm.Controllers
             if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
             {
                 ViewBag.PK_BookingId = ds.Tables[0].Rows[0]["PK_BookingID"].ToString();
+                ViewBag.PK_BookingDetailsId = ds.Tables[0].Rows[0]["PK_BookingDetailsId"].ToString();
                 ViewBag.BookingNumber = ds.Tables[0].Rows[0]["BookingNo"].ToString();
                 ViewBag.BookingDate = ds.Tables[0].Rows[0]["BookingDate"].ToString();
                 ViewBag.ReceiptDate = ds.Tables[0].Rows[0]["ReceiptDate"].ToString();
+                ViewBag.CustomerID = ds.Tables[0].Rows[0]["CustomerID"].ToString();
                 ViewBag.CustomerLoginID = ds.Tables[0].Rows[0]["CustomerLoginID"].ToString();
                 ViewBag.CustomerName = ds.Tables[0].Rows[0]["CustomerName"].ToString();
                 ViewBag.Address = ds.Tables[0].Rows[0]["Address"].ToString();
