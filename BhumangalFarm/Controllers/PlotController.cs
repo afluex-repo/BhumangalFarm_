@@ -3985,33 +3985,33 @@ namespace BhumangalFarm.Controllers
                 }
                 else
                 {
-                    foreach (DataRow r in ds.Tables[0].Rows)
-                    {
-                        Plot obj = new Plot();
-                        obj.PK_BookingId = r["PK_BookingID"].ToString();
-                        obj.BookingNumber = r["BookingNo"].ToString();
-                        obj.BookingDate = r["BookingDate"].ToString();
-                        obj.ReceiptDate = r["ReceiptDate"].ToString();
-                        obj.CustomerLoginID = r["CustomerLoginID"].ToString();
-                        obj.CustomerName = r["CustomerName"].ToString();
-                        obj.Address = r["Address"].ToString();
-                        obj.PlotInfo = r["PlotInfo"].ToString();
-                        obj.SiteName = r["SiteName"].ToString();
-                        obj.SectorName = r["SectorName"].ToString();
-                        obj.BlockName = r["BlockName"].ToString();
-                        obj.PlotNumber = r["PlotNumber"].ToString();
-                        obj.ActualPlotAmountWithPLC = r["ActualPlotAmountWithPLC"].ToString();
-                        obj.ActualPlotAmount = r["ActualPlotAmount"].ToString();
-                        obj.TotalPaidAmount = r["TotalDeposit"].ToString();
-                        obj.LatestPayment = r["LatestPayment"].ToString();
-                        obj.RemainingAmount = r["RemainingBalance"].ToString();
-                        obj.PlotArea = r["PlotArea"].ToString();
-                        obj.PaymentDate = r["PaymentDate"].ToString();
-                        
-                        obj.EncryptKey = Crypto.Encrypt(r["PK_BookingId"].ToString());
-                        lst.Add(obj);
-                    }
-                    model.lstPlot = lst;
+                        foreach (DataRow r in ds.Tables[0].Rows)
+                        {
+                            Plot obj = new Plot();
+                            obj.PK_BookingId = r["PK_BookingID"].ToString();
+                            obj.BookingNumber = r["BookingNo"].ToString();
+                            obj.BookingDate = r["BookingDate"].ToString();
+                            obj.ReceiptDate = r["ReceiptDate"].ToString();
+                            obj.CustomerLoginID = r["CustomerLoginID"].ToString();
+                            obj.CustomerName = r["CustomerName"].ToString();
+                            obj.Address = r["Address"].ToString();
+                            obj.PlotInfo = r["PlotInfo"].ToString();
+                            obj.SiteName = r["SiteName"].ToString();
+                            obj.SectorName = r["SectorName"].ToString();
+                            obj.BlockName = r["BlockName"].ToString();
+                            obj.PlotNumber = r["PlotNumber"].ToString();
+                            obj.ActualPlotAmountWithPLC = r["ActualPlotAmountWithPLC"].ToString();
+                            obj.ActualPlotAmount = r["ActualPlotAmount"].ToString();
+                            obj.TotalPaidAmount = r["TotalDepositAmount"].ToString();
+                            obj.RemainingAmount = r["RemainingBalance"].ToString();
+                           obj.AllotmentAmount = r["AllotmentAmount"].ToString();
+                            obj.PlotArea = r["PlotArea"].ToString();
+                            obj.PaymentDate = r["PaymentDate"].ToString();
+
+                            obj.EncryptKey = Crypto.Encrypt(r["PK_BookingId"].ToString());
+                            lst.Add(obj);                      
+                        }
+                        model.lstPlot = lst;                              
                 }
             }
             return View(model);
@@ -4057,9 +4057,9 @@ namespace BhumangalFarm.Controllers
                         obj.PlotNumber = r["PlotNumber"].ToString();
                         obj.ActualPlotAmountWithPLC = r["ActualPlotAmountWithPLC"].ToString();
                         obj.ActualPlotAmount = r["ActualPlotAmount"].ToString();
-                        obj.TotalPaidAmount = r["TotalDeposit"].ToString();
-                        obj.LatestPayment = r["LatestPayment"].ToString();
+                        obj.TotalPaidAmount = r["TotalDepositAmount"].ToString();
                         obj.RemainingAmount = r["RemainingBalance"].ToString();
+                        obj.AllotmentAmount = r["AllotmentAmount"].ToString();
                         obj.PlotArea = r["PlotArea"].ToString();
                         obj.PaymentDate = r["PaymentDate"].ToString();
 
