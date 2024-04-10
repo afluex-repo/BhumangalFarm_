@@ -3337,8 +3337,8 @@ namespace BhumangalFarm.Controllers
                 ViewBag.PlotNumber = ds.Tables[0].Rows[0]["PlotNumber"].ToString();
                 ViewBag.ActualPlotAmountWithPLC = ds.Tables[0].Rows[0]["ActualPlotAmountWithPLC"].ToString();
                 ViewBag.ActualPlotAmount = ds.Tables[0].Rows[0]["ActualPlotAmount"].ToString();
-                ViewBag.TotalPaidAmount = ds.Tables[0].Rows[0]["TotalDeposit"].ToString();
-                ViewBag.LatestPayment = ds.Tables[0].Rows[0]["LatestPayment"].ToString();
+                ViewBag.TotalPaidAmount = ds.Tables[0].Rows[0]["TotalDepositAmount"].ToString();
+                ViewBag.AllotmentAmount = ds.Tables[0].Rows[0]["AllotmentAmount"].ToString();
                 ViewBag.RemainingAmount = ds.Tables[0].Rows[0]["RemainingBalance"].ToString();
                 ViewBag.PlotArea = ds.Tables[0].Rows[0]["PlotArea"].ToString();
                 ViewBag.PaymentDate = ds.Tables[0].Rows[0]["PaymentDate"].ToString();
