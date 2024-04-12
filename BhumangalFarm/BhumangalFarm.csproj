@@ -37,7 +37,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <IntermediateOutputPath>C:\Users\MULTIL~1\AppData\Local\Temp\vs5695.tmp\Debug\</IntermediateOutputPath>
+    <IntermediateOutputPath>C:\Users\MULTIL~1\AppData\Local\Temp\vsCF62.tmp\Debug\</IntermediateOutputPath>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>full</DebugType>
@@ -46,7 +46,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <IntermediateOutputPath>C:\Users\MULTIL~1\AppData\Local\Temp\vs5695.tmp\Release\</IntermediateOutputPath>
+    <IntermediateOutputPath>C:\Users\MULTIL~1\AppData\Local\Temp\vsCF62.tmp\Release\</IntermediateOutputPath>
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   <ItemGroup>
@@ -7316,8 +7316,6 @@
     <Content Include="WebsiteCss\images\events\event7.jpeg" />
     <Content Include="WebsiteCss\images\events\event8.jpeg" />
     <Content Include="WebsiteCss\images\events\event9.jpeg" />
-    <Content Include="WebsiteCss\images\favicon.png" />
-    <Content Include="WebsiteCss\images\footer-logo.png" />
     <Content Include="WebsiteCss\images\free-2.png" />
     <Content Include="WebsiteCss\images\gallery\herbal-pharma-product-1.jpg" />
     <Content Include="WebsiteCss\images\gallery\herbal-pharma-product-2.jpg" />
@@ -7352,14 +7350,12 @@
     <Content Include="WebsiteCss\images\ipl\iplb.jpg" />
     <Content Include="WebsiteCss\images\ipl\iplc.jpg" />
     <Content Include="WebsiteCss\images\ipl\ipld.jpg" />
-    <Content Include="WebsiteCss\images\landing-logo.png" />
     <Content Include="WebsiteCss\images\legal-document\certificate.jpg" />
     <Content Include="WebsiteCss\images\legal-document\certification-1.jpeg" />
     <Content Include="WebsiteCss\images\legal-document\certification-2.jpeg" />
     <Content Include="WebsiteCss\images\legal-document\certification-3.jpeg" />
     <Content Include="WebsiteCss\images\legal-document\certification-4.jpeg" />
     <Content Include="WebsiteCss\images\legal-document\pan-card-dhara.jpg" />
-    <Content Include="WebsiteCss\images\logo-2.png" />
     <Content Include="WebsiteCss\images\main-slider\banner1.jpg" />
     <Content Include="WebsiteCss\images\main-slider\banner2.jpg" />
     <Content Include="WebsiteCss\images\main-slider\banner3.jpg" />
@@ -7766,6 +7762,7 @@
     <Content Include="Website\fonts\webfonts\fa-thin-100.ttf" />
     <Content Include="Website\fonts\webfonts\fa-thin-100.woff" />
     <Content Include="Website\fonts\webfonts\fa-thin-100.woff2" />
+    <None Include="Properties\PublishProfiles\Bhumangal.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -8032,13 +8029,6 @@
     <Content Include="webAssets\css\fonts\themify9f24.ttf" />
     <Content Include="webAssets\css\fonts\themify9f24.woff" />
     <Content Include="webAssets\css\fonts\themifyd41d.eot" />
-    <Content Include="Website\About.cshtml" />
-    <Content Include="Website\ContactUs.cshtml" />
-    <Content Include="Website\EventGallery.cshtml" />
-    <Content Include="Website\Index.cshtml" />
-    <Content Include="Website\Property.cshtml" />
-    <Content Include="Website\Signin.cshtml" />
-    <Content Include="Website\Signup.cshtml" />
     <Content Include="Views\Website\OurTeam.cshtml" />
     <Content Include="WebsiteCss\assets-old\fonts\fontawesome-webfont3e6e.eot" />
     <Content Include="WebsiteCss\assets-old\fonts\fontawesome-webfont3e6e.ttf" />
@@ -8075,7 +8065,6 @@
     <Folder Include="KYCDocuments\" />
     <Folder Include="NewFolder1\" />
     <Folder Include="PlotHouseDocument\" />
-    <Folder Include="Properties\PublishProfiles\" />
     <Folder Include="Views\AdminDashboard\" />
     <Folder Include="Views\AgentServices\" />
     <Folder Include="WebsiteCss\images\products-packages\" />
