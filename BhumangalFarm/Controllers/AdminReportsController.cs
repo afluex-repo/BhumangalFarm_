@@ -293,7 +293,7 @@ namespace BhumangalFarm.Controllers
         [OnAction(ButtonName = "Search")]
         public ActionResult GetSummaryRep(Plot model)
         {
-            
+
 
             int count1 = 0;
             Master objmaster = new Master();
@@ -1280,6 +1280,9 @@ namespace BhumangalFarm.Controllers
                     //ViewBag.NetPlotAmount = ds.Tables[0].Rows[0]["NetPlotAmount"].ToString();
                     ViewBag.NetPlotAmountInWords = ds.Tables[0].Rows[0]["NetPlotAmountInWords"].ToString();
 
+                    ViewBag.ActualPlotAmountInWords = ds.Tables[0].Rows[0]["ActualPlotAmountInWords"].ToString();
+                    
+
                     ViewBag.TransactionNo = ds.Tables[0].Rows[0]["TransactionNo"].ToString();
                     ViewBag.TransactionDate = ds.Tables[0].Rows[0]["TransactionDate"].ToString();
                     ViewBag.BankName = ds.Tables[0].Rows[0]["BankName"].ToString();
@@ -1289,6 +1292,10 @@ namespace BhumangalFarm.Controllers
                     ViewBag.SiteName = ds.Tables[0].Rows[0]["SiteName"].ToString();
                     ViewBag.InstallmentNo = ds.Tables[0].Rows[0]["InstallmentNo"].ToString();
                     //ViewBag.AdjustmentloginId = ds.Tables[0].Rows[0]["AdjustmentloginId"].ToString();
+                    ViewBag.ActualPlotAmount = ds.Tables[0].Rows[0]["ActualPlotAmount"].ToString();
+                    ViewBag.ReceiptDate = ds.Tables[0].Rows[0]["ReceiptDate"].ToString();
+                    ViewBag.Remarks = ds.Tables[0].Rows[0]["Remarks"].ToString();
+
 
                     ViewBag.CompanyName = SoftwareDetails.CompanyName;
                     ViewBag.CompanyAddress = SoftwareDetails.CompanyAddress;
@@ -2900,7 +2907,7 @@ namespace BhumangalFarm.Controllers
         public ActionResult IsKharijDakhilList(Reports model)
         {
             List<Reports> lst = new List<Reports>();
-         
+
             DataSet ds = model.GetKharijDakhilList();
             if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
             {
@@ -2948,7 +2955,7 @@ namespace BhumangalFarm.Controllers
             }
             return View(model);
         }
-        
+
         public ActionResult DeleteIsKharijDakhil(Reports model, string Id)
         {
             string FormName = "";
@@ -3050,7 +3057,7 @@ namespace BhumangalFarm.Controllers
             return View(objreports);
         }
 
-      
+
         public ActionResult DifferentialIncome(Reports objreports)
         {
             List<Reports> lst = new List<Reports>();
@@ -3166,7 +3173,7 @@ namespace BhumangalFarm.Controllers
 
         public ActionResult AssociateSelfdownBusinessReport()
         {
-           return View();
+            return View();
         }
         [HttpPost]
         [ActionName("AssociateSelfdownBusinessReport")]
@@ -3206,7 +3213,7 @@ namespace BhumangalFarm.Controllers
                 {
                     if (desgnationCount == 0)
                     {
-                        ddlDesignation.Add(new SelectListItem { Text = "Select Designation"});
+                        ddlDesignation.Add(new SelectListItem { Text = "Select Designation" });
                     }
                     ddlDesignation.Add(new SelectListItem { Text = r["DesignationName"].ToString(), Value = r["PK_DesignationID"].ToString() });
                     desgnationCount = desgnationCount + 1;
@@ -3237,7 +3244,7 @@ namespace BhumangalFarm.Controllers
                 {
                     if (desgnationCount == 0)
                     {
-                        ddlDesignation.Add(new SelectListItem { Text = "Select Designation"});
+                        ddlDesignation.Add(new SelectListItem { Text = "Select Designation" });
                     }
                     ddlDesignation.Add(new SelectListItem { Text = r["DesignationName"].ToString(), Value = r["PK_DesignationID"].ToString() });
                     desgnationCount = desgnationCount + 1;
@@ -3270,9 +3277,90 @@ namespace BhumangalFarm.Controllers
                     lst.Add(obj);
                 }
                 model.lstAutoUpdateDesignation = lst;
- 
+
             }
             return View(model);
         }
+
+
+
+        //public ActionResult AllotmentLetter(string id)
+        //{
+        //    TraditionalAssociate obj = new TraditionalAssociate();
+        //    obj.UserID = Crypto.Decrypt(id);
+
+        //    DataSet ds = obj.GetList();
+        //    if (ds != null && ds.Tables[0].Rows.Count > 0)
+        //    {
+
+        //        // obj.Result = "yes";
+        //        //ViewBag.PK_BookingId = ds.Tables[0].Rows[0]["PK_BookingId"].ToString();
+        //        ViewBag.AssociateID = ds.Tables[0].Rows[0]["AssociateId"].ToString();
+        //        ViewBag.AssociateName = ds.Tables[0].Rows[0]["AssociateName"].ToString();
+        //        ViewBag.Address = ds.Tables[0].Rows[0]["Address"].ToString();
+        //        ViewBag.Pin = ds.Tables[0].Rows[0]["PinCode"].ToString();
+        //        ViewBag.State = ds.Tables[0].Rows[0]["State"].ToString();
+        //        ViewBag.City = ds.Tables[0].Rows[0]["City"].ToString();
+        //        ViewBag.Contact = ds.Tables[0].Rows[0]["Mobile"].ToString();
+        //        ViewBag.Designation = ds.Tables[0].Rows[0]["DesignationName"].ToString();
+
+        //        ViewBag.MemberAccNo = ds.Tables[0].Rows[0]["MemberAccNo"].ToString();
+        //        ViewBag.MemberBankName = ds.Tables[0].Rows[0]["MemberBankName"].ToString();
+        //        ViewBag.MemberBranch = ds.Tables[0].Rows[0]["MemberBranch"].ToString();
+        //        ViewBag.IFSCCode = ds.Tables[0].Rows[0]["IFSCCode"].ToString();
+        //        ViewBag.ProfilePic = ds.Tables[0].Rows[0]["ProfilePic"].ToString();
+
+
+        //        ViewBag.CompanyName = SoftwareDetails.CompanyName;
+        //    }
+
+        //    return View(obj);
+        //}
+
+            
+        public ActionResult PrintAllotmentLetter(Plot model, string Id)
+        {
+            model.PK_BookingId = Id;
+            DataSet ds = model.GetAllotmentLetterList();
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                ViewBag.PK_BookingId = ds.Tables[0].Rows[0]["PK_BookingID"].ToString();
+                ViewBag.BookingNumber = ds.Tables[0].Rows[0]["BookingNo"].ToString();
+                ViewBag.BookingDate = ds.Tables[0].Rows[0]["BookingDate"].ToString();
+                ViewBag.ReceiptDate = ds.Tables[0].Rows[0]["ReceiptDate"].ToString();
+                ViewBag.CustomerLoginID = ds.Tables[0].Rows[0]["CustomerLoginID"].ToString();
+                ViewBag.CustomerName = ds.Tables[0].Rows[0]["CustomerName"].ToString();
+                ViewBag.Address = ds.Tables[0].Rows[0]["Address"].ToString();
+                ViewBag.PlotInfo = ds.Tables[0].Rows[0]["PlotInfo"].ToString();
+                ViewBag.SiteName = ds.Tables[0].Rows[0]["SiteName"].ToString();
+                ViewBag.SectorName = ds.Tables[0].Rows[0]["SectorName"].ToString();
+                ViewBag.BlockName = ds.Tables[0].Rows[0]["BlockName"].ToString();
+                ViewBag.PlotNumber = ds.Tables[0].Rows[0]["PlotNumber"].ToString();
+                ViewBag.ActualPlotAmountWithPLC = ds.Tables[0].Rows[0]["ActualPlotAmountWithPLC"].ToString();
+                ViewBag.ActualPlotAmount = ds.Tables[0].Rows[0]["ActualPlotAmount"].ToString();
+                ViewBag.TotalPaidAmount = ds.Tables[0].Rows[0]["TotalDepositAmount"].ToString();
+                ViewBag.AllotmentAmount = ds.Tables[0].Rows[0]["AllotmentAmount"].ToString();
+                ViewBag.RemainingAmount = ds.Tables[0].Rows[0]["RemainingBalance"].ToString();
+                ViewBag.PlotArea = ds.Tables[0].Rows[0]["PlotArea"].ToString();
+                ViewBag.PaymentDate = ds.Tables[0].Rows[0]["PaymentDate"].ToString();
+                ViewBag.Address = ds.Tables[0].Rows[0]["Address"].ToString();
+                ViewBag.AllotmentLetterPrintDate = ds.Tables[0].Rows[0]["AllotmentLetterPrintDate"].ToString();
+                ViewBag.EncryptKey = Crypto.Encrypt(ds.Tables[0].Rows[0]["PK_BookingId"].ToString());
+            }
+            return View(model);
+
+
+        }
+
+
+
+
+
+
+
+
+
+
+
     }
 }
