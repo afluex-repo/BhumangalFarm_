@@ -48,6 +48,10 @@ namespace BhumangalFarm.Models
         public string PlotID { get; set; }
         public string PlotNumber { get; set; }
         public string ActualPlotAmountWithPLC { get; set; }
+
+
+        public float ActualPlotAmountWithPLCss { get; set; }
+
         public string PaymentModeRemarks { get; set; }
         public string CustomerID { get; set; }
         public string ToCustomerID { get; set; }
@@ -72,7 +76,12 @@ namespace BhumangalFarm.Models
         public string TotalGeneratedAmount { get; set; }
         public string TotalPaidAmount { get; set; }
         public string LatestPayment { get; set; }
-   
+        public string DepositAmountNew { get; set; }
+
+
+        
+
+
         public string ActualPlotAmount { get; set; }
         public string MyProLatestPaymentperty { get; set; }
         public string TotalRemainingAmount { get; set; }
@@ -361,18 +370,7 @@ namespace BhumangalFarm.Models
             return ds;
         }
 
-
-        public DataSet PrintAllotmentLetterDetails()
-        {
-            SqlParameter[] para = { new SqlParameter("@PK_BookingId", PK_BookingId)
-                                  };
-            DataSet ds = Connection.ExecuteQuery("PrintAllotmentLetterDetails", para);
-            return ds;
-        }
-
-
-
-
+        
 
         public DataSet GetBookingDetailsList1()
         {
@@ -560,6 +558,7 @@ namespace BhumangalFarm.Models
         public string PK_BookingDetailsId { get; set; }
         public string InstallmentNo { get; set; }
         public string RemainingAmount { get; set; }
+        public string AllotmentAmount { get; set; }
         public string GeneratedAmount { get; set; }
         public string InstallmentDate { get; set; }
         public string BookingNumber { get; set; }
