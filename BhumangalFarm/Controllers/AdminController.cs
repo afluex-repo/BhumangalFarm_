@@ -2158,6 +2158,7 @@ namespace BhumangalFarm.Controllers
             //    model.lstassociate = lst;
 
             //}
+            model.ClosingMonth = ds.Tables[1].Rows[0]["NextMonthDate"].ToString();
             model.LastClosingDate = ds.Tables[1].Rows[0]["ClosingDate"].ToString();
             model.PayoutNo = ds.Tables[1].Rows[0]["PayoutNo"].ToString();
             return View(model);
