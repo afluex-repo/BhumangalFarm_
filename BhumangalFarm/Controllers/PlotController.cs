@@ -554,7 +554,7 @@ namespace BhumangalFarm.Controllers
                         string str = BLSMS.Booking(Bookno, Bookamt, AsstName, plot, plotamount);
                         try
                         {
-                            BLSMS.SendSMS(mob, str,tempid);
+                            BLSMS.SendSMS(mob, str, tempid);
                         }
                         catch { }
 
@@ -574,10 +574,11 @@ namespace BhumangalFarm.Controllers
 
             return RedirectToAction(FormName, Controller);
         }
-        public ActionResult PrintPlotBooking(Plot newdata,string PrintId)
+        public ActionResult PrintPlotBooking(Plot newdata, string PrintId)
         {
             //Plot newdata = new Plot();
             newdata.PK_BookingId = Crypto.Decrypt(PrintId);
+
             ViewBag.Name = Session["Name"].ToString();
             DataSet ds = newdata.List();
 
@@ -602,7 +603,7 @@ namespace BhumangalFarm.Controllers
                     ViewBag.SectorName = ds.Tables[0].Rows[0]["SectorName"].ToString();
                     ViewBag.BlockName = ds.Tables[0].Rows[0]["BlockName"].ToString();
                     ViewBag.PlotNo = ds.Tables[0].Rows[0]["PlotNumber"].ToString();
-
+                    ViewBag.TotalDeposit = ds.Tables[0].Rows[0]["TotalDeposit"].ToString();
                     ViewBag.PlotNumber = ds.Tables[0].Rows[0]["PlotInfo"].ToString();
                     ViewBag.PaidAmount = ds.Tables[0].Rows[0]["PaidAmount"].ToString();
                     //ViewBag.PaidAmount = ds.Tables[0].Rows[0]["latestpayment"].ToString();
@@ -630,6 +631,9 @@ namespace BhumangalFarm.Controllers
                     ViewBag.SiteName = ds.Tables[0].Rows[0]["SiteName"].ToString();
                     ViewBag.InstallmentNo = ds.Tables[0].Rows[0]["InstallmentNo"].ToString();
                     //ViewBag.AdjustmentloginId = ds.Tables[0].Rows[0]["AdjustmentloginId"].ToString();
+                    ViewBag.ActualPlotAmount = ds.Tables[0].Rows[0]["ActualPlotAmount"].ToString();
+                    ViewBag.ReceiptDate = ds.Tables[0].Rows[0]["ReceiptDate"].ToString();
+                    ViewBag.Remarks = ds.Tables[0].Rows[0]["Remarks"].ToString();
 
                     ViewBag.CompanyName = SoftwareDetails.CompanyName;
                     ViewBag.CompanyAddress = SoftwareDetails.CompanyAddress;
@@ -709,7 +713,7 @@ namespace BhumangalFarm.Controllers
                 {
                     var i = 0;
                     foreach (DataRow r in ds.Tables[0].Rows)
-                        {
+                    {
 
                         if (i < 25)
                         {
@@ -747,10 +751,10 @@ namespace BhumangalFarm.Controllers
                             obj.PlotNumber = r["PlotNumber"].ToString();
                             lst.Add(obj);
                         }
-                       
-                         i = i + 1;
-                        }
-                        model.lstPlot = lst;
+
+                        i = i + 1;
+                    }
+                    model.lstPlot = lst;
                 }
             }
             return View(model);
@@ -1621,7 +1625,7 @@ namespace BhumangalFarm.Controllers
                         string str = BLSMS.PlotAllotment(name, Plot, amt);
                         try
                         {
-                            BLSMS.SendSMS(mob, str,tempid);
+                            BLSMS.SendSMS(mob, str, tempid);
                         }
                         catch { }
                     }
@@ -1641,7 +1645,7 @@ namespace BhumangalFarm.Controllers
             return RedirectToAction(FormName, Controller);
         }
         #endregion
-        
+
         #region EMIPayment
 
         public ActionResult EMIPayment(string PK_BookingId)
@@ -1659,7 +1663,7 @@ namespace BhumangalFarm.Controllers
 
                     model.PlotID = dsBookingDetails.Tables[0].Rows[0]["Fk_PlotId"].ToString();
                     model.SiteID = dsBookingDetails.Tables[0].Rows[0]["FK_SiteID"].ToString();
-                    
+
                     #region GetSectors
                     List<SelectListItem> ddlSector = new List<SelectListItem>();
                     DataSet dsSector = model.GetSectorList();
@@ -1901,7 +1905,7 @@ namespace BhumangalFarm.Controllers
                         string str = BLSMS.EMIPayment(name, Plot, bookno, instno, amt);
                         try
                         {
-                            BLSMS.SendSMS(mob, str,tempid);
+                            BLSMS.SendSMS(mob, str, tempid);
                         }
                         catch
                         {
@@ -3082,10 +3086,10 @@ namespace BhumangalFarm.Controllers
 
             if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
             {
-              
+
                 foreach (DataRow r in ds.Tables[0].Rows)
                 {
-                   
+
                     Plot obj = new Plot();
                     obj.AssociateID = r["AssociateLoginID"].ToString();
                     obj.AssociateName = r["AssociateName"].ToString();
@@ -3201,8 +3205,8 @@ namespace BhumangalFarm.Controllers
                 }
                 model.lstPlot = lst;
             }
-                #region ddlPaymentMode
-                int count3 = 0;
+            #region ddlPaymentMode
+            int count3 = 0;
             List<SelectListItem> ddlPaymentMode = new List<SelectListItem>();
             DataSet dsPayMode = model.GetPaymentModeList();
             if (dsPayMode != null && dsPayMode.Tables.Count > 0 && dsPayMode.Tables[0].Rows.Count > 0)
@@ -3839,7 +3843,7 @@ namespace BhumangalFarm.Controllers
             string Controller = "";
             try
             {
-                if(obj.IsKharijDakhil != null)
+                if (obj.IsKharijDakhil != null)
                 {
                     obj.IsKharijDakhila = "1";
                 }
@@ -3849,7 +3853,7 @@ namespace BhumangalFarm.Controllers
                 }
                 obj.AddedBy = Session["Pk_AdminId"].ToString();
                 obj.KharijDakhilDate = string.IsNullOrEmpty(obj.KharijDakhilDate) ? null : Common.ConvertToSystemDate(obj.KharijDakhilDate, "dd/MM/yyyy");
-              
+
                 DataSet ds = obj.SaveIsKharijDakhil();
                 if (ds != null && ds.Tables.Count > 0)
                 {
@@ -3917,5 +3921,211 @@ namespace BhumangalFarm.Controllers
 
             return Json(model, JsonRequestBehavior.AllowGet);
         }
+
+
+
+
+
+        public ActionResult AllotmentLetter(Plot model)
+        {
+            List<Plot> lst = new List<Plot>();
+            #region ddlSite
+            int count1 = 0;
+            List<SelectListItem> ddlSite = new List<SelectListItem>();
+            DataSet dsSite = model.GetSiteList();
+            if (dsSite != null && dsSite.Tables.Count > 0 && dsSite.Tables[0].Rows.Count > 0)
+            {
+                foreach (DataRow r in dsSite.Tables[0].Rows)
+                {
+                    if (count1 == 0)
+                    {
+                        ddlSite.Add(new SelectListItem { Text = "Select Site", Value = "0" });
+                    }
+                    ddlSite.Add(new SelectListItem { Text = r["SiteName"].ToString(), Value = r["PK_SiteID"].ToString() });
+                    count1 = count1 + 1;
+
+                }
+            }
+            ViewBag.ddlSite = ddlSite;
+            #endregion
+
+            List<SelectListItem> ddlSector = new List<SelectListItem>();
+            ddlSector.Add(new SelectListItem { Text = "Select Phase", Value = "0" });
+            ViewBag.ddlSector = ddlSector;
+
+            List<SelectListItem> ddlBlock = new List<SelectListItem>();
+            ddlBlock.Add(new SelectListItem { Text = "Select Block", Value = "0" });
+            ViewBag.ddlBlock = ddlBlock;
+
+
+
+
+            int count2 = 0;
+            List<SelectListItem> ddlBookingType = new List<SelectListItem>();
+            DataSet dlBookingType = model.GetPlanList();
+            if (dlBookingType != null && dlBookingType.Tables.Count > 0 && dlBookingType.Tables[0].Rows.Count > 0)
+            {
+                foreach (DataRow r in dlBookingType.Tables[0].Rows)
+                {
+                    if (count2 == 0)
+                    {
+                        ddlBookingType.Add(new SelectListItem { Text = "Select Plan", Value = "0" });
+                    }
+                    ddlBookingType.Add(new SelectListItem { Text = r["PlanName"].ToString(), Value = r["PK_PlanID"].ToString() });
+                    count2 = count2 + 1;
+
+                }
+            }
+            ViewBag.ddlBookingType = ddlBookingType;
+            DataSet ds = model.GetAllotmentLetterList();
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                if (ds.Tables[0].Rows[0][0].ToString() == "0")
+                {
+                    TempData["Plot"] = ds.Tables[0].Rows[0]["ErrorMessage"].ToString();
+                }
+                else
+                {
+                        foreach (DataRow r in ds.Tables[0].Rows)
+                        {
+                            Plot obj = new Plot();
+                            obj.PK_BookingId = r["PK_BookingID"].ToString();
+                            obj.BookingNumber = r["BookingNo"].ToString();
+                            obj.BookingDate = r["BookingDate"].ToString();
+                            obj.ReceiptDate = r["ReceiptDate"].ToString();
+                            obj.CustomerLoginID = r["CustomerLoginID"].ToString();
+                            obj.CustomerName = r["CustomerName"].ToString();
+                            obj.Address = r["Address"].ToString();
+                            obj.PlotInfo = r["PlotInfo"].ToString();
+                            obj.SiteName = r["SiteName"].ToString();
+                            obj.SectorName = r["SectorName"].ToString();
+                            obj.BlockName = r["BlockName"].ToString();
+                            obj.PlotNumber = r["PlotNumber"].ToString();
+                            obj.ActualPlotAmountWithPLC = r["ActualPlotAmountWithPLC"].ToString();
+                            obj.ActualPlotAmount = r["ActualPlotAmount"].ToString();
+                            obj.TotalPaidAmount = r["TotalDepositAmount"].ToString();
+                            obj.RemainingAmount = r["RemainingBalance"].ToString();
+                           obj.AllotmentAmount = r["AllotmentAmount"].ToString();
+                            obj.PlotArea = r["PlotArea"].ToString();
+                            obj.PaymentDate = r["PaymentDate"].ToString();
+
+                            obj.EncryptKey = Crypto.Encrypt(r["PK_BookingId"].ToString());
+                            lst.Add(obj);                      
+                        }
+                        model.lstPlot = lst;                              
+                }
+            }
+            return View(model);
+        }
+
+        [HttpPost]
+        [ActionName("AllotmentLetter")]
+        [OnAction(ButtonName = "Search")]
+        public ActionResult GetAllotmentLetter(Plot model)
+        {
+            List<Plot> lst = new List<Plot>();
+            model.SiteID = model.SiteID == "0" ? null : model.SiteID;
+            model.SectorID = model.SectorID == "0" ? null : model.SectorID;
+            model.BlockID = model.BlockID == "0" ? null : model.BlockID;
+            model.BookingNumber = model.BookingNumber == " " ? null : model.BookingNumber;
+            model.PK_BookingId = model.PK_BookingId == "0" ? null : model.PK_BookingId;
+            model.FromDate = string.IsNullOrEmpty(model.FromDate) ? null : Common.ConvertToSystemDate(model.FromDate, "dd/MM/yyyy");
+            model.ToDate = string.IsNullOrEmpty(model.ToDate) ? null : Common.ConvertToSystemDate(model.ToDate, "dd/MM/yyyy");
+            DataSet ds = model.GetAllotmentLetterList();
+
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                if (ds.Tables[0].Rows[0][0].ToString() == "0")
+                {
+                    TempData["Plot"] = ds.Tables[0].Rows[0]["ErrorMessage"].ToString();
+                }
+                else
+                {
+                    foreach (DataRow r in ds.Tables[0].Rows)
+                    {
+                        Plot obj = new Plot();
+                        obj.PK_BookingId = r["PK_BookingID"].ToString();
+                        obj.BookingNumber = r["BookingNo"].ToString();
+                        obj.BookingDate = r["BookingDate"].ToString();
+                        obj.ReceiptDate = r["ReceiptDate"].ToString();
+                        obj.CustomerLoginID = r["CustomerLoginID"].ToString();
+                        obj.CustomerName = r["CustomerName"].ToString();
+                        obj.Address = r["Address"].ToString();
+                        obj.PlotInfo = r["PlotInfo"].ToString();
+                        obj.SiteName = r["SiteName"].ToString();
+                        obj.SectorName = r["SectorName"].ToString();
+                        obj.BlockName = r["BlockName"].ToString();
+                        obj.PlotNumber = r["PlotNumber"].ToString();
+                        obj.ActualPlotAmountWithPLC = r["ActualPlotAmountWithPLC"].ToString();
+                        obj.ActualPlotAmount = r["ActualPlotAmount"].ToString();
+                        obj.TotalPaidAmount = r["TotalDepositAmount"].ToString();
+                        obj.RemainingAmount = r["RemainingBalance"].ToString();
+                        obj.AllotmentAmount = r["AllotmentAmount"].ToString();
+                        obj.PlotArea = r["PlotArea"].ToString();
+                        obj.PaymentDate = r["PaymentDate"].ToString();
+
+                        obj.EncryptKey = Crypto.Encrypt(r["PK_BookingId"].ToString());
+                        lst.Add(obj);
+                    }
+                    model.lstPlot = lst;
+                }
+            }
+            #region ddlSite
+            int count1 = 0;
+            List<SelectListItem> ddlSite = new List<SelectListItem>();
+            DataSet dsSite = model.GetSiteList();
+            if (dsSite != null && dsSite.Tables.Count > 0 && dsSite.Tables[0].Rows.Count > 0)
+            {
+                foreach (DataRow r in dsSite.Tables[0].Rows)
+                {
+                    if (count1 == 0)
+                    {
+                        ddlSite.Add(new SelectListItem { Text = "Select Site", Value = "0" });
+                    }
+                    ddlSite.Add(new SelectListItem { Text = r["SiteName"].ToString(), Value = r["PK_SiteID"].ToString() });
+                    count1 = count1 + 1;
+
+                }
+            }
+            ViewBag.ddlSite = ddlSite;
+            #endregion
+
+            int count2 = 0;
+            List<SelectListItem> ddlBookingType = new List<SelectListItem>();
+            DataSet dlBookingType = model.GetPlanList();
+            if (dlBookingType != null && dlBookingType.Tables.Count > 0 && dlBookingType.Tables[0].Rows.Count > 0)
+            {
+                foreach (DataRow r in dlBookingType.Tables[0].Rows)
+                {
+                    if (count2 == 0)
+                    {
+                        ddlBookingType.Add(new SelectListItem { Text = "Select Plan", Value = "0" });
+                    }
+                    ddlBookingType.Add(new SelectListItem { Text = r["PlanName"].ToString(), Value = r["PK_PlanID"].ToString() });
+                    count2 = count2 + 1;
+
+                }
+            }
+            ViewBag.ddlBookingType = ddlBookingType;
+
+
+            List<SelectListItem> ddlSector = new List<SelectListItem>();
+            ddlSector.Add(new SelectListItem { Text = "Select Phase", Value = "0" });
+            ViewBag.ddlSector = ddlSector;
+
+            List<SelectListItem> ddlBlock = new List<SelectListItem>();
+            ddlBlock.Add(new SelectListItem { Text = "Select Block", Value = "0" });
+            ViewBag.ddlBlock = ddlBlock;
+            return View(model);
+        }
+
+
+
+
+
+
+
+
+
     }
 }

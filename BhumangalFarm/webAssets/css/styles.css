@@ -58,7 +58,7 @@ body {
     background: #ffffff;
     color: #72809D;
     font-size: 15px;
-    font-family: 'Jost', sans-serif;
+    font-family: sans-serif;
     margin: 0;
     overflow-x: hidden !important;
     font-weight: 400;
@@ -3120,8 +3120,8 @@ nav a:hover {
 .nav-menu>li>a {
     padding: 25px 12px;
     display: inline-block;
-    font-family: 'Jost', sans-serif;
-    font-weight: 500;
+    font-family: sans-serif;
+    font-weight: 600;
     transition: color .3s, background .3s;
     font-size: 16px;
 }
@@ -3489,7 +3489,7 @@ nav a:hover {
     -o-transition: all 0.3s ease 0s;
     transition: all 0.3s ease 0s;
     font-weight: 500;
-    font-family: 'Jost', sans-serif;
+    font-family: sans-serif;
 }
 
 .nav-dropdown>li:last-child>a {
@@ -3956,7 +3956,7 @@ nav a {
     font-weight: 500;
     color: #495363;
     position: relative;
-    font-family: 'Jost', sans-serif;
+    font-family: sans-serif;
     padding: 1rem 1.2rem;
     border-bottom: 1px solid #edf0f3;
 }
@@ -3983,7 +3983,7 @@ nav a {
     border-radius: 50%;
     font-size: 13px;
     font-weight: 600 !important;
-    font-family: 'Jost', sans-serif;
+    font-family: sans-serif;
     color: #ffffff;
 }
 
@@ -4158,7 +4158,7 @@ span.expiration {
         font-size: 14px;
         font-weight: 600;
         color: #293544;
-        font-family: 'Jost', sans-serif;
+        font-family: sans-serif;
     }
 
     li._my_prt_list a span {
@@ -4215,7 +4215,7 @@ span.expiration {
         font-size: 14px;
         font-weight: 600;
         color: #293544;
-        font-family: 'Jost', sans-serif;
+        font-family: sans-serif;
     }
 
     .mobile_nav ul li._my_prt_list a span {
@@ -5184,7 +5184,7 @@ span.like-listing {
     cursor: pointer;
     text-transform: capitalize;
     color: #ffffff;
-    font-family: 'Jost', sans-serif;
+    font-family: sans-serif;
     display: inline-flex;
     align-items: center;
     letter-spacing: 1px;
@@ -5420,7 +5420,7 @@ h1.big-header-capt {
 .full_search_box.modern label {
     margin-bottom: 0px;
     color: #6b79a0;
-    font-family: 'Jost', sans-serif;
+    font-family: sans-serif;
     font-weight: 400;
 }
 
@@ -9064,7 +9064,7 @@ span.agents_count {
     font-size: 16px;
     color: #1b2132;
     font-weight: 600;
-    font-family: 'Jost', sans-serif;
+    font-family: sans-serif;
 }
 
 .nav-tabs.customize-tab {
@@ -12345,7 +12345,7 @@ th.next.available,
     font-weight: 700;
     font-size: 20px;
     color: #ffffff;
-    font-family: 'Jost', sans-serif;
+    font-family: sans-serif;
 }
 
 .blog-body {
@@ -13626,7 +13626,7 @@ ul.packages-lists-list li {
     font-weight: 500;
     position: relative;
     transition: all ease 0.4s;
-    font-family: 'Jost', sans-serif;
+    font-family: sans-serif;
 }
 
 .dash_user_menues ul li a:hover,
