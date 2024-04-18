@@ -18,6 +18,7 @@ namespace BhumangalFarm.Models
         public string ClosingDate { get; set; }
         public string PayoutNo { get; set; }
         public string LastClosingDate { get; set; }
+        public string ClosingMonth { get; set; }
         public string LeadershipBonus { get; set; }
         public string NetIncome { get; set; }
         public string Processing { get; set; }
