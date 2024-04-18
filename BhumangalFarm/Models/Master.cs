@@ -982,8 +982,19 @@ namespace BhumangalFarm.Models
             DataSet ds = Connection.ExecuteQuery("UpdatePlotStatus", para);
             return ds;
         }
-
-        
+        public DataSet GetSiteList1()
+        {
+            DataSet ds = Connection.ExecuteQuery("SiteList");
+            return ds;
+        }
+        public DataSet GetBlockList1()
+        {
+            SqlParameter[] para ={ new SqlParameter("@SiteID",SiteID),
+                                     new SqlParameter("@SectorID",SectorID)
+                                 };
+            DataSet ds = Connection.ExecuteQuery("GetBlockList", para);
+            return ds;
+        }
 
     }
 }
