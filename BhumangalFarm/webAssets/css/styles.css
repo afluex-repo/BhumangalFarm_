@@ -2900,7 +2900,7 @@ footer.style-2 {
 .nav-brand:focus,
 .nav-brand:hover,
 .nav-menu>li>a {
-    color: #144273;
+    color: #ff6700;
 }
 
 .menu__list,
@@ -3594,7 +3594,7 @@ nav a {
 }
 
 .header {
-    background: #fff;
+    background: #232c3d;
     z-index: 6;
     padding: 12px 0;
 }
@@ -4023,11 +4023,12 @@ span.expiration {
     .header.header-fixed {
         box-shadow: 0 5px 30px rgba(0, 22, 84, 0.1);
         -webkit-box-shadow: 0 5px 30px rgba(0, 22, 84, 0.1);
-        background: #ffffff;
+        background: #232c3d;
         position: fixed;
         z-index: 999;
         width: 100%;
         top: 0;
+        opacity:.9;
         -webkit-transition: 0.2s ease-in;
         -o-transition: 0.2s ease-in;
         transition: 0.2s ease-in;
@@ -4290,7 +4291,7 @@ nav .menu li.dropdown.open>a {
 }
 
 .top-header {
-    background: #232c3d;
+    background: #e46f1e;
     padding: 12px 0;
     color: #ffffff;
 }
@@ -4749,7 +4750,7 @@ span.like-listing {
 }
 
 [data-overlay]:before {
-    position: absolute;
+        position: absolute;
     content: '';
     background: #06131b;
     width: 100%;
@@ -5035,7 +5036,7 @@ span.like-listing {
 .home-slider .item:before {
     content: "";
     position: absolute;
-    background: rgba(18, 21, 35, 0.6);
+    /*background: rgba(18, 21, 35, 0.6);*/
     left: 0;
     top: 0;
     right: 0;
