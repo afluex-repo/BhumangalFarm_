@@ -1,154 +1,162 @@
 ﻿@model BhumangalFarm.Models.Master
 
 @{
-    Layout = null;
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/WebsiteLayout.cshtml";
 }
-<link href="../../WebsiteCss/css/bootstrap.css" rel="stylesheet">
-<link href="../../WebsiteCss/css/style.css" rel="stylesheet">
-<link href="../../WebsiteCss/css/responsive.css" rel="stylesheet">
-<!--Color Switcher Mockup-->
-<link href="../../WebsiteCss/css/color-switcher-design.css" rel="stylesheet">
-<!--Color Themes-->
-<link id="theme-color-file" href="../../WebsiteCss/css/color-themes/default-theme.css" rel="stylesheet">
+<div class="page-title" style="background: #f4f4f4 url('../../webAssets/img/bg.jpg');" data-overlay="5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12">
 
-<link rel="shortcut icon" href="../../WebsiteCss/images/favicon.png" type="image/x-icon">
-<link rel="icon" href="../../WebsiteCss/images/favicon.png" type="image/x-icon">
-<!-- Responsive -->
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-<!--[if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script><![endif]-->
-<!--[if lt IE 9]><script src="js/respond.js"></script><![endif]-->
-<div class="registration-page">
-    <div class="auto-container">
-        <!--Checkout Details-->
-        <div class="checkout-form">
-            <h1 class="panel-heading">
-                Plot Availability
-            </h1>
-            <form method="post">
-                <div class="row clearfix">
-                    <!--Column-->
-                    <div class="column col-lg-12 col-md-12 col-sm-12">
-                        <div class="row clearfix">
-                            @using (Html.BeginForm("PlotAvailability", "Home", FormMethod.Post, new { @id = "form1", enctype = "multipart/form-data" }))
-                            {
-                                <div class="row">
-                                    <div class="col-lg-12">
-                                        <div class="panel panel-default">
-
-                                            <!-- /.panel-heading -->
-                                            <div class="panel-body">
-                                                <div class="card-block">
-
-
-                                                    <div class="form-group row">
-                                                        <div class="col-lg-12">
-                                                            <div class="row">
-
-                                                                <div class="col-md-3">
-                                                                    <div class="form-group">
-                                                                        Select Site <span style="color: red">*</span>
-                                                                        @Html.DropDownListFor(m => m.SiteID, new SelectList(ViewBag.ddlSite, "Value", "Text"), new { @class = "form-control", @onchange = "return onSiteChange();" })
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-md-3">
-                                                                    <div class="form-group">
-                                                                        Select Phase <span style="color: red">*</span>
-                                                                        @Html.DropDownListFor(m => m.SectorID, new SelectList(ViewBag.ddlSector, "Value", "Text"), new { @class = "form-control", @onchange = "return onSectorChange();" })
-                                                                    </div>
-                                                                </div>
-                                                                @*<div class="col-md-3">
-                                                                        <div class="form-group">
-                                                                            Select Block <span style="color: red">*</span>
-                                                                            @Html.DropDownListFor(m => m.BlockID, new SelectList(ViewBag.ddlBlock, "Value", "Text"), new { @class = "form-control" })
-                                                                        </div>
-                                                                    </div>*@
-                                                                <div class="col-md-3">
-                                                                    <div class="form-group">
-                                                                        Plot Number <span style="color: red">*</span>
-                                                                        @Html.TextBoxFor(m => m.PlotNumber, new { @class = "form-control", @placeholder = "Plot Number" })
-                                                                    </div>
-                                                                </div>
-
-                                                                <div class="col-md-3">
-                                                                    <br />
-                                                                    <div class="form-group">
-                                                                        <input type="submit" name="Search" value="Search" id="btnSearchPlot" class="btn btn-success" onclick="return GetDetails(); " />
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-lg-12" id="DivPlots">
-                                                                <div class="col-md-12">
-                                                                    <label style="color: black;"><b><u>Availability Status</u></b></label>
-                                                                    <br />
-                                                                    <div class="col-md-2 float-left">
-                                                                        <div style="border:solid; border-color:#d60808; background-color:#d60808; height:20px; width:20px; float:left"></div>
-                                                                        - Booked
-                                                                    </div>
-                                                                    <div class="col-md-2.5 float-left">
-                                                                        <div style="border:solid; border-color:#69ce69; background-color:#69ce69; height:20px; width:20px; float:left"></div>
-                                                                        - Available
-                                                                    </div>
-                                                                    <div class="col-md-2 float-left">
-                                                                        <div style="border:solid; border-color:yellow; background-color:yellow; height:20px; width:20px; float:left"></div>
-                                                                        - Allotted
-                                                                    </div>
-                                                                    @*<div class="col-md-2 float-left">
-                                                                            <div style="border:solid; border-color: #e470e4; background-color: #e470e4; height:20px; width:20px; float:left"></div>
-                                                                            - Allotted
-                                                                        </div>*@
-                                                                </div>
-
-                                                                <br />
-
-                                                            </div>
-
-                                                        </div>
-                                                    </div>
-                                                    <br />
-                                                    <div class="row">
-                                                        @if (Model != null)
-                                                        {
-                                                            if (Model.lstPlot != null)
-                                                            {
-                                                                foreach (var Item in Model.lstPlot)
-                                                                {
-                                                                    @*<a href="#" data-toggle="tooltip" title="Plot Amount :@Item.PlotAmount ; Plot Area :@Item.PlotArea">*@
-                                                                    <div style="margin-left:0.5%;color:black;background: @Item.ColorCSS; border:Solid; float:left; height:100px; margin-bottom:0.5%; text-align:center; padding-top:0.5%">
-                                                                        <input type="hidden" value="@Item.PlotID" />
-                                                                        <input type="hidden" value="@Item.SiteID" />
-                                                                        <input type="hidden" value="@Item.SectorID" />
-                                                                        <b>Plot Number : </b>@Item.PlotNumber
-                                                                        <br />
-                                                                        <b>Plot Area : </b>@Item.PlotArea
-                                                                        @*<b>Plot Area : </b>@Item.PlotArea
-                                                                            <br />*@
-                                                                        (@Item.SectorName@*,@Item.BlockName*@)
-                                                                    </div>
-                                                                    @*</a>*@
-                                                                }
-                                                            }
-                                                        }
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                </div>
-
-                            }
-                        </div>
-                    </div>
-                    <!--Column-->
+                <div class="breadcrumbs-wrap position-relative z-1">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item active" aria-current="page">Plot Availability</li>
+                    </ol>
+                    <h2 class="breadcrumb-title">Plot Availability</h2>
                 </div>
-            </form>
+
+            </div>
         </div>
-        <!--End Checkout Details-->
-
-
     </div>
 </div>
+
+<section class="py-5">
+    <div class="container">
+        <div class="item-heading-center text-center mb-4">
+            <h2 class="section-title">Plot Availability</h2>
+        </div>
+        <div class="row">
+            @using (Html.BeginForm("PlotAvailability", "Home", FormMethod.Post, new { @id = "form1", enctype = "multipart/form-data" }))
+            {
+                <div class="row">
+                    @*<div class="col-md-4">
+                            <div class="rld-single-select">
+                                <select class="select single-select mr-0">
+                                    <option value="1">Property Type</option>
+                                    <option value="2">Family House</option>
+                                    <option value="3">Apartment</option>
+                                    <option value="3">Condo</option>
+                                </select>
+                            </div>
+                        </div>*@
+                    <div class="col-md-4 col-lg-3 mb-3">
+                        <div class="rld-single-select">
+                            <label> Select Site <span style="color: red">*</span></label>
+                            @Html.DropDownListFor(m => m.SiteID, new SelectList(ViewBag.ddlSite, "Value", "Text"), new { @class = "form-control form-select", @onchange = "return onSiteChange();" })
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-lg-3 mb-3">
+                        <div class="rld-single-select">
+                            <label class="d-block"> Select Phase <span style="color: red"></span></label>
+                            @Html.DropDownListFor(m => m.SectorID, new SelectList(ViewBag.ddlSector, "Value", "Text"), new { @class = "form-control form-select", @onchange = "return onSectorChange();" })
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-lg-2 mb-3">
+                        <div class="rld-single-select">
+                            <label class="d-block"> Select Block <span style="color: red"></span></label>
+                            @Html.DropDownListFor(m => m.BlockID, new SelectList(ViewBag.ddlBlock, "Value", "Text"), new { @class = "form-control form-select" })
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-lg-2 mb-3">
+                        <div class="form-group">
+                            <label class="d-block">Plot Number <span style="color: red"></span></label>
+                            @Html.TextBoxFor(m => m.PlotNumber, new { @class = "form-control", @placeholder = "Plot Number" })
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-lg-2 mb-3">
+                        <label class="d-block">&nbsp; <span style="color: red"></span></label>
+                        <div class="form-group">
+                            <input type="submit" name="Search" value="Search" id="btnSearchPlot" class="btn btn-success" onclick="return GetDetails(); " />
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row g-3 justify-content-center mb-4">
+                    <div class="col-lg-2 col-md-6">
+                        <div class="d-flex justify-content-between align-items-center theme-icons shadow-sm p-2 cursor-pointer rounded">
+                            <div class="ms-2"><b>Availability Status</b></div>
+                            <div class="font-22 text-primary">
+                                <i class="lni lni-arrow-right"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-6">
+                        <div class="d-flex align-items-center theme-icons shadow-sm p-2 cursor-pointer rounded">
+                            <div class="font-22 text-primary">
+                                <span class="badge rounded-pill" style="background:#e66b6b">&nbsp;</span>
+                            </div>
+                            <div class="ms-2">Booked</div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-6">
+                        <div class="d-flex align-items-center theme-icons shadow-sm p-2 cursor-pointer rounded">
+                            <div class="font-22 text-primary">
+                                <span class="badge rounded-pill" style="background:#69ce69">&nbsp;</span>
+                            </div>
+                            <div class="ms-2">Available</div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-6">
+                        <div class="d-flex align-items-center theme-icons shadow-sm p-2 cursor-pointer rounded">
+                            <div class="font-22 text-primary">
+                                <span class="badge rounded-pill" style="background:#ffff00">&nbsp;</span>
+                            </div>
+                            <div class="ms-2"> On Hold</div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-6">
+                        <div class="d-flex align-items-center theme-icons shadow-sm p-2 cursor-pointer rounded">
+                            <div class="font-22 text-primary">
+                                <span class="badge rounded-pill" style="background:#e470e4"> &nbsp;</span>
+                            </div>
+                            <div class="ms-2">Allotted</div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="row">
+                    @if (Model != null)
+                    {
+                        if (Model.lstPlot != null)
+                        {
+                            foreach (var Item in Model.lstPlot)
+                            {
+                                <div class="col-md-3">
+                                    @*
+                                        <a href="#" data-toggle="tooltip" title="Plot Amount :@Item.PlotAmount ; Plot Area :@Item.PlotArea">
+                                    *@
+                                    <div style="margin-left:0.5%;color:black;background: @Item.ColorCSS; border:Solid; height:100px; margin-bottom:10px; text-align:center; padding-top:0.5%">
+                                        <input type="hidden" value="@Item.PlotID" />
+                                        <input type="hidden" value="@Item.SiteID" />
+                                        <input type="hidden" value="@Item.SectorID" />
+                                        <b>Plot Number : </b>@Item.PlotNumber
+                                        <br />
+                                        <b>Plot Area : </b>@Item.PlotArea
+                                        @*<b>Plot Area : </b>@Item.PlotArea
+                                            <br />*@
+                                        (@Item.SectorName@*,@Item.BlockName*@)
+                                    </div>
+                                    @*
+                                        </a>
+                                    *@
+                                </div>
+                            }
+                        }
+                    }
+                </div>
+            }
+        </div>
+    </div>
+</section>
+
+
+
+
+
 <script src="../../WebsiteCss/js/script.js"></script>
 <!-- Color Setting -->
 <script src="../../WebsiteCss/js/color-settings.js"></script>
@@ -179,21 +187,21 @@
             $('#SiteID').focus();
             return false;
         }
-        if ($('#SectorID').val() == '0') {
-            $("#SectorID").addClass('errortext');
-            $('#SectorID').focus();
-            return false;
-        }
+        //if ($('#SectorID').val() == '0') {
+        //    $("#SectorID").addClass('errortext');
+        //    $('#SectorID').focus();
+        //    return false;
+        //}
         //if ($('#BlockID').val() == '0') {
         //    $("#BlockID").addClass('errortext');
         //    $('#BlockID').focus();
         //    return false;
         //}
-        if ($('#PlotNumber').val() == '') {
-            $("#PlotNumber").addClass('errortext');
-            $('#PlotNumber').focus();
-            return false;
-        }
+        //if ($('#PlotNumber').val() == '') {
+        //    $("#PlotNumber").addClass('errortext');
+        //    $('#PlotNumber').focus();
+        //    return false;
+        //}
         return true;
     }
 

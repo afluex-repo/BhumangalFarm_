@@ -548,6 +548,70 @@ namespace BhumangalFarm.Controllers
 
 
             return View(model);
+            
+        }
+        public ActionResult GetAdvancePaymentReport(Plot model)
+        {
+            List<Plot> lstadvPayment = new List<Plot>();
+            model.FromDate = string.IsNullOrEmpty(model.FromDate) ? null : Common.ConvertToSystemDate(model.FromDate, "dd/MM/yyyy");
+            model.ToDate = string.IsNullOrEmpty(model.ToDate) ? null : Common.ConvertToSystemDate(model.ToDate, "dd/MM/yyyy");
+            model.LoginId = Session["LoginId"].ToString();
+            DataSet ds = model.GetAdvancePaymentReport();
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                foreach (DataRow r in ds.Tables[0].Rows)
+                {
+                    Plot obj = new Plot();
+                    obj.PK_AdvPaymentID = r["PK_AdvPaymentID"].ToString();
+                    obj.LoginId = r["LoginId"].ToString();
+                    obj.Name = r["Name"].ToString();
+                    obj.Amount = r["Amount"].ToString();
+                    obj.PaymentDate = r["PaymentDate"].ToString();
+                    obj.PaymentMode = r["PaymentMode"].ToString();
+                    obj.BankName = r["BankName"].ToString();
+                    obj.BankBranch = r["BankBranch"].ToString();
+                    obj.TransactionNumber = r["TransactionNo"].ToString();
+                    obj.TransactionDate = r["TransactionDate"].ToString();
+                    obj.Remark = r["Remark"].ToString();
+                    lstadvPayment.Add(obj);
+                }
+                model.lstadvPayment = lstadvPayment;
+            }
+            return View(model);
+        }
+        [HttpPost]
+        [ActionName("GetAdvancePaymentReport")]
+        [OnAction(ButtonName = "Search")]
+        public ActionResult SearchGetAdvancePaymentReport(Plot model)
+        {
+            List<Plot> lstadvPayment = new List<Plot>();
+            model.FromDate = string.IsNullOrEmpty(model.FromDate) ? null : Common.ConvertToSystemDate(model.FromDate, "dd/MM/yyyy");
+            model.ToDate = string.IsNullOrEmpty(model.ToDate) ? null : Common.ConvertToSystemDate(model.ToDate, "dd/MM/yyyy");
+            model.LoginId = Session["LoginId"].ToString();
+            DataSet ds = model.GetAdvancePaymentReport();
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                foreach (DataRow r in ds.Tables[0].Rows)
+                {
+                    Plot obj = new Plot();
+                    obj.PK_AdvPaymentID = r["PK_AdvPaymentID"].ToString();
+                    obj.LoginId = r["LoginId"].ToString();
+                    obj.Name = r["Name"].ToString();
+                    obj.Amount = r["Amount"].ToString();
+                    obj.PaymentDate = r["PaymentDate"].ToString();
+                    obj.PaymentMode = r["PaymentMode"].ToString();
+                    obj.BankName = r["BankName"].ToString();
+                    obj.BankBranch = r["BankBranch"].ToString();
+                    obj.TransactionNumber = r["TransactionNo"].ToString();
+                    obj.TransactionDate = r["TransactionDate"].ToString();
+                    obj.Remark = r["Remark"].ToString();
+                    lstadvPayment.Add(obj);
+                }
+                model.lstadvPayment = lstadvPayment;
+            }
+
+            return View(model);
+
         }
     }
 }

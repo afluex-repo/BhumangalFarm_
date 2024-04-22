@@ -799,23 +799,23 @@ namespace BhumangalFarm.Controllers
         //        }
         //        return RedirectToAction("TopUpByPin", "Admin");
         //    }
-        //    public ActionResult GetMemberName(string LoginId)
-        //    {
-        //        Common obj = new Common();
-        //        obj.ReferBy = LoginId;
-        //        DataSet ds = obj.GetMemberDetails();
-        //        if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
-        //        {
+        public ActionResult GetMemberName(string LoginId)
+        {
+            Common obj = new Common();
+            obj.ReferBy = LoginId;
+            DataSet ds = obj.GetMemberDetails();
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
 
 
-        //            obj.DisplayName = ds.Tables[0].Rows[0]["FullName"].ToString();
+                obj.DisplayName = ds.Tables[0].Rows[0]["FullName"].ToString();
 
-        //            obj.Result = "Yes";
+                obj.Result = "Yes";
 
-        //        }
-        //        else { obj.Result = "No"; }
-        //        return Json(obj, JsonRequestBehavior.AllowGet);
-        //    }
+            }
+            else { obj.Result = "No"; }
+            return Json(obj, JsonRequestBehavior.AllowGet);
+        }
         //    public ActionResult FillAmount(string ProductId)
         //    {
         //        Wallet obj = new Wallet();
@@ -2158,6 +2158,7 @@ namespace BhumangalFarm.Controllers
             //    model.lstassociate = lst;
 
             //}
+            model.ClosingMonth = ds.Tables[1].Rows[0]["NextMonthDate"].ToString();
             model.LastClosingDate = ds.Tables[1].Rows[0]["ClosingDate"].ToString();
             model.PayoutNo = ds.Tables[1].Rows[0]["PayoutNo"].ToString();
             return View(model);
@@ -2673,6 +2674,102 @@ namespace BhumangalFarm.Controllers
             Controller = "Admin";
             return RedirectToAction(FormName, Controller);
         }
+        public ActionResult AdvancePayment()
+        {
+            Plot obj = new Plot();
+            #region ddlPaymentMode
+            int count3 = 0;
+            List<SelectListItem> ddlPaymentMode = new List<SelectListItem>();
+            DataSet dsPayMode = obj.GetPaymentModeList();
+            if (dsPayMode != null && dsPayMode.Tables.Count > 0 && dsPayMode.Tables[0].Rows.Count > 0)
+            {
+                foreach (DataRow r in dsPayMode.Tables[0].Rows)
+                {
+                    if (count3 == 0)
+                    {
+                        ddlPaymentMode.Add(new SelectListItem { Text = "Select Payment Mode", Value = "0" });
+                    }
+                    ddlPaymentMode.Add(new SelectListItem { Text = r["PaymentMode"].ToString(), Value = r["PK_paymentID"].ToString() });
+                    count3 = count3 + 1;
+                }
+            }
+            ViewBag.ddlPaymentMode = ddlPaymentMode;
+            #endregion
+            return View(obj);
+        }
 
+        [HttpPost]
+        [ActionName("AdvancePayment")]
+        [OnAction(ButtonName = "advPayment")]
+        public ActionResult SaveAdvancePayment(Plot obj)
+        {
+            string FormName = "";
+            string Controller = "";
+            try
+            {
+                //obj.TransactionDate = obj.TransactionDate == "" || obj.TransactionDate = null&&(Convert.obj.TransactionDate);
+
+                obj.TransactionDate = string.IsNullOrEmpty(obj.TransactionDate) ? null : Common.ConvertToSystemDate(obj.TransactionDate, "dd/MM/yyyy");
+                obj.AddedBy = Session["Pk_AdminId"].ToString();
+                obj.PaymentDate = string.IsNullOrEmpty(obj.PaymentDate) ? null : Common.ConvertToSystemDate(obj.PaymentDate, "dd/MM/yyyy");
+                //obj.PaymentDate = Common.ConvertToSystemDate(string.IsNullOrEmpty(obj.PaymentDate) ? null : obj.PaymentDate, "dd/MM/yyyy");
+                DataSet ds = obj.SaveAdvancePayment();
+                if (ds != null && ds.Tables.Count > 0)
+                {
+                    if (ds.Tables[0].Rows[0][0].ToString() == "1")
+                    {
+                        TempData["AdvancePayment"] = " Advance Payment Done successfully !";
+                    }
+                    else
+                    {
+                        TempData["AdvancePayment"] = ds.Tables[0].Rows[0]["ErrorMessage"].ToString();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                TempData["AdvancePayment"] = ex.Message;
+            }
+            FormName = "AdvancePayment";
+            Controller = "Admin";
+            return RedirectToAction(FormName, Controller);
+        }
+        public ActionResult GetAdvancePaymentReport()
+        {
+            return View();
+        }
+        [HttpPost]
+        [ActionName("GetAdvancePaymentReport")]
+        [OnAction(ButtonName = "Search")]
+        public ActionResult SearchGetAdvancePaymentReport(Plot model)
+        {
+            List<Plot> lstadvPayment = new List<Plot>();
+            model.FromDate = string.IsNullOrEmpty(model.FromDate) ? null : Common.ConvertToSystemDate(model.FromDate, "dd/MM/yyyy");
+            model.ToDate = string.IsNullOrEmpty(model.ToDate) ? null : Common.ConvertToSystemDate(model.ToDate, "dd/MM/yyyy");
+            DataSet ds = model.GetAdvancePaymentReport();
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                foreach (DataRow r in ds.Tables[0].Rows)
+                {
+                    Plot obj = new Plot();
+                    obj.PK_AdvPaymentID = r["PK_AdvPaymentID"].ToString();
+                    obj.LoginId = r["LoginId"].ToString();
+                    obj.Name = r["Name"].ToString();
+                    obj.Amount = r["Amount"].ToString();
+                    obj.PaymentDate = r["PaymentDate"].ToString();
+                    obj.PaymentMode = r["PaymentMode"].ToString();
+                    obj.BankName = r["BankName"].ToString();
+                    obj.BankBranch = r["BankBranch"].ToString();
+                    obj.TransactionNumber = r["TransactionNo"].ToString();
+                    obj.TransactionDate = r["TransactionDate"].ToString();
+                    obj.Remark = r["Remark"].ToString();
+                    lstadvPayment.Add(obj);
+                }
+                model.lstadvPayment = lstadvPayment;
+            }
+            
+            return View(model);
+
+        }
     }
 }
