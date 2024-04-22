@@ -11,7 +11,9 @@ namespace BhumangalFarm.Models
     public class Plot : Common
     {
         public string PK_VisitorId { get; set; }
+        public string PK_AdvPaymentID { get; set; }
         public List<Plot> lstVistor { get; set; }
+        public List<Plot> lstadvPayment { get; set; }
         public DataTable dtVisitorDetails { get; set; }
         public string VisitDate { get; set; }
         public List<SelectListItem> ddlPLC { get; set; }
@@ -1071,6 +1073,41 @@ namespace BhumangalFarm.Models
 
             };
             DataSet ds = Connection.ExecuteQuery("DeleteVisitor", para);
+            return ds;
+        }
+        public DataSet SaveAdvancePayment()
+        {
+            SqlParameter[] para =
+                            {
+                                        new SqlParameter("@LoginId ",LoginId),
+                                        new SqlParameter("@PaymentDate" , PaymentDate),
+                                        new SqlParameter("@PaidAmount"  , PaidAmount),
+                                        new SqlParameter("@PaymentMode" ,PaymentMode),
+                                        new SqlParameter("@TransactionNo"  ,TransactionNumber),
+                                        new SqlParameter("@TransactionDate" ,TransactionDate),
+                                        new SqlParameter("@BankBranch", BankBranch),
+                                        new SqlParameter("@BankName"  , BankName),
+                                        new SqlParameter("@AddedBy",AddedBy),
+                                        new SqlParameter("@Remarks",Remark),
+                                        //  new SqlParameter("@UTR_Number",UtrNumber),
+                                        //new SqlParameter("@UTR_Amount",UtrAmount),
+                                        new SqlParameter("@AdjustmentId",AssociatesLoginID)
+
+                            };
+            DataSet ds = Connection.ExecuteQuery("AdvancePayment", para);
+            return ds;
+        }
+
+        public DataSet GetAdvancePaymentReport()
+        {
+            SqlParameter[] para =
+                            {
+                                        new SqlParameter("@LoginId ",LoginId),
+                                        new SqlParameter("@FromDate",FromDate),
+                                        new SqlParameter("@ToDate",ToDate)
+
+                            };
+            DataSet ds = Connection.ExecuteQuery("GetAdvancePayment", para);
             return ds;
         }
     }

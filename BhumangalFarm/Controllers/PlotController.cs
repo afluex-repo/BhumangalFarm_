@@ -633,6 +633,7 @@ namespace BhumangalFarm.Controllers
                     //ViewBag.AdjustmentloginId = ds.Tables[0].Rows[0]["AdjustmentloginId"].ToString();
                     ViewBag.ActualPlotAmount = ds.Tables[0].Rows[0]["ActualPlotAmount"].ToString();
                     ViewBag.ReceiptDate = ds.Tables[0].Rows[0]["ReceiptDate"].ToString();
+                    ViewBag.Remarks = ds.Tables[0].Rows[0]["Remarks"].ToString();
 
                     ViewBag.CompanyName = SoftwareDetails.CompanyName;
                     ViewBag.CompanyAddress = SoftwareDetails.CompanyAddress;

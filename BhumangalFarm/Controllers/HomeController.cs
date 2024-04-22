@@ -232,7 +232,7 @@ namespace BhumangalFarm.Controllers
             #region ddlSite
             int count1 = 0;
             List<SelectListItem> ddlSite = new List<SelectListItem>();
-            DataSet dsSite = model.GetSiteList();
+            DataSet dsSite = model.GetSiteList1();
             if (dsSite != null && dsSite.Tables.Count > 0 && dsSite.Tables[0].Rows.Count > 0)
             {
                 foreach (DataRow r in dsSite.Tables[0].Rows)
@@ -284,7 +284,7 @@ namespace BhumangalFarm.Controllers
                         ddlSector.Add(new SelectListItem { Text = "Select Phase", Value = "0" });
                     }
                     ddlSector.Add(new SelectListItem { Text = r["SectorName"].ToString(), Value = r["PK_SectorID"].ToString() });
-                    sectorcount = 1;
+                    sectorcount = sectorcount + 1;
                 }
             }
 
@@ -297,7 +297,7 @@ namespace BhumangalFarm.Controllers
             int blockcount = 0;
             //objmodel.SiteID = ds.Tables[0].Rows[0]["PK_SiteID"].ToString();
             //objmodel.SectorID = ds.Tables[0].Rows[0]["PK_SectorID"].ToString();
-            DataSet dsblock = model.GetBlockList();
+            DataSet dsblock = model.GetBlockList1();
 
 
             if (dsblock != null && dsblock.Tables.Count > 0 && dsblock.Tables[0].Rows.Count > 0)
@@ -310,12 +310,10 @@ namespace BhumangalFarm.Controllers
                         lstBlock.Add(new SelectListItem { Text = "Select Block", Value = "0" });
                     }
                     lstBlock.Add(new SelectListItem { Text = dr["BlockName"].ToString(), Value = dr["PK_BlockID"].ToString() });
-                    blockcount = 1;
+                    blockcount = blockcount + 1;
                 }
 
             }
-
-
             ViewBag.ddlBlock = lstBlock;
             #endregion
 
