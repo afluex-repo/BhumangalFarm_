@@ -323,6 +323,7 @@ namespace BhumangalFarm.Controllers
                     obj.TransactionDate = r["TransactionDate"].ToString();
                     obj.TType = r["TransactionType"].ToString();
                     obj.Debit = r["Debit"].ToString();
+                    obj.Balance = r["Balance"].ToString();
 
 
                     lst.Add(obj);
