@@ -482,7 +482,8 @@ namespace BhumangalFarm.Controllers
                         }
                         model.ClearedListItem = Clearedlst;
                         ViewBag.TotalCleredPaid = double.Parse(ds.Tables[0].Compute("sum(PaidAmount)", "").ToString()).ToString("n2");
-                        ViewBag.RemainingAmount = double.Parse(ds.Tables[0].Compute("sum(RemainingAmount)", "").ToString()).ToString("n2");
+                        //ViewBag.RemainingAmount = double.Parse(ds.Tables[0].Compute("sum(RemainingAmount)", "").ToString()).ToString("n2");
+                        ViewBag.RemainingAmount = double.Parse(ds.Tables[0].Rows[0]["RemainingAmount"].ToString()).ToString("n2");
                     }
                     if (ds.Tables.Count > 0 && ds != null && ds.Tables[1].Rows.Count > 0)
                     {
@@ -537,6 +538,7 @@ namespace BhumangalFarm.Controllers
                         model.Registry = ds.Tables[3].Rows[0]["IsRegistry"].ToString();
                         model.Agreement = ds.Tables[3].Rows[0]["IsAgreement"].ToString();
                         model.Notary = ds.Tables[3].Rows[0]["IsNotary"].ToString();
+                        model.Amount = ds.Tables[3].Rows[0]["Amount"].ToString();
                     }
                 }
             }
