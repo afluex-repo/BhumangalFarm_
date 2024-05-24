@@ -2263,6 +2263,9 @@ namespace BhumangalFarm.Controllers
                     lst.Add(Objload);
                 }
                 objewallet.lstpayoutledger = lst;
+                ViewBag.TotalDebit = double.Parse(ds.Tables[0].Compute("sum(Debit)", "").ToString()).ToString("n2");
+                ViewBag.TotalCredit = double.Parse(ds.Tables[0].Compute("sum(Credit)", "").ToString()).ToString("n2");
+                ViewBag.TotalBalance = double.Parse(ds.Tables[0].Rows[0]["Balance"].ToString()).ToString("n2");
             }
             return View(objewallet);
         }
