@@ -3348,11 +3348,28 @@ namespace BhumangalFarm.Controllers
                 ViewBag.EncryptKey = Crypto.Encrypt(ds.Tables[0].Rows[0]["PK_BookingId"].ToString());
             }
             return View(model);
-
-
+            
         }
 
-
+        public ActionResult GetBookingNoByNameforCancelledReturnPlot(string CustomerName)
+        {
+            Plot model = new Plot();
+            List<Plot> lst = new List<Plot>();
+            model.CustomerName = CustomerName;
+            DataSet ds = model.GetBookingNoByNameforCancelledReturnPlot();
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                foreach (DataRow r in ds.Tables[0].Rows)
+                {
+                    Plot obj = new Plot();
+                    obj.CustomerID = r["Fk_CustomerId"].ToString();
+                    obj.BookingNumber = r["BookingNo"].ToString();
+                    lst.Add(obj);
+                }
+                model.lstPlot = lst;
+            }
+            return Json(model, JsonRequestBehavior.AllowGet);
+        }
 
 
 

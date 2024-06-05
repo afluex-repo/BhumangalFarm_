@@ -10,6 +10,15 @@ namespace BhumangalFarm.Models
 {
     public class Plot : Common
     {
+        public string Remark1 { get; set; }
+        public string TotalLateChargeAmount{get;set;}
+        public string ReceiverBank { get; set; }
+        public decimal? LateCharge { get; set; }
+        public string FarmerName { get; set; }
+        public string RegistryDate { get; set; }
+        public string GataKhasraNo { get;set;}
+        public string PK_ReturnPaymentId { get; set; }
+        public string Fk_EmployeeId { get; set; }
         public string PK_VisitorId { get; set; }
         public string PK_AdvPaymentID { get; set; }
         public List<Plot> lstVistor { get; set; }
@@ -1108,6 +1117,129 @@ namespace BhumangalFarm.Models
 
                             };
             DataSet ds = Connection.ExecuteQuery("GetAdvancePayment", para);
+            return ds;
+        }
+
+        public DataSet GetBookingNoByNameforCancelledReturnPlot()
+        {
+            SqlParameter[] para = { new SqlParameter("@CustomerName", CustomerName) };
+            DataSet ds = Connection.ExecuteQuery("GetBookingNoByNameforCancelledReturnPlot", para);
+            return ds;
+        }
+
+        public DataSet FillReturnCancelledPlotDetails()
+        {
+            SqlParameter[] para =
+                            {
+
+                                new SqlParameter("@SiteID",SiteID),
+                                new SqlParameter("@SectorID",SectorID),
+                                new SqlParameter("@BlockID",BlockID),
+                                new SqlParameter("@PlotNumber",PlotNumber),
+                                 new SqlParameter("@BookingNo",BookingNumber),
+                                  new SqlParameter("@Fk_EmployeeId",Fk_EmployeeId)
+
+                            };
+            DataSet ds = Connection.ExecuteQuery("GetPlotDetailsForReturnPlotPayment", para);
+            return ds;
+        }
+
+        public DataSet SaveReturnCancelledPlotPayment()
+        {
+            SqlParameter[] para =
+                            {
+                                        new SqlParameter("@Fk_BookingId ",PK_BookingId),
+                                        new SqlParameter("@PaymentDate" , PaymentDate),
+                                        new SqlParameter("@PaidAmount"  , PaidAmount),
+                                        new SqlParameter("@PaymentMode" ,PaymentMode),
+                                        new SqlParameter("@TransactionNo"  ,TransactionNumber),
+                                        new SqlParameter("@TransactionDate" ,TransactionDate),
+                                        new SqlParameter("@BankBranch", BankBranch),
+                                        new SqlParameter("@BankName"  , BankName),
+                                        new SqlParameter("@AddedBy",AddedBy),
+                                        new SqlParameter("@AllotmentRemarks",Remark)
+                            };
+            DataSet ds = Connection.ExecuteQuery("ReturnCancalledPlotPayment", para);
+            return ds;
+        }
+
+        public DataSet ReturnPlotPaymentDetailsForLedger()
+        {
+            SqlParameter[] para =
+                            {
+                                 new SqlParameter("@BookingNo",BookingNumber),
+                                  new SqlParameter("@FK_SiteID",SiteID),
+                                   new SqlParameter("@FK_SectorID",SectorID),
+                                    new SqlParameter("@FK_BlockID",BlockID),
+                                     new SqlParameter("@PlotNumber",PlotNumber),
+                                     new SqlParameter("@Fk_EmployeeId",Fk_EmployeeId)
+                            };
+            DataSet ds = Connection.ExecuteQuery("GetReturnPlotPaymentDetailsForCustomerLedger", para);
+            return ds;
+        }
+
+        public DataSet DeleteReturnPlotPaymentBookingDetails()
+        {
+            SqlParameter[] para =
+                            {
+                                        new SqlParameter("@PK_ReturnPaymentId ",PK_ReturnPaymentId),
+                                         new SqlParameter("@Status ",Status),
+                                        new SqlParameter("@UpdatedBy ",UpdatedBy)
+
+                            };
+            DataSet ds = Connection.ExecuteQuery("DeleteReturnPlotPaymentBookingDetails", para);
+            return ds;
+        }
+
+        public DataSet GetReturnCancelledPlotPaymentList()
+        {
+            SqlParameter[] para =
+                            {
+                                 new SqlParameter("@PaymentMode",PaymentMode),
+                                  new SqlParameter("@FromDate",FromDate),
+                                   new SqlParameter("@ToDate",ToDate),
+                                    new SqlParameter("@Fk_EmployeeId",Fk_EmployeeId)
+                            };
+            DataSet ds = Connection.ExecuteQuery("GetDeatilsForCancelledPlotPaymentChequeCash", para);
+            return ds;
+        }
+
+        public DataSet ApprovePaymentForReturnCancelledplot()
+        {
+            SqlParameter[] para =
+                            {
+                                 new SqlParameter("@PK_ReturnPaymentId",UserID),
+                                  new SqlParameter("@Description",Description),
+                                   new SqlParameter("@UpdatedBy",AddedBy),
+                                    new SqlParameter("@ApprovedDate",ApprovedDate)
+                            };
+            DataSet ds = Connection.ExecuteQuery("ApprovePaymentForReturnCancelledplot", para);
+            return ds;
+        }
+
+        public DataSet RejectPaymentForReturnCancelledplot()
+        {
+            SqlParameter[] para =
+                            {
+                                 new SqlParameter("@PK_ReturnPaymentId",UserID),
+                                  new SqlParameter("@Description",Description),
+                                   new SqlParameter("@UpdatedBy",AddedBy),
+                                     new SqlParameter("@ApprovedDate",ApprovedDate)
+                            };
+            DataSet ds = Connection.ExecuteQuery("RejectPaymentForReturnCancelledplot", para);
+            return ds;
+        }
+
+        public DataSet BouncePaymentForReturnCancelledplot()
+        {
+            SqlParameter[] para =
+                            {
+                                 new SqlParameter("@PK_ReturnPaymentId",UserID),
+                                  new SqlParameter("@Description",Description),
+                                   new SqlParameter("@UpdatedBy",AddedBy),
+                                     new SqlParameter("@ApprovedDate",ApprovedDate)
+                            };
+            DataSet ds = Connection.ExecuteQuery("BouncePaymentForReturnCancelledplot", para);
             return ds;
         }
     }
