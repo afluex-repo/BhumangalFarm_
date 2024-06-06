@@ -10,6 +10,12 @@ namespace BhumangalFarm.Models
 {
     public class Plot : Common
     {
+        public List<Plot> newlstPlot { get; set; }
+        public string PlotDetails { get; set; }
+        public string TotalHoldAmount { get; set; }
+        public string HoldAmount { get; set; }
+        public string associateDetails { get; set; }
+        public string HoldDate { get; set; }
         public string Remark1 { get; set; }
         public string TotalLateChargeAmount{get;set;}
         public string ReceiverBank { get; set; }
@@ -473,27 +479,32 @@ namespace BhumangalFarm.Models
                                         new SqlParameter("@HoldFrom" ,HoldFrom),
                                         new SqlParameter("@HoldTo" ,HoldTo),
                                         new SqlParameter("@Name" ,Name),
+                                        new SqlParameter("@SponsorID",SponsorID),
                                         new SqlParameter("@Mobile" ,Mobile),
                                         new SqlParameter("@AddedBy",AddedBy)  ,
-                                         new SqlParameter("@Remark1",Remark),
-                                           new SqlParameter("@HoldAmount",Amount),
+                                        new SqlParameter("@Remark1",Remark),
+                                        new SqlParameter("@HoldAmount",Amount),
+                                        new SqlParameter("@HoldDate",HoldDate),
+                                        new SqlParameter("@PaymentDate",PaymentDate),
+                                        new SqlParameter("@PaymentMode"  ,PaymentMode),
+                                        new SqlParameter("@TransactionNo" ,TransactionNumber),
+                                        new SqlParameter("@TransactionDate" ,TransactionDate),
+                                        new SqlParameter("@BankName" ,BankName),
+                                        new SqlParameter("@BankBranch" ,BankBranch),
                             };
             DataSet ds = Connection.ExecuteQuery("PlotHold", para);
             return ds;
         }
         public DataSet GetPlotHoldList()
         {
-            SqlParameter[] para = { new SqlParameter("@PK_PlotHoldID", PK_PlotHoldID),
-
-                                   new SqlParameter("@FK_SiteID" ,SiteID),
+            SqlParameter[] para = { 
+                                        new SqlParameter("@FK_SiteID" ,SiteID),
                                         new SqlParameter("@FK_SectorID" ,SectorID),
                                         new SqlParameter("@FK_BlockID" ,BlockID),
-                                        new SqlParameter("@PlotNumber" ,PlotNumber)
-
-
+                                        new SqlParameter("@PlotNumber" ,PlotNumber),
+                                        new SqlParameter("@FromDate" ,FromDate),
+                                        new SqlParameter("@ToDate" ,ToDate)
                                   };
-
-
             DataSet ds = Connection.ExecuteQuery("getPlotHoldList", para);
             return ds;
         }
@@ -1240,6 +1251,34 @@ namespace BhumangalFarm.Models
                                      new SqlParameter("@ApprovedDate",ApprovedDate)
                             };
             DataSet ds = Connection.ExecuteQuery("BouncePaymentForReturnCancelledplot", para);
+            return ds;
+        }
+
+        public DataSet HoldPlotPayment()
+        {
+            SqlParameter[] para = {
+                new SqlParameter("@Fk_PlotId", PlotID)
+            };
+            DataSet ds = Connection.ExecuteQuery("HoldPlotPayment", para);
+            return ds;
+        }
+
+        public DataSet HoldPlotLeddger()
+        {
+            SqlParameter[] para = { new SqlParameter("@PK_PlotID", PlotID),
+                                  };
+            DataSet ds = Connection.ExecuteQuery("HoldPlotLeddger", para);
+            return ds;
+        }
+
+        public DataSet PrintPlotHoldList()
+        {
+            SqlParameter[] para = { new SqlParameter("@PK_PlotHoldID", PK_PlotHoldID),
+                                        new SqlParameter("@Fk_EmployeeId",Fk_EmployeeId)
+                                  };
+
+
+            DataSet ds = Connection.ExecuteQuery("Printplotholdlist", para);
             return ds;
         }
     }

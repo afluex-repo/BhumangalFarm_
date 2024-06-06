@@ -2171,10 +2171,28 @@ namespace BhumangalFarm.Controllers
         public ActionResult HoldPlot(string PK_PlotHoldID)
         {
             Plot model = new Plot();
+
+            #region ddlPaymentMode
+            int count3 = 0;
+            List<SelectListItem> ddlPaymentMode = new List<SelectListItem>();
+            DataSet dsPayMode = model.GetPaymentModeList();
+            if (dsPayMode != null && dsPayMode.Tables.Count > 0 && dsPayMode.Tables[0].Rows.Count > 0)
+            {
+                foreach (DataRow r in dsPayMode.Tables[0].Rows)
+                {
+                    if (count3 == 0)
+                    {
+                        ddlPaymentMode.Add(new SelectListItem { Text = "Select Payment Mode", Value = "0" });
+                    }
+                    ddlPaymentMode.Add(new SelectListItem { Text = r["PaymentMode"].ToString(), Value = r["PK_paymentID"].ToString() });
+                    count3 = count3 + 1;
+                }
+            }
+            ViewBag.ddlPaymentMode = ddlPaymentMode;
+            #endregion
+
             if (PK_PlotHoldID != null)
             {
-
-
                 model.PK_PlotHoldID = PK_PlotHoldID;
                 DataSet dsBookingDetails = model.GetBookingDetailsList();
 
@@ -2289,6 +2307,11 @@ namespace BhumangalFarm.Controllers
             string FormName = "";
             string Controller = "";
             obj.Amount = obj.Amount == null ? "0.00" : obj.Amount;
+            obj.PaymentDate = string.IsNullOrEmpty(obj.PaymentDate) ? null : Common.ConvertToSystemDate(obj.PaymentDate, "dd/mm/yyyy");
+            obj.HoldFrom = string.IsNullOrEmpty(obj.HoldFrom) ? null : Common.ConvertToSystemDate(obj.HoldFrom, "dd/mm/yyyy");
+            obj.HoldTo = string.IsNullOrEmpty(obj.HoldTo) ? null : Common.ConvertToSystemDate(obj.HoldTo, "dd/mm/yyyy");
+            obj.TransactionDate = string.IsNullOrEmpty(obj.TransactionDate) ? null : Common.ConvertToSystemDate(obj.TransactionDate, "dd/mm/yyyy");
+            obj.HoldDate = string.IsNullOrEmpty(obj.HoldDate) ? null : Common.ConvertToSystemDate(obj.HoldDate, "dd/MM/yyyy");
             try
             {
                 obj.AddedBy = Session["Pk_AdminId"].ToString();
@@ -2318,9 +2341,42 @@ namespace BhumangalFarm.Controllers
 
         public ActionResult PlotHoldList(Plot model)
         {
+            List<Plot> lst = new List<Plot>();
+            model.SiteID = model.SiteID == "0" ? null : model.SiteID;
+            model.SectorID = model.SectorID == "0" ? null : model.SectorID;
+            model.BlockID = model.BlockID == "0" ? null : model.BlockID;
+            model.PlotID = model.PlotID == "0" ? null : model.PlotID;
+            model.Fk_EmployeeId = Session["Pk_AdminId"].ToString();
+            DataSet ds = model.GetPlotHoldList();
+
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                foreach (DataRow r in ds.Tables[0].Rows)
+                {
+                    {
+                        Plot obj = new Plot();
+                        obj.PlotID = r["PK_PlotID"].ToString();
+                        obj.Mobile = r["Mobile"].ToString();
+                        obj.Name = r["Name"].ToString();
+                        obj.associateDetails = r["associateDetails"].ToString();
+                        obj.PlotInfo = r["PlotInfo"].ToString();
+                        obj.HoldAmount = r["TotalHoldAmount"].ToString();
+                        obj.HoldFrom = r["HoldFrom"].ToString();
+                        obj.HoldTo = r["HoldTo"].ToString();
+                        obj.PlotInfo = r["PlotInfo"].ToString();
+                        obj.PlotArea = r["PlotArea"].ToString();
+                        obj.TotalHoldAmount = r["TotalHoldAmount"].ToString();
+                        lst.Add(obj);
+                    }
+                }
+                model.lstPlot = lst;
+                ViewBag.TotalHoldAmount = ds.Tables[0].Compute("sum(TotalHoldAmount)", "").ToString();
+            }
+            
             #region ddlSite
             int count1 = 0;
             List<SelectListItem> ddlSite = new List<SelectListItem>();
+            model.Fk_EmployeeId = Session["Pk_AdminId"].ToString();
             DataSet dsSite = model.GetSiteList();
             if (dsSite != null && dsSite.Tables.Count > 0 && dsSite.Tables[0].Rows.Count > 0)
             {
@@ -2357,6 +2413,10 @@ namespace BhumangalFarm.Controllers
             model.SiteID = model.SiteID == "0" ? null : model.SiteID;
             model.SectorID = model.SectorID == "0" ? null : model.SectorID;
             model.BlockID = model.BlockID == "0" ? null : model.BlockID;
+            model.PlotID = model.PlotID == "0" ? null : model.PlotID;
+            model.Fk_EmployeeId = Session["Pk_AdminId"].ToString();
+            model.FromDate = string.IsNullOrEmpty(model.FromDate) ? null : Common.ConvertToSystemDate(model.FromDate, "dd/MM/yyyy");
+            model.ToDate = string.IsNullOrEmpty(model.ToDate) ? null : Common.ConvertToSystemDate(model.ToDate, "dd/MM/yyyy");
             DataSet ds = model.GetPlotHoldList();
 
             if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
@@ -2364,25 +2424,26 @@ namespace BhumangalFarm.Controllers
                 foreach (DataRow r in ds.Tables[0].Rows)
                 {
                     Plot obj = new Plot();
-                    obj.PK_PlotHoldID = r["PK_PlotHoldID"].ToString();
-                    obj.EncryptKey = Crypto.Encrypt(r["PK_PlotHoldID"].ToString());
-                    //obj.PlotNumber = r["Plot"].ToString();
+                    obj.PlotID = r["PK_PlotID"].ToString();
+                    obj.Mobile = r["Mobile"].ToString();
+                    obj.Name = r["Name"].ToString();
+                    obj.associateDetails = r["associateDetails"].ToString();
+                    obj.PlotInfo = r["PlotInfo"].ToString();
+                    obj.HoldAmount = r["TotalHoldAmount"].ToString();
                     obj.HoldFrom = r["HoldFrom"].ToString();
                     obj.HoldTo = r["HoldTo"].ToString();
-                    obj.Name = r["Name"].ToString();
-                    obj.Mobile = r["Mobile"].ToString();
-                    obj.SiteName = r["SiteName"].ToString();
-                    obj.SectorName = r["SectorName"].ToString();
-                    obj.BlockName = r["BlockName"].ToString();
-                    obj.PlotNumber = r["PlotNumber"].ToString();
-
+                    obj.PlotInfo = r["PlotInfo"].ToString();
+                    obj.PlotArea = r["PlotArea"].ToString();
+                    obj.TotalHoldAmount = r["TotalHoldAmount"].ToString();
                     lst.Add(obj);
                 }
                 model.lstPlot = lst;
+                ViewBag.TotalHoldAmount = double.Parse(ds.Tables[0].Compute("sum(TotalHoldAmount)", "").ToString()).ToString("n2");
             }
             #region ddlSite
             int count1 = 0;
             List<SelectListItem> ddlSite = new List<SelectListItem>();
+            model.Fk_EmployeeId = Session["Pk_AdminId"].ToString();
             DataSet dsSite = model.GetSiteList();
             if (dsSite != null && dsSite.Tables.Count > 0 && dsSite.Tables[0].Rows.Count > 0)
             {
@@ -2452,7 +2513,74 @@ namespace BhumangalFarm.Controllers
             #endregion
         }
 
+        public ActionResult NewPlotHoldList(string PlotId)
+        {
+            Plot model = new Plot();
+            model.PlotID = PlotId;
+            List<Plot> lst = new List<Plot>();
+            DataSet ds = model.HoldPlotLeddger();
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                foreach (DataRow r in ds.Tables[0].Rows)
+                {
+                    {
+                        Plot obj = new Plot();
+                        obj.PK_PlotHoldID = r["PK_PlotHoldID"].ToString();
+                        obj.EncryptKey = r["PK_PlotHoldID"].ToString();
+                        obj.Mobile = r["Mobile"].ToString();
+                        obj.Name = r["Name"].ToString();
+                        obj.associateDetails = r["associateDetails"].ToString();
+                        obj.PlotInfo = r["PlotInfo"].ToString();
+                        obj.HoldAmount = r["HoldAmount"].ToString();
+                        obj.HoldFrom = r["HoldFrom"].ToString();
+                        obj.HoldTo = r["HoldTo"].ToString();
+                        obj.PaymentMode = r["PaymentMode"].ToString();
+                        obj.BankName = r["BankName"].ToString();
+                        obj.BankBranch = r["BankBranch"].ToString();
+                        obj.TransactionNumber = r["TransactionNo"].ToString();
+                        obj.TransactionDate = r["TransactionDate"].ToString();
+                        obj.PaymentDate = r["PaymentDate"].ToString();
+                        obj.PlotDetails = ds.Tables[0].Rows[0]["PlotInfo"].ToString();
+                        lst.Add(obj);
 
+                        ViewBag.Name = r["Name"].ToString();
+                        ViewBag.PlotDetails = r["PlotInfo"].ToString();
+                    }
+                }
+                model.newlstPlot = lst;
+                ViewBag.TotalHoldAmount = ds.Tables[0].Compute("sum(HoldAmount)", "").ToString();
+            }
+
+            #region ddlSite
+            int count1 = 0;
+            List<SelectListItem> ddlSite = new List<SelectListItem>();
+            model.Fk_EmployeeId = Session["Pk_AdminId"].ToString();
+            DataSet dsSite = model.GetSiteList();
+            if (dsSite != null && dsSite.Tables.Count > 0 && dsSite.Tables[0].Rows.Count > 0)
+            {
+                foreach (DataRow r in dsSite.Tables[0].Rows)
+                {
+                    if (count1 == 0)
+                    {
+                        ddlSite.Add(new SelectListItem { Text = "Select Site", Value = "0" });
+                    }
+                    ddlSite.Add(new SelectListItem { Text = r["SiteName"].ToString(), Value = r["PK_SiteID"].ToString() });
+                    count1 = count1 + 1;
+
+                }
+            }
+            ViewBag.ddlSite = ddlSite;
+            #endregion
+
+            List<SelectListItem> ddlSector = new List<SelectListItem>();
+            ddlSector.Add(new SelectListItem { Text = "Select Phase", Value = "0" });
+            ViewBag.ddlSector = ddlSector;
+
+            List<SelectListItem> ddlBlock = new List<SelectListItem>();
+            ddlBlock.Add(new SelectListItem { Text = "Select Block", Value = "0" });
+            ViewBag.ddlBlock = ddlBlock;
+            return View(model);
+        }
 
         public ActionResult DeletePlotHold(string PK_PlotHoldID)
         {
@@ -2492,36 +2620,42 @@ namespace BhumangalFarm.Controllers
         public ActionResult PrintPlotHold(string id)
         {
             Plot newdata = new Plot();
-            newdata.EncryptKey = Crypto.Decrypt(id);
-            newdata.PK_PlotHoldID = Crypto.Decrypt(id);
-            //  ViewBag.Name = Session["Name"].ToString();
-            DataSet ds = newdata.GetPlotHoldList();
+            newdata.SiteID = newdata.SiteID == "0" ? null : newdata.SiteID;
+            newdata.SectorID = newdata.SectorID == "0" ? null : newdata.SectorID;
+            newdata.BlockID = newdata.BlockID == "0" ? null : newdata.BlockID;
+            newdata.PlotNumber = newdata.PlotNumber == "0" ? null : newdata.PlotNumber;
+            newdata.Fk_EmployeeId = Session["Pk_AdminId"].ToString();
+            
+            newdata.PK_PlotHoldID = id;
+            DataSet ds = newdata.PrintPlotHoldList();
 
             if (ds != null && ds.Tables[0].Rows.Count > 0)
             {
-
                 if (ds.Tables[0].Rows[0]["MSG"].ToString() == "1")
                 {
-
                     newdata.Result = "yes";
                     ViewBag.PK_PlotHoldID = ds.Tables[0].Rows[0]["PK_PlotHoldID"].ToString();
                     ViewBag.CustomerName = ds.Tables[0].Rows[0]["Name"].ToString();
-
+                    ViewBag.Associate = ds.Tables[0].Rows[0]["associateDetails"].ToString();
                     ViewBag.SiteName = ds.Tables[0].Rows[0]["SiteName"].ToString();
                     ViewBag.SectorName = ds.Tables[0].Rows[0]["SectorName"].ToString();
                     ViewBag.BlockName = ds.Tables[0].Rows[0]["BlockName"].ToString();
                     ViewBag.PlotNo = ds.Tables[0].Rows[0]["PlotNumber"].ToString();
-
-                    //  ViewBag.PlotNumber = ds.Tables[0].Rows[0]["PlotInfo"].ToString();
                     ViewBag.HoldAmount = ds.Tables[0].Rows[0]["HoldAmount"].ToString();
                     ViewBag.PlotArea = ds.Tables[0].Rows[0]["PlotArea"].ToString();
                     ViewBag.Mobile = ds.Tables[0].Rows[0]["Mobile"].ToString();
                     ViewBag.Remark = ds.Tables[0].Rows[0]["Remark"].ToString();
-
                     ViewBag.ReceiptNo = ds.Tables[0].Rows[0]["ReceiptNo"].ToString();
                     ViewBag.Amountwords = ds.Tables[0].Rows[0]["AmountInWords"].ToString();
-
-
+                    ViewBag.BankName = ds.Tables[0].Rows[0]["BankName"].ToString();
+                    ViewBag.BankBranch = ds.Tables[0].Rows[0]["BankBranch"].ToString();
+                    ViewBag.TransactionNo = ds.Tables[0].Rows[0]["TransactionNo"].ToString();
+                    ViewBag.TransactionDate = ds.Tables[0].Rows[0]["TransactionDate"].ToString();
+                    ViewBag.PaymentMode = ds.Tables[0].Rows[0]["PaymentMode"].ToString();
+                    ViewBag.HoldDate = ds.Tables[0].Rows[0]["HoldDate"].ToString();
+                    ViewBag.HoldFrom = ds.Tables[0].Rows[0]["HoldFrom"].ToString();
+                    ViewBag.HoldTo = ds.Tables[0].Rows[0]["HoldTo"].ToString();
+                    ViewBag.PaymentDate = ds.Tables[0].Rows[0]["PaymentDate"].ToString();
 
                     ViewBag.CompanyName = SoftwareDetails.CompanyName;
                     ViewBag.CompanyAddress = SoftwareDetails.CompanyAddress;
@@ -2537,6 +2671,153 @@ namespace BhumangalFarm.Controllers
 
             return View(newdata);
         }
+
+        public ActionResult HoldPlotPayment(string PlotId)
+        {
+            Plot model = new Plot();
+
+            #region ddlBranch
+            Plot obj = new Plot();
+            int count = 0;
+            List<SelectListItem> ddlBranch = new List<SelectListItem>();
+            DataSet dsBranch = obj.GetBranchList();
+            if (dsBranch != null && dsBranch.Tables.Count > 0 && dsBranch.Tables[0].Rows.Count > 0)
+            {
+                foreach (DataRow r in dsBranch.Tables[0].Rows)
+                {
+                    if (count == 0)
+                    {
+                        ddlBranch.Add(new SelectListItem { Text = "Select Branch", Value = "0" });
+                    }
+                    ddlBranch.Add(new SelectListItem { Text = r["BranchName"].ToString(), Value = r["PK_BranchID"].ToString() });
+                    count = count + 1;
+                }
+            }
+            ViewBag.ddlBranch = ddlBranch;
+            #endregion
+            
+            #region ddlPaymentMode
+            int count3 = 0;
+            List<SelectListItem> ddlPaymentMode = new List<SelectListItem>();
+            DataSet dsPayMode = model.GetPaymentModeList();
+            if (dsPayMode != null && dsPayMode.Tables.Count > 0 && dsPayMode.Tables[0].Rows.Count > 0)
+            {
+                foreach (DataRow r in dsPayMode.Tables[0].Rows)
+                {
+                    if (count3 == 0)
+                    {
+                        ddlPaymentMode.Add(new SelectListItem { Text = "Select Payment Mode", Value = "0" });
+                    }
+                    ddlPaymentMode.Add(new SelectListItem { Text = r["PaymentMode"].ToString(), Value = r["PK_paymentID"].ToString() });
+                    count3 = count3 + 1;
+                }
+            }
+            ViewBag.ddlPaymentMode = ddlPaymentMode;
+            #endregion
+            
+            if (PlotId != null)
+            {
+                model.PlotID = PlotId;
+                DataSet dsBookingDetails = model.HoldPlotPayment();
+                if (dsBookingDetails != null && dsBookingDetails.Tables.Count > 0)
+                {
+                    model.SiteID = dsBookingDetails.Tables[0].Rows[0]["FK_SiteID"].ToString();
+                    model.SectorID = dsBookingDetails.Tables[0].Rows[0]["FK_SectorID"].ToString();
+                    model.BlockID = dsBookingDetails.Tables[0].Rows[0]["FK_BlockID"].ToString();
+                    model.SiteName = dsBookingDetails.Tables[0].Rows[0]["SiteName"].ToString();
+                    model.SectorName = dsBookingDetails.Tables[0].Rows[0]["SectorName"].ToString();
+                    model.BlockName = dsBookingDetails.Tables[0].Rows[0]["BlockName"].ToString();
+                    model.HoldFrom = dsBookingDetails.Tables[0].Rows[0]["HoldFrom"].ToString();
+                    model.HoldTo = dsBookingDetails.Tables[0].Rows[0]["HoldTo"].ToString();
+                    model.Name = dsBookingDetails.Tables[0].Rows[0]["Name"].ToString();
+                    model.Mobile = dsBookingDetails.Tables[0].Rows[0]["Mobile"].ToString();
+                    model.UserID = dsBookingDetails.Tables[0].Rows[0]["Fk_AssociateId"].ToString();
+                    model.SponsorID = dsBookingDetails.Tables[0].Rows[0]["AssociateId"].ToString();
+                    model.PlotNumber = dsBookingDetails.Tables[0].Rows[0]["PlotNumber"].ToString();
+                    model.HoldDate = dsBookingDetails.Tables[0].Rows[0]["HoldDate"].ToString();
+                }
+
+            }
+            return View(model);
+        }
+
+        [HttpPost]
+        [ActionName("HoldPlotPayment")]
+        [OnAction(ButtonName = "Save")]
+        public ActionResult HoldPlotPayment(Plot obj)
+        {
+            obj.Amount = obj.Amount == null ? "0.00" : obj.Amount;
+            try
+            {
+                #region ddlBranch
+                int count = 0;
+                List<SelectListItem> ddlBranch = new List<SelectListItem>();
+                DataSet dsBranch = obj.GetBranchList();
+                if (dsBranch != null && dsBranch.Tables.Count > 0 && dsBranch.Tables[0].Rows.Count > 0)
+                {
+                    foreach (DataRow r in dsBranch.Tables[0].Rows)
+                    {
+                        if (count == 0)
+                        {
+                            ddlBranch.Add(new SelectListItem { Text = "Select Branch", Value = "0" });
+                        }
+                        ddlBranch.Add(new SelectListItem { Text = r["BranchName"].ToString(), Value = r["PK_BranchID"].ToString() });
+                        count = count + 1;
+                    }
+                }
+                ViewBag.ddlBranch = ddlBranch;
+                #endregion
+                
+                #region ddlPaymentMode
+                int count3 = 0;
+                List<SelectListItem> ddlPaymentMode = new List<SelectListItem>();
+                DataSet dsPayMode = obj.GetPaymentModeList();
+                if (dsPayMode != null && dsPayMode.Tables.Count > 0 && dsPayMode.Tables[0].Rows.Count > 0)
+                {
+                    foreach (DataRow r in dsPayMode.Tables[0].Rows)
+                    {
+                        if (count3 == 0)
+                        {
+                            ddlPaymentMode.Add(new SelectListItem { Text = "Select Payment Mode", Value = "0" });
+                        }
+                        ddlPaymentMode.Add(new SelectListItem { Text = r["PaymentMode"].ToString(), Value = r["PK_paymentID"].ToString() });
+                        count3 = count3 + 1;
+                    }
+                }
+                ViewBag.ddlPaymentMode = ddlPaymentMode;
+                #endregion
+                
+                obj.AddedBy = Session["Pk_AdminId"].ToString();
+                obj.HoldDate = string.IsNullOrEmpty(obj.HoldDate) ? null : Common.ConvertToSystemDate(obj.HoldDate, "dd/MM/yyyy");
+                obj.HoldFrom = string.IsNullOrEmpty(obj.HoldFrom) ? null : Common.ConvertToSystemDate(obj.HoldFrom, "dd/MM/yyyy");
+                obj.PaymentDate = string.IsNullOrEmpty(obj.PaymentDate) ? null : Common.ConvertToSystemDate(obj.PaymentDate, "dd/MM/yyyy");
+                obj.TransactionDate = string.IsNullOrEmpty(obj.TransactionDate) ? null : Common.ConvertToSystemDate(obj.TransactionDate, "dd/MM/yyyy");
+                obj.HoldTo = string.IsNullOrEmpty(obj.HoldTo) ? null : Common.ConvertToSystemDate(obj.HoldTo, "dd/MM/yyyy");
+                DataSet ds1 = obj.SavePlotHold();
+                if (ds1 != null && ds1.Tables.Count > 0)
+                {
+                    if (ds1.Tables[0].Rows[0][0].ToString() == "1")
+                    {
+                        TempData["HoldPlotPayment"] = " Hold Plot Payment successfully!";
+                    }
+                    else
+                    {
+                        TempData["HoldPlotPayment"] = ds1.Tables[0].Rows[0]["ErrorMessage"].ToString();
+                    }
+                }
+                else
+                {
+                    TempData["HoldPlotPayment"] = ds1.Tables[0].Rows[0]["ErrorMessage"].ToString();
+                }
+            }
+            catch (Exception ex)
+            {
+                TempData["HoldPlotPayment"] = ex.Message;
+            }
+           
+            return RedirectToAction("HoldPlotPayment", "Plot");
+        }
+
         #endregion
 
         #region UploadPlot/HouseDocument
@@ -4130,6 +4411,8 @@ namespace BhumangalFarm.Controllers
 
         #endregion
 
+        #region CancelledPlotPayment
+
         public ActionResult ReturnCancelledPlotPayment(string PK_BookingId)
         {
                 Plot model = new Plot();
@@ -4646,6 +4929,8 @@ namespace BhumangalFarm.Controllers
 
             return RedirectToAction(FormName, Controller);
         }
+
+        #endregion
 
         #region ReturnPaymentCancelledPlot
 
