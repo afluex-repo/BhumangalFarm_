@@ -1,11 +1,11 @@
 ﻿@model BhumangalFarm.Models.Plot
 
 @{
-    ViewBag.Title = "HoldPlot";
+    ViewBag.Title = "HoldPlotPayment";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@using (Html.BeginForm("HoldPlot", "Plot", FormMethod.Post, new { @id = "form1",@autocomplete="off" }))
+@using (Html.BeginForm("HoldPlotPayment", "Plot", FormMethod.Post, new { @id = "form1" }))
 {
     <section class="section">
         <ul class="breadcrumb breadcrumb-style ">
@@ -15,42 +15,47 @@
                 </a>
             </li>
             <li class="breadcrumb-item">Plot</li>
-            <li class="breadcrumb-item">Hold Plot</li>
+            <li class="breadcrumb-item">Hold Plot Payment</li>
         </ul>
     </section>
     <div class="section-body">
+        <input type="hidden" id="UserType" value="@Session["UserType"]" />
+        <input type="hidden" id="UserTypeName" value="@Session["UserTypeName"]" />
         <div class="col-12 col-md-12 col-lg-12">
             <div class="card">
                 <div class="card-header">
-                    <h4>Hold Plot</h4>
+                    <h4>Hold Plot Payment</h4>
                     <p style="color: red">
-                        @TempData["Plot"]
+                        @TempData["HoldPlotPayment"]
                     </p>
                 </div>
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-4">
                             <div class="form-group">
-                                Select Site <span style="color: red">*</span>
-                                @Html.DropDownListFor(m => m.SiteID, new SelectList(ViewBag.ddlSite, "Value", "Text"), new { @class = "form-control", @onchange = "return onSiteChange();" })
+                                Site <span style="color: red">*</span>
+                                @Html.TextBoxFor(m => m.SiteName, new { @class = "form-control", @readonly = true })
+                                @Html.HiddenFor(m => m.SiteID)
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                Select Phase <span style="color: red">*</span>
-                                @Html.DropDownListFor(m => m.SectorID, new SelectList(ViewBag.ddlSector, "Value", "Text"), new { @class = "form-control", @onchange = "return onSectorChange();" })
+                                Select <span style="color: red">*</span>
+                                @Html.TextBoxFor(m => m.SectorName, new { @class = "form-control", @readonly = true })
+                                @Html.HiddenFor(m => m.SectorID)
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                Select Block <span style="color: red">*</span>
-                                @Html.DropDownListFor(m => m.BlockID, new SelectList(ViewBag.ddlBlock, "Value", "Text"), new { @class = "form-control" })
+                                Block <span style="color: red">*</span>
+                                @Html.TextBoxFor(m => m.BlockName, new { @class = "form-control", @readonly = true })
+                                @Html.HiddenFor(m => m.BlockID)
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
                                 Plot Number <span style="color: red">*</span>
-                                @Html.TextBoxFor(m => m.PlotNumber, new { @class = "form-control", @Placeholder = "Plot Number", @onchange = "return CheckPlotStatus();", @style = "text-transform:uppercase" })
+                                @Html.TextBoxFor(m => m.PlotNumber, new { @class = "form-control", @Placeholder = "Plot Number", @readonly = true })
                                 @Html.HiddenFor(m => m.PlotID)
                             </div>
                         </div>
@@ -63,7 +68,7 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 Hold To Date<span style="color: red">*</span>
-                                @Html.TextBoxFor(m => m.HoldTo, new { @class = "form-control", @Placeholder = "Select Hold To Date", @readonly = "readonly", @onchange = "return  CheckDate() ;" })
+                                @Html.TextBoxFor(m => m.HoldTo, new { @class = "form-control", @readonly = "readonly" })
                             </div>
                         </div>
                         <div class="col-md-4">
@@ -76,19 +81,21 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 Customer Name <span style="color: red">*</span>
-                                @Html.TextBoxFor(m => m.Name, new { @class = "form-control", @Placeholder = "Name" })
+                                @Html.TextBoxFor(m => m.Name, new { @class = "form-control", @Placeholder = "Customer Name", @readonly = "readonly" })
+
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
                                 Associate Code<span style="color:red">*</span>
-                                @Html.TextBoxFor(m => m.SponsorID, new { @class = "form-control", @Placeholder = "Associate ID", @onchange = "return getSponsorName();" })
+                                @Html.TextBoxFor(m => m.SponsorID, new { @class = "form-control", @Placeholder = "Associate ID", @readonly = "readonly" })
+                                @Html.HiddenFor(m => m.UserID)
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
                                 Mobile <span style="color: red">*</span>
-                                @Html.TextBoxFor(m => m.Mobile, new { @class = "form-control", @Placeholder = "Mobile", onkeypress = "return isNumberOrDecimal(event);", @maxlength = "10" })
+                                @Html.TextBoxFor(m => m.Mobile, new { @class = "form-control", @Placeholder = "Mobile", onkeypress = "return isNumberOrDecimal(event);", @maxlength = "10", @readonly = "readonly" })
 
                             </div>
                         </div>
@@ -98,45 +105,42 @@
                                 @Html.DropDownListFor(m => m.PaymentMode, new SelectList(ViewBag.ddlPaymentMode, "Value", "Text"), new { @class = "form-control", @onchange = "return CheckPayMode()" })
                             </div>
                         </div>
-                        
-                            <div class="col-md-4" id="divtransactiono" style="display: none">
-                                <div class="form-group">
-                                    <span id="txnNo"></span> <span id="spntrannumber" style="color: red">*</span>
-                                    @Html.TextBoxFor(m => m.TransactionNumber, new { @class = "form-control", @Placeholder = "Mobile Number", @maxlength = "50" })
-                                </div>
+                        <div class="col-md-4" id="divtransactiono" style="display: none">
+                            <div class="form-group">
+                                <span id="txnNo"></span> <span id="spntrannumber" style="color: red">*</span>
+                                @Html.TextBoxFor(m => m.TransactionNumber, new { @class = "form-control", @Placeholder = "Mobile Number", @maxlength = "50" })
                             </div>
-                            <div class="col-md-4" id="divPaymentMode" style="display: none">
-                                <div class="form-group">
-                                    <span id="txndt"></span><span id="spntradate" style="color: red">*</span>
-                                    @Html.TextBoxFor(m => m.TransactionDate, new { @class = "form-control", @Placeholder = "Date", @Readonly = "readonly" })
-                                </div>
+                        </div>
+                        <div class="col-md-4" id="divPaymentMode" style="display: none">
+                            <div class="form-group">
+                                <span id="txndt"></span><span id="spntradate" style="color: red">*</span>
+                                @Html.TextBoxFor(m => m.TransactionDate, new { @class = "form-control", @Placeholder = "Date", @Readonly = "readonly" })
                             </div>
-                            <div class="col-md-4" id="divbankname" style="display: none">
-                                <div class="form-group">
-                                    Bank Name <span id="spnbankname" style="color: red">*</span>
-                                    @Html.TextBoxFor(m => m.BankName, new { @class = "form-control", @maxlength = "100", @Placeholder = "Bank Name" })
-                                </div>
+                        </div>
+                        <div class="col-md-4" id="divbankname" style="display: none">
+                            <div class="form-group">
+                                Bank Name <span id="spnbankname" style="color: red">*</span>
+                                @Html.TextBoxFor(m => m.BankName, new { @class = "form-control", @maxlength = "100", @Placeholder = "Bank Name" })
                             </div>
-                            <div class="col-md-4" id="divbankbranch" style="display: none">
-                                <div class="form-group">
-                                    Bank Branch <span id="spnbankbranch" style="color: red">*</span>
-                                    @Html.TextBoxFor(m => m.BankBranch, new { @class = "form-control", @maxlength = "100", @Placeholder = "Bank Branch" })
-                                </div>
+                        </div>
+                        <div class="col-md-4" id="divbankbranch" style="display: none">
+                            <div class="form-group">
+                                Bank Branch <span id="spnbankbranch" style="color: red">*</span>
+                                @Html.TextBoxFor(m => m.BankBranch, new { @class = "form-control", @maxlength = "100", @Placeholder = "Bank Branch" })
                             </div>
+                        </div>
                         <div class="col-md-4">
                             <div class="form-group">
                                 Payment Date <span style="color: red">*</span>
                                 @Html.TextBoxFor(m => m.PaymentDate, new { @class = "form-control", @Placeholder = " Payment Date", @Readonly = "readonly" })
-
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                Amount
+                                Amount <span style="color: red">*</span>
                                 @Html.TextBoxFor(m => m.Amount, new { @class = "form-control", @Placeholder = "Amount" })
                             </div>
                         </div>
-                    
                         <div class="col-md-4">
                             <div class="form-group">
                                 Remark
@@ -145,29 +149,82 @@
                         </div>
                     </div>
                     <div class="row">
-                         @if (Model.PK_PlotHoldID == null)
-                         {
-                             <input class="btn btn-success pull-right" type="submit" onclick="return validateform();" value="Save" id="btnSave" name="Save" />
-                         }
-                         else
-                         {
-                             @Html.HiddenFor(m => m.PK_PlotHoldID, new { @Value = @Model.PK_PlotHoldID })
-                             <input class="btn btn-success pull-right" type="submit" value="Update" id="btnUpdate" name="Update" />
-                         }
-                     </div>
-
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <input class="btn btn-success" type="submit" onclick="return validateform();" value="Save" id="btnSave" name="Save" />
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-
-
 }
-
-<script src="~/files/bower_components/jquery/js/jquery.min.js"></script>
+<script src="~/WebsiteCss/js/jquery.js"></script>
 <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 <link rel="stylesheet" type="text/css" href="https://code.jquery.com/ui/1.12.0/themes/smoothness/jquery-ui.css">
 <script>
+    $(document).ready(function () {
+        var UserType = $('#UserType').val();
+        var UserTypeName = $('#UserTypeName').val();
+        //$("#loader").css({ 'display': '' });
+        if (UserType == 'Admin' && UserTypeName != 'Admin') {
+            GetMenuDetails();
+        }
+    });
+
+    $('#TransactionDate').datepicker({
+        dateFormat: 'dd/mm/yy',
+        changeYear: true,
+        changeMonth: true
+    });
+
+    $('#PaymentDate').datepicker({
+        dateFormat: 'dd/mm/yy',
+        changeYear: true,
+        changeMonth: true
+    });
+
+
+
+    function GetMenuDetails() {
+        debugger
+        var URL = "/Plot/HoldPlot";
+        $.ajax({
+            type: "POST",
+            url: "/Master/GetMenuDetails",
+            data: { URL: URL },
+            dataType: "json",
+            //contentType: 'application/json; charset=utf-8',
+            success: function (data) {
+                var obj = jQuery.parseJSON(data);
+                console.log(obj)
+                for (var i = 0; i < obj.length; i++) {
+                    if (obj[i].FormSave == true) {
+                        $('#btnSave').show();
+                        $("#btnSave").removeAttr('disabled');
+                    }
+                    else {
+                        $('#btnSave').hide();
+                        $("#btnSave").attr('disabled', 'disabled');
+                    }
+                    debugger
+                    if (obj[i].FormUpdate == true && $('#PK_PlotHoldID').val() != "") {
+                        $('#btnUpdate').show();
+
+                        $("#btnUpdate").removeAttr('disabled');
+                    }
+                    else {
+                        $('#btnUpdate').hide();
+                        $("#btnUpdate").attr('disabled', 'disabled');
+                    }
+                }
+            },
+            error: function () {
+                alert("Error occured!!")
+            }
+        });
+    }
     function validateform() {
         //$("#divload").css({ 'display': '' });
         $(".errortext").removeClass("errortext");
@@ -219,7 +276,6 @@
             $('#Mobile').focus();
             return false;
         }
-
         if ($('#PaymentDate').val() == '') {
             $("#PaymentDate").addClass('errortext');
             $('#PaymentDate').focus();
@@ -230,32 +286,63 @@
             $('#Amount').focus();
             return false;
         }
+
+        if ($('#FK_AccountHeadId').val() == '0') {
+            $("#FK_AccountHeadId").addClass('errortext');
+            $('#FK_AccountHeadId').focus();
+            return false;
+        }
+        if ($('#Fk_CompanyId').val() == '0') {
+            $("#Fk_CompanyId").addClass('errortext');
+            $('#Fk_CompanyId').focus();
+            return false;
+        }
+
+        if ($('#FK_TeamId').val() == '0') {
+            $("#FK_TeamId").addClass('errortext');
+            $('#FK_TeamId').focus();
+            return false;
+        }
         return true;
     }
 
-    function getSponsorName() {
-        $("#divload").css({ 'display': '' });
-        debugger;
-        var sponsorID = $('#SponsorID').val();
-        $.ajax({
-            url: '/Customer/GetSponsorName', type: 'post', dataType: 'json',
-            data: { 'SponsorID': sponsorID },
-            success: function (data) {
+    function isNumberOrDecimal(evt) {
+        var charCode = (evt.which) ? evt.which : evt.keyCode;
+        if (charCode != 46 && charCode > 31
+          && (charCode < 48 || charCode > 57))
+            return false;
 
-                $("#divload").css({ 'display': 'none' });
-                if (data.Result == "yes") {
-                    $("#UserID").val(data.UserID);
-                    $("#SponsorID").removeClass('errortext');
-                }
-                else if (data.Result == "no") {
-                    alert("Invalid Sponsor ID");
-                    $("#SponsorID").addClass('errortext');
-                    $('#SponsorID').focus();
-                    $('#SponsorID').val('');
+        return true;
+    }
 
-                }
+    function onlyAlphabets(e, t) {
+        try {
+            if (window.event) {
+                var charCode = window.event.keyCode;
             }
-        });
+            else if (e) {
+                var charCode = e.which;
+            }
+            else { return true; }
+            if ((charCode > 64 && charCode < 91) || (charCode > 96 && charCode < 123))
+                return true;
+            else
+                return false;
+        }
+        catch (err) {
+            alert(err.Description);
+        }
+    }
+    function CheckDate() {
+        debugger
+        var startDate = new Date($('#HoldFrom').val());
+        var endDate = new Date($('#HoldTo').val());
+
+        if (startDate > endDate) {
+            alert("Hold To Date should be greater than Hold From Date");
+            $('#HoldTo').val('');
+        }
+
     }
 
     function CheckPayMode() {
@@ -389,6 +476,7 @@
         }
         else if ($('#PaymentMode').val() == '10') {
             $("#spntrannumber").show();
+            $("#spnbankname").show();
             $('#txnNo').text('Mobile No. / UPI ID');
             $("#divPaymentMode").show();
             $("#divtransactiono").show();
@@ -396,7 +484,6 @@
             $("#divbankbranch").hide();
             $("#divPaymentMode").hide();
             $("#TransactionNumber").attr("placeholder", "Mobile No. / UPI ID");
-            $("#BankName").attr("placeholder", "Bank Name");
             $('#Fk_BankId').val('0');
             $('#Fk_BankId').attr('disabled', false);
         }
@@ -423,143 +510,9 @@
             $("#divbankname").hide();
             $("#divbankbranch").hide();
         }
-    }
-
-    function isNumberOrDecimal(evt) {
-        var charCode = (evt.which) ? evt.which : evt.keyCode;
-        if (charCode != 46 && charCode > 31
-          && (charCode < 48 || charCode > 57))
-            return false;
-
-        return true;
-    }
-
-    function onlyAlphabets(e, t) {
-        try {
-            if (window.event) {
-                var charCode = window.event.keyCode;
-            }
-            else if (e) {
-                var charCode = e.which;
-            }
-            else { return true; }
-            if ((charCode > 64 && charCode < 91) || (charCode > 96 && charCode < 123))
-                return true;
-            else
-                return false;
-        }
-        catch (err) {
-            alert(err.Description);
-        }
-    }
-
-    function onSiteChange() {
-        $("#divload").css({ 'display': '' });
-        var value = $('#SiteID').val();
-        var values = $('#SectorID').val();
-        var tr = [];
-        $.ajax({
-            url: "/Master/GetSiteDetails",
-            Type: "Get",
-            DataType: "JSON",
-            data: { SiteID: value },
-            success: function (data) {
-                $("#divload").css({ 'display': 'none' });
-                var j = 1;
-                if (data.Result == "yes") {
-                    $('#Rate').val(data.Rate);
-                    $("#SectorID").html(""); // clear before appending new list
-                    $("#SectorID").empty();
-                    $("#SectorID").append(
-                          $('<option></option>').val(0).html('Select Phase'));
-                    $.each(data.ddlSector, function (index, Sectorcount) {
-                        $("#SectorID").append(
-                              $('<option></option>').val(Sectorcount.Value).html(Sectorcount.Text));
-
-                    });
-                    $("#SectorID").formSelect();
-                }
-                else {
-                    $("#SectorID").empty();
-                    $('#Rate').val('');
-                }
-
-
-            }
-
-        });
 
     }
 
-    function onSectorChange() {
-        $("#divload").css({ 'display': '' });
-        var siteID = $('#SiteID').val();
-        var sectorID = $('#SectorID').val();
-        $.ajax({
-            url: '/Master/GetBlockList', type: 'post', dataType: 'json',
-            data: { 'SiteID': siteID, 'sectorID': sectorID },
-            success: function (data) {
-                $("#divload").css({ 'display': 'none' });
-                $("#BlockID").html(""); // clear before appending new list
-                $("#BlockID").empty();
-                $("#BlockID").append(
-                      $('<option></option>').val(0).html('Select Block'));
-                $.each(data.lstBlock, function (index, BlockCount) {
-                    $("#BlockID").append(
-                          $('<option></option>').val(BlockCount.Value).html(BlockCount.Text));
-                });
-                $("#BlockID").formSelect();
-            }
-
-        });
-    }
-
-    function CheckPlotStatus() {
-        $("#divload").css({ 'display': '' });
-        debugger
-        var siteID = $('#SiteID').val();
-        var sectorID = $('#SectorID').val();
-        var block = $('#BlockID').val();
-        var plotno = $('#PlotNumber').val();
-        $.ajax({
-            url: '/Plot/CheckPlot', type: 'get', dataType: 'json',
-            data: { 'SiteID': siteID, 'SectorID': sectorID, 'BlockID': block, 'PlotNumber': plotno },
-            success: function (data) {
-                $("#divload").css({ 'display': 'none' });
-                if (data.Result == "yes") {
-
-                    $("#PlotID").val(data.PlotID);
-                    $("#PlotAmount").val(data.PlotAmount);
-                    $("#ActualPlotRate").val(data.ActualPlotRate);
-                    $("#BookingAmount").val(data.BookingAmount);
-                    $("#TotalPLC").val(data.TotalPLC);
-                }
-                else {
-                    alert('Plot not available .');
-                    $("#PlotNumber").val('');
-                    $("#PlotAmount").val('');
-                    $("#ActualPlotRate").val('');
-                    $("#BookingAmount").val('');
-                    $("#TotalPLC").val('');
-
-                }
-            }
-
-        });
-
-    }
-
-    function CheckDate() {
-        debugger
-        var startDate = new Date($('#HoldFrom').val());
-        var endDate = new Date($('#HoldTo').val());
-
-        if (startDate > endDate) {
-            alert("Hold To Date should be greater than Hold From Date");
-            $('#HoldTo').val('');
-        }
-
-    }
 </script>
 <style>
     .errortext {
@@ -567,36 +520,4 @@
         background-color: #fff0f0 !important;
     }
 </style>
-
-<script>
-
-    $('#HoldFrom').datepicker({
-        format: 'dd/mm/yyyy',
-        changeYear: true,
-        changeMonth: true
-    });
-    $('#HoldTo').datepicker({
-        format: 'dd/mm/yyyy',
-        changeYear: true,
-        changeMonth: true
-    });
-    $('#PaymentDate').datepicker({
-        dateFormat: 'dd/mm/yy',
-        changeYear: true,
-        changeMonth: true
-    });
-    $('#HoldDate').datepicker({
-        dateFormat: 'dd/mm/yy',
-        changeYear: true,
-        changeMonth: true
-    });
-    $('#TransactionDate').datepicker({
-        dateFormat: 'dd/mm/yy',
-        changeYear: true,
-        changeMonth: true
-    });
-</script>
-
-
-
 
