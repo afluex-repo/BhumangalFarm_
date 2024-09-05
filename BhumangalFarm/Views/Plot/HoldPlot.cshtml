@@ -571,16 +571,11 @@
 <script>
 
     $('#HoldFrom').datepicker({
-        format: 'dd/mm/yyyy',
+        dateFormat: 'dd/mm/yy',
         changeYear: true,
         changeMonth: true
     });
     $('#HoldTo').datepicker({
-        format: 'dd/mm/yyyy',
-        changeYear: true,
-        changeMonth: true
-    });
-    $('#PaymentDate').datepicker({
         dateFormat: 'dd/mm/yy',
         changeYear: true,
         changeMonth: true
@@ -591,6 +586,11 @@
         changeMonth: true
     });
     $('#TransactionDate').datepicker({
+        dateFormat: 'dd/mm/yy',
+        changeYear: true,
+        changeMonth: true
+    });
+    $('#PaymentDate').datepicker({
         dateFormat: 'dd/mm/yy',
         changeYear: true,
         changeMonth: true
