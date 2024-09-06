@@ -199,9 +199,6 @@ namespace BhumangalFarm.Controllers
 
         #endregion
 
-
-
-
         public ActionResult SummaryReport(Plot model)
         {
 
@@ -293,8 +290,6 @@ namespace BhumangalFarm.Controllers
         [OnAction(ButtonName = "Search")]
         public ActionResult GetSummaryRep(Plot model)
         {
-
-
             int count1 = 0;
             Master objmaster = new Master();
             List<SelectListItem> ddlSite = new List<SelectListItem>();
@@ -313,16 +308,13 @@ namespace BhumangalFarm.Controllers
                 }
             }
             ViewBag.ddlSite = ddlSite;
-
-
-
+            
             List<SelectListItem> ddlSector = new List<SelectListItem>();
             DataSet dsSector = objmaster.GetSectorList();
             int sectorcount = 0;
 
             if (dsSector != null && dsSector.Tables.Count > 0)
             {
-
                 foreach (DataRow r in dsSector.Tables[0].Rows)
                 {
                     if (sectorcount == 0)
@@ -335,16 +327,14 @@ namespace BhumangalFarm.Controllers
             }
 
             ViewBag.ddlSector = ddlSector;
-
-
+            
             List<SelectListItem> lstBlock = new List<SelectListItem>();
 
             int blockcount = 0;
             //objmodel.SiteID = ds.Tables[0].Rows[0]["PK_SiteID"].ToString();
             //objmodel.SectorID = ds.Tables[0].Rows[0]["PK_SectorID"].ToString();
             DataSet dsblock = objmaster.GetBlockList();
-
-
+            
             if (dsblock != null && dsblock.Tables.Count > 0 && dsblock.Tables[0].Rows.Count > 0)
             {
 
@@ -359,8 +349,6 @@ namespace BhumangalFarm.Controllers
                 }
 
             }
-
-
             ViewBag.ddlBlock = lstBlock;
             List<Plot> lst = new List<Plot>();
             model.SiteID = model.SiteID == "0" ? null : model.SiteID;
@@ -3371,12 +3359,7 @@ namespace BhumangalFarm.Controllers
             return Json(model, JsonRequestBehavior.AllowGet);
         }
 
-
-
-
-
-
-
+        
 
 
     }
