@@ -18,8 +18,6 @@ namespace BhumangalFarm.Controllers
     {
         public ActionResult AdminDashBoard()
         {
-            //test changes
-
             DashBoard newdata = new DashBoard();
             try
             {
@@ -1926,7 +1924,6 @@ namespace BhumangalFarm.Controllers
                         TempData["UpdateProfilebyadmin"] = "Profile updated successfully..";
                         FormName = "AssociateList";
                         Controller = "TraditionalAssociate";
-                        //return View();
                     }
                     else
                     {
@@ -2234,7 +2231,6 @@ namespace BhumangalFarm.Controllers
         #endregion
         public ActionResult PayoutLedger()
         {
-
             return View();
         }
         [HttpPost]
@@ -2549,8 +2545,6 @@ namespace BhumangalFarm.Controllers
             var jss = new JavaScriptSerializer();
             var jdv = jss.Deserialize<dynamic>(dataValue);
 
-            //var serializeData = JsonConvert.DeserializeObject<List<Customer>>(empdata);
-            //System.Globalization.CultureInfo ci = System.Globalization.CultureInfo.CreateSpecificCulture("en-GB");
             DataTable VisitorDetails = new DataTable();
 
             VisitorDetails = JsonConvert.DeserializeObject<DataTable>(jdv["AddData"]);
