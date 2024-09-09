@@ -4,8 +4,6 @@
     ViewBag.Title = "CustomerList";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
- 
-
 
 <style>
     #divload {
@@ -40,12 +38,10 @@
         <div class="card">
             <div class="card-header">
                 <h4>Customer Details</h4>
-
                 <p style="color: red">
                     @TempData["BlockUnblock"]
                 </p>
             </div>
-
             <div class="card-body">
                 <div class="row">
                     <div class="col-md-12">
@@ -142,10 +138,8 @@
                                                 }
                                             }
                                         </tbody>
-
                                     </table>
                                 </div>
-
                             </div>
                         </div>
                     </div>
@@ -169,6 +163,7 @@
         changeYear: true,
         changeMonth: true
     });
+
     var cityuse = [];
     $("#loader").css({ 'display': '' });
     $.ajax({
@@ -194,8 +189,9 @@
             $("#loader").css({ 'display': 'none' });
         }
     });
+
+
     var AssociateList = [];
-    $("#loader").css({ 'display': '' });
     $.ajax({
         url: '/Plot/GetUserList',
         type: 'Post',

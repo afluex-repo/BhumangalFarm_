@@ -1,11 +1,9 @@
 ﻿@model BhumangalFarm.Models.Plot
-
 @{
     ViewBag.Title = "HoldPlot";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-@using (Html.BeginForm("HoldPlot", "Plot", FormMethod.Post, new { @id = "form1",@autocomplete="off" }))
+@using (Html.BeginForm("HoldPlot", "Plot", FormMethod.Post, new { @id = "form1", @autocomplete = "off" }))
 {
     <section class="section">
         <ul class="breadcrumb breadcrumb-style ">
@@ -70,7 +68,6 @@
                             <div class="form-group">
                                 Hold Date<span style="color: red">*</span>
                                 @Html.TextBoxFor(m => m.HoldDate, new { @class = "form-control", @Placeholder = "Hold Date", @readonly = "readonly" })
-
                             </div>
                         </div>
                         <div class="col-md-4">
@@ -89,45 +86,43 @@
                             <div class="form-group">
                                 Mobile <span style="color: red">*</span>
                                 @Html.TextBoxFor(m => m.Mobile, new { @class = "form-control", @Placeholder = "Mobile", onkeypress = "return isNumberOrDecimal(event);", @maxlength = "10" })
-
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                Payment Mode <span style="color: red">*</span>
+                                Payment Mode
                                 @Html.DropDownListFor(m => m.PaymentMode, new SelectList(ViewBag.ddlPaymentMode, "Value", "Text"), new { @class = "form-control", @onchange = "return CheckPayMode()" })
                             </div>
                         </div>
-                        
-                            <div class="col-md-4" id="divtransactiono" style="display: none">
-                                <div class="form-group">
-                                    <span id="txnNo"></span> <span id="spntrannumber" style="color: red">*</span>
-                                    @Html.TextBoxFor(m => m.TransactionNumber, new { @class = "form-control", @Placeholder = "Mobile Number", @maxlength = "50" })
-                                </div>
+
+                        <div class="col-md-4" id="divtransactiono" style="display: none">
+                            <div class="form-group">
+                                <span id="txnNo"></span> <span id="spntrannumber" style="color: red">*</span>
+                                @Html.TextBoxFor(m => m.TransactionNumber, new { @class = "form-control", @Placeholder = "Mobile Number", @maxlength = "50" })
                             </div>
-                            <div class="col-md-4" id="divPaymentMode" style="display: none">
-                                <div class="form-group">
-                                    <span id="txndt"></span><span id="spntradate" style="color: red">*</span>
-                                    @Html.TextBoxFor(m => m.TransactionDate, new { @class = "form-control", @Placeholder = "Date", @Readonly = "readonly" })
-                                </div>
+                        </div>
+                        <div class="col-md-4" id="divPaymentMode" style="display: none">
+                            <div class="form-group">
+                                <span id="txndt"></span><span id="spntradate" style="color: red">*</span>
+                                @Html.TextBoxFor(m => m.TransactionDate, new { @class = "form-control", @Placeholder = "Date", @Readonly = "readonly" })
                             </div>
-                            <div class="col-md-4" id="divbankname" style="display: none">
-                                <div class="form-group">
-                                    Bank Name <span id="spnbankname" style="color: red">*</span>
-                                    @Html.TextBoxFor(m => m.BankName, new { @class = "form-control", @maxlength = "100", @Placeholder = "Bank Name" })
-                                </div>
+                        </div>
+                        <div class="col-md-4" id="divbankname" style="display: none">
+                            <div class="form-group">
+                                Bank Name <span id="spnbankname" style="color: red">*</span>
+                                @Html.TextBoxFor(m => m.BankName, new { @class = "form-control", @maxlength = "100", @Placeholder = "Bank Name" })
                             </div>
-                            <div class="col-md-4" id="divbankbranch" style="display: none">
-                                <div class="form-group">
-                                    Bank Branch <span id="spnbankbranch" style="color: red">*</span>
-                                    @Html.TextBoxFor(m => m.BankBranch, new { @class = "form-control", @maxlength = "100", @Placeholder = "Bank Branch" })
-                                </div>
+                        </div>
+                        <div class="col-md-4" id="divbankbranch" style="display: none">
+                            <div class="form-group">
+                                Bank Branch <span id="spnbankbranch" style="color: red">*</span>
+                                @Html.TextBoxFor(m => m.BankBranch, new { @class = "form-control", @maxlength = "100", @Placeholder = "Bank Branch" })
                             </div>
+                        </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                Payment Date <span style="color: red">*</span>
+                                Payment Date
                                 @Html.TextBoxFor(m => m.PaymentDate, new { @class = "form-control", @Placeholder = " Payment Date", @Readonly = "readonly" })
-
                             </div>
                         </div>
                         <div class="col-md-4">
@@ -136,7 +131,7 @@
                                 @Html.TextBoxFor(m => m.Amount, new { @class = "form-control", @Placeholder = "Amount" })
                             </div>
                         </div>
-                    
+
                         <div class="col-md-4">
                             <div class="form-group">
                                 Remark
@@ -145,17 +140,16 @@
                         </div>
                     </div>
                     <div class="row">
-                         @if (Model.PK_PlotHoldID == null)
-                         {
-                             <input class="btn btn-success pull-right" type="submit" onclick="return validateform();" value="Save" id="btnSave" name="Save" />
-                         }
-                         else
-                         {
-                             @Html.HiddenFor(m => m.PK_PlotHoldID, new { @Value = @Model.PK_PlotHoldID })
-                             <input class="btn btn-success pull-right" type="submit" value="Update" id="btnUpdate" name="Update" />
-                         }
-                     </div>
-
+                        @if (Model.PK_PlotHoldID == null)
+                        {
+                            <input class="btn btn-success pull-right" type="submit" onclick="return validateform();" value="Save" id="btnSave" name="Save" />
+                        }
+                        else
+                        {
+                            @Html.HiddenFor(m => m.PK_PlotHoldID, new { @Value = @Model.PK_PlotHoldID })
+                            <input class="btn btn-success pull-right" type="submit" value="Update" id="btnUpdate" name="Update" />
+                        }
+                    </div>
                 </div>
             </div>
         </div>
@@ -163,7 +157,6 @@
 
 
 }
-
 <script src="~/files/bower_components/jquery/js/jquery.min.js"></script>
 <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 <link rel="stylesheet" type="text/css" href="https://code.jquery.com/ui/1.12.0/themes/smoothness/jquery-ui.css">
@@ -213,6 +206,11 @@
             $('#Name').focus();
             return false;
         }
+        if ($('#SponsorID').val() == '') {
+            $("#SponsorID").addClass('errortext');
+            $('#SponsorID').focus();
+            return false;
+        }
 
         if ($('#Mobile').val() == '') {
             $("#Mobile").addClass('errortext');
@@ -220,16 +218,16 @@
             return false;
         }
 
-        if ($('#PaymentDate').val() == '') {
-            $("#PaymentDate").addClass('errortext');
-            $('#PaymentDate').focus();
-            return false;
-        }
-        if ($('#Amount').val() == '') {
-            $("#Amount").addClass('errortext');
-            $('#Amount').focus();
-            return false;
-        }
+        //if ($('#PaymentDate').val() == '') {
+        //    $("#PaymentDate").addClass('errortext');
+        //    $('#PaymentDate').focus();
+        //    return false;
+        //}
+        //if ($('#Amount').val() == '') {
+        //    $("#Amount").addClass('errortext');
+        //    $('#Amount').focus();
+        //    return false;
+        //}
         return true;
     }
 
@@ -257,6 +255,13 @@
             }
         });
     }
+
+    $(document).ready(function () {
+        var amountField = $('#Amount'); // Assuming Razor will give the textbox this ID
+        if (amountField.val() === "" || amountField.val() === "0") {
+            amountField.val(0);
+        }
+    });
 
     function CheckPayMode() {
         debugger;
@@ -567,7 +572,6 @@
         background-color: #fff0f0 !important;
     }
 </style>
-
 <script>
 
     $('#HoldFrom').datepicker({
@@ -596,7 +600,3 @@
         changeMonth: true
     });
 </script>
-
-
-
-
