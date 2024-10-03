@@ -382,6 +382,7 @@ namespace BhumangalFarm.Controllers
                     obj.BlockName = r["BlockName"].ToString();
                     obj.PlotNumber = r["PlotNumber"].ToString();
                     obj.BookingDate = r["BookingDate"].ToString();
+                    obj.PlotArea = r["TotalArea"].ToString();
                     lst.Add(obj);
                 }
                 model.lstPlot = lst;
