@@ -2769,5 +2769,9 @@ namespace BhumangalFarm.Controllers
             return View(model);
 
         }
+        public ActionResult UploadOurTeam()
+        {
+            return View();
+        }
     }
 }
