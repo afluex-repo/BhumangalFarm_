@@ -28,6 +28,7 @@
     </NuGetPackageImportStamp>
     <TargetFrameworkProfile />
     <TypeScriptToolsVersion>1.8</TypeScriptToolsVersion>
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -37,7 +38,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <IntermediateOutputPath>C:\Users\DELL\AppData\Local\Temp\vs5A8E.tmp\Debug\</IntermediateOutputPath>
+    <IntermediateOutputPath>C:\Users\DELL\AppData\Local\Temp\vs6F63.tmp\Debug\</IntermediateOutputPath>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>full</DebugType>
@@ -46,7 +47,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <IntermediateOutputPath>C:\Users\DELL\AppData\Local\Temp\vs5A8E.tmp\Release\</IntermediateOutputPath>
+    <IntermediateOutputPath>C:\Users\DELL\AppData\Local\Temp\vs6F63.tmp\Release\</IntermediateOutputPath>
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   <ItemGroup>
@@ -8074,6 +8075,7 @@
     <Content Include="Views\Plot\ReturnPaymentCancelledPlot.cshtml" />
     <Content Include="Views\Plot\HoldPlotPayment.cshtml" />
     <Content Include="Views\Plot\NewPlotHoldList.cshtml" />
+    <Content Include="Views\Admin\UploadOurTeam.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

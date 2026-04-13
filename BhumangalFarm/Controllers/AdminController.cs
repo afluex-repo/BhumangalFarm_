@@ -2647,7 +2647,7 @@ namespace BhumangalFarm.Controllers
             string FormName = "";
             string Controller = "";
             try
-            {
+            {    
                 Plot model = new Plot();
                 model.PK_VisitorId = Crypto.Decrypt(Id);
                 model.AddedBy = Session["Pk_AdminId"].ToString();
@@ -2768,6 +2768,10 @@ namespace BhumangalFarm.Controllers
             
             return View(model);
 
+        }
+        public ActionResult UploadOurTeam()
+        {
+            return View();
         }
     }
 }

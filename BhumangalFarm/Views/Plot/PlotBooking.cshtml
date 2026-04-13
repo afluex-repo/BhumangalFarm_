@@ -598,13 +598,21 @@
 
     }
 
+
     function checkDiscount() {
-        //alert("Called");
         var discount = $('#Discount').val();
         var actualAmount = $('#PlotAmount').val();
-        var disc = $('#Discount').val();
-        var plc = $('#TotalPLC').val();
-        if ((Number)(discount) > (Number)(actualAmount)) {
+
+       
+        var originalNetPlotAmount = $('#NetPlotAmount').data('original');
+
+      
+        if (originalNetPlotAmount === undefined) {
+            originalNetPlotAmount = $('#NetPlotAmount').val();
+            $('#NetPlotAmount').data('original', originalNetPlotAmount);
+        }
+
+        if (Number(discount) > Number(actualAmount)) {
             $("#Discount").addClass('errortext');
             $('#Discount').focus();
             $("#Discount").val('');
@@ -612,26 +620,62 @@
             return false;
         }
         else {
-            debugger;
-            var payAmount = $('#PayAmount').val();
-            var actualAmount = $('#PlotAmount').val();
-            var disc = $('#Discount').val();
+            var disc = Number(discount) || 0;
 
+           
+            var newAmount = Number(originalNetPlotAmount) - disc;
+            $('#NetPlotAmount').val(newAmount);
 
-            var NetPlotAmount = $('#NetPlotAmount').val();
-
-            var amount = Number($('#NetPlotAmount').val()) - Number(disc);
-            $('#NetPlotAmount').val(amount);
-
-            if ($('#PayAmount').val() != "") {
-                var payamount = Number($('#PayAmount').val()) - Number(disc);
-                $('#PayAmount').val(payamount);
-            }
+         
             $("#PayAmount").val(0);
             $("#Balance").val(0);
-
         }
     }
+
+
+
+
+
+
+
+
+    
+
+
+    //function checkDiscount() {
+    //    //alert("Called");
+    //    var discount = $('#Discount').val();
+    //    var actualAmount = $('#PlotAmount').val();
+    //    var disc = $('#Discount').val();
+    //    var plc = $('#TotalPLC').val();
+    //    if ((Number)(discount) > (Number)(actualAmount)) {
+    //        $("#Discount").addClass('errortext');
+    //        $('#Discount').focus();
+    //        $("#Discount").val('');
+    //        alert("Discount cannot be greater than Actual Plot Amount.");
+    //        return false;
+    //    }
+    //    else {
+    //        debugger;
+    //        var payAmount = $('#PayAmount').val();
+    //        var actualAmount = $('#PlotAmount').val();
+    //        var disc = $('#Discount').val();
+
+
+    //        var NetPlotAmount = $('#NetPlotAmount').val();
+
+    //        var amount = Number($('#NetPlotAmount').val()) - Number(disc);
+    //        $('#NetPlotAmount').val(amount);
+
+    //        if ($('#PayAmount').val() != "") {
+    //            var payamount = Number($('#PayAmount').val()) - Number(disc);
+    //            $('#PayAmount').val(payamount);
+    //        }
+    //        $("#PayAmount").val(0);
+    //        $("#Balance").val(0);
+
+    //    }
+    //}
 
     function getStateCity() {
 
